@@ -796,12 +796,12 @@
         
         <!-- Language Selector -->
         <div class="lang-selector">
-            <a href="./index.html" class="lang-btn" onclick="setLanguage('pt');" title="Português (Brasil)">
+            <a href="../index.html" class="lang-btn" title="Português (Brasil)">
                 <span class="flag">🇧🇷</span>
                 <span class="lang-text">PT</span>
             </a>
             <span class="lang-divider">|</span>
-            <a href="#" class="lang-btn active" onclick="setLanguage('en'); return false;" title="English">
+            <a href="#" class="lang-btn active" title="English">
                 <span class="flag">🇺🇸</span>
                 <span class="lang-text">EN</span>
             </a>
@@ -813,7 +813,7 @@
         
         <div class="navbar-menu" id="navMenu">
             <a href="#" class="active">HOME</a>
-            <a href="JOGOS_DO_DIA.html">TODAY'S MATCHES</a>
+            <a href="Match_TODAY.html">TODAY'S MATCHES</a>
             <a href="refstats_historico.html">HISTORY</a>
             <a href="refstats_contato.html">CONTACT</a>
         </div>
@@ -832,7 +832,7 @@
                             View information from the world's top leagues here. 
                             Complete analysis of referees, teams, statistics and much more!
                         </p>
-                        <a href="JOGOS_DO_DIA.html" class="slide-btn">
+                        <a href="Match_TODAY.html" class="slide-btn">
                             <i class="fas fa-futbol"></i> View Today's Matches
                         </a>
                     </div>
@@ -1018,7 +1018,7 @@
                 <h4>📌 Quick Links</h4>
                 <ul>
                     <li><a href="#">Home</a></li>
-                    <li><a href="JOGOS_DO_DIA.html">Today's Matches</a></li>
+                    <li><a href="Match_TODAY.html">Today's Matches</a></li>
                     <li><a href="refstats_historico.html">History</a></li>
                     <li><a href="#como-usar">How to Use</a></li>
                     <li><a href="#doacao">Make Donation</a></li>
@@ -1143,25 +1143,6 @@
                });
         });
         
-        // ========================================
-        // LANGUAGE SYSTEM - Cookies
-        // ========================================
-        function setLanguage(lang) {
-            document.cookie = "refstats_lang=" + lang + ";path=/;max-age=31536000;SameSite=Lax";
-        }
-        
-        function getLanguage() {
-            const match = document.cookie.match(/refstats_lang=([^;]+)/);
-            return match ? match[1] : null;
-        }
-        
-        // Redirect to PT version if cookie is set
-        (function() {
-            const lang = getLanguage();
-            if (lang === 'pt' && window.location.pathname.includes('/ENG/')) {
-                window.location.href = './index.html';
-            }
-        })();
     </script>
 </body>
 </html>

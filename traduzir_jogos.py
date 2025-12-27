@@ -172,30 +172,79 @@ TRADUCOES = {
     'Histórico detalhado dos últimos 10 jogos apitados. Inclui cartões, faltas e dados por tempo quando disponíveis.':
         'Detailed history of last 10 games refereed. Includes cards, fouls and per-half data when available.',
     
+    # === Seções de Histórico por liga ===
+    '>📊 Histórico —': '>📊 History —',
+    
     # === Tabela de histórico ===
     '>Data</th>': '>Date</th>',
     '>Jogo</th>': '>Match</th>',
+    '>Partida</th>': '>Match</th>',
+    '>Placar</th>': '>Score</th>',
     '>Amarelos</th>': '>Yellows</th>',
     '>Vermelhos</th>': '>Reds</th>',
     '>Faltas</th>': '>Fouls</th>',
+    '>Faltas 1T</th>': '>Fouls 1H</th>',
+    '>Faltas 2T</th>': '>Fouls 2H</th>',
+    '>Faltas Total</th>': '>Total Fouls</th>',
     '>1T</th>': '>1H</th>',
     '>2T</th>': '>2H</th>',
     
     # === Times ===
     '>🏠 Time da Casa': '>🏠 Home Team',
     '>✈️ Time Visitante': '>✈️ Away Team',
+    '>⚽ Times</div>': '>⚽ Teams</div>',
+    
+    # === Próximos jogos ===
+    '>📅 Próximos Jogos</h5>': '>📅 Upcoming Matches</h5>',
+    '>📅 Próximos 3 Jogos</h5>': '>📅 Next 3 Matches</h5>',
+    
+    # === Médias do time ===
+    '>Média Amarelos/Jogo</span>': '>Yellow Avg/Game</span>',
+    '>Média Faltas/Jogo</span>': '>Fouls Avg/Game</span>',
+    
+    # === Estatísticas Pró/Contra ===
+    'Faltas Pró': 'Fouls For',
+    'Faltas Contra': 'Fouls Against',
+    'Amarelos Pró': 'Yellows For',
+    'Amarelos Contra': 'Yellows Against',
+    'Média de faltas COMETIDAS pelo time nos últimos 5 jogos.':
+        'Average fouls COMMITTED by the team in the last 5 games.',
+    'Média de faltas SOFRIDAS pelo time nos últimos 5 jogos (cometidas pelo adversário).':
+        'Average fouls SUFFERED by the team in the last 5 games (committed by opponent).',
+    'Média de cartões amarelos RECEBIDOS pelo time nos últimos 5 jogos.':
+        'Average yellow cards RECEIVED by the team in the last 5 games.',
+    'Média de cartões amarelos do ADVERSÁRIO nos últimos 5 jogos.':
+        'Average yellow cards of the OPPONENT in the last 5 games.',
+    
+    # === Tabelas de últimos 5 jogos ===
+    '📊 Faltas - Últimos 5 Jogos': '📊 Fouls - Last 5 Games',
+    '📊 Amarelos - Últimos 5 Jogos': '📊 Yellows - Last 5 Games',
+    '<strong>Pró:</strong> Faltas cometidas pelo time.<br><strong>Contra:</strong> Faltas sofridas (cometidas pelo adversário).':
+        '<strong>For:</strong> Fouls committed by the team.<br><strong>Against:</strong> Fouls suffered (committed by opponent).',
+    '<strong>Pró:</strong> Cartões recebidos pelo time.<br><strong>Contra:</strong> Cartões recebidos pelo adversário.':
+        '<strong>For:</strong> Cards received by the team.<br><strong>Against:</strong> Cards received by opponent.',
+    '>Pró</th>': '>For</th>',
+    '>Contra</th>': '>Against</th>',
+    
+    # === Gráfico comparativo ===
+    '>📊 Gráfico Comparativo de Amarelos</div>': '>📊 Yellow Cards Comparison Chart</div>',
+    '>📊 Comparativo de Amarelos - Últimos 5 Jogos</div>': '>📊 Yellow Cards Comparison - Last 5 Games</div>',
+    'Comparação visual da média de amarelos: árbitro vs times da partida.':
+        'Visual comparison of yellow averages: referee vs match teams.',
+    '>Árbitro</span>': '>Referee</span>',
+    "label: 'Árbitro'": "label: 'Referee'",
+    "label: 'Time Casa'": "label: 'Home Team'",
+    "label: 'Time Fora'": "label: 'Away Team'",
+    "'Jogo 1', 'Jogo 2', 'Jogo 3', 'Jogo 4', 'Jogo 5'": "'Game 1', 'Game 2', 'Game 3', 'Game 4', 'Game 5'",
+    '🗣️ Árbitro': '🗣️ Referee',
+    '(na liga)': '(in league)',
+    '(geral)': '(overall)',
+    'Outras Competições': 'Other Competitions',
     
     # === Classificação ===
     '>📊 Classificação</div>': '>📊 Standings</div>',
     'Posição atual do time na tabela de classificação da competição.':
         'Current team position in the competition standings.',
-    
-    # === Próximos jogos ===
-    '>📅 Próximos Jogos</h5>': '>📅 Upcoming Matches</h5>',
-    
-    # === Médias do time ===
-    '>Média Amarelos/Jogo</span>': '>Yellow Avg/Game</span>',
-    '>Média Faltas/Jogo</span>': '>Fouls Avg/Game</span>',
     
     # === Últimos jogos do time ===
     '>📋 Últimos Jogos</div>': '>📋 Last Matches</div>',
@@ -206,12 +255,6 @@ TRADUCOES = {
     '>Resultado</th>': '>Result</th>',
     '>Casa</td>': '>Home</td>',
     '>Fora</td>': '>Away</td>',
-    
-    # === Gráfico comparativo ===
-    '>📊 Gráfico Comparativo de Amarelos</div>': '>📊 Yellow Cards Comparison Chart</div>',
-    'Comparação visual da média de amarelos: árbitro vs times da partida.':
-        'Visual comparison of yellow averages: referee vs match teams.',
-    '>Árbitro</span>': '>Referee</span>',
     
     # === Doação ===
     '<h2>💖 Apoie o RefStats</h2>': '<h2>💖 Support RefStats</h2>',
