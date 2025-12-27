@@ -35,7 +35,7 @@
                     rgba(10, 15, 30, 0.85),
                     rgba(10, 15, 30, 0.85)
                 ),
-                url("../FundoMuroFundo.png");
+                url("../assets/img/FundoMuroFundo.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -838,6 +838,112 @@
             border-radius: 2px;
         }
         
+        /* Card de Doação */
+        .donation-section {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #0f3460;
+            margin-top: 30px;
+        }
+        
+        .donation-section h2 {
+            color: #e94560;
+            font-size: 1.6em;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .donation-section > p {
+            color: #a0a0a0;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .donation-card {
+            background: rgba(15, 52, 96, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #3498db;
+        }
+        
+        .donation-card h4 {
+            color: #3498db;
+            font-size: 1.1em;
+            margin-bottom: 8px;
+        }
+        
+        .donation-card p {
+            color: #a0a0a0;
+            margin-bottom: 12px;
+            font-size: 0.9em;
+        }
+        
+        .pix-key {
+            background: #1a1a2e;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #2ecc71;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid #2ecc71;
+            font-size: 0.9em;
+        }
+        
+        .pix-key:hover {
+            background: rgba(46, 204, 113, 0.1);
+        }
+        
+        .paypal-btn {
+            display: inline-block;
+            background: #0070ba;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .paypal-btn:hover {
+            background: #005ea6;
+            transform: scale(1.05);
+        }
+        
+        .donation-info {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid #f1c40f;
+            padding: 15px 20px;
+            margin-top: 20px;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .donation-info h4 {
+            color: #f1c40f;
+            margin-bottom: 8px;
+            font-size: 1em;
+        }
+        
+        .donation-info p {
+            color: #c0c0c0;
+            line-height: 1.6;
+            font-size: 0.9em;
+            margin: 0;
+        }
+        
         /* Footer */
         .footer {
             background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
@@ -1149,6 +1255,13 @@
                 padding-top: 90px;
             }
             
+            /* Lupa no canto inferior direito no mobile */
+            .search-toggle {
+                top: auto;
+                bottom: 20px;
+                right: 20px;
+            }
+            
             .search-bar {
                 flex-wrap: wrap;
                 padding: 10px;
@@ -1199,19 +1312,19 @@
 <body>
     <!-- Navbar (igual ao Home) -->
     <nav class="navbar">
-        <a href="../refstats_home.html" class="navbar-brand">
-            <img src="../LogoINICIO.png" alt="RefStats" class="logo-img">
+        <a href="../index.html" class="navbar-brand">
+            <img src="../assets/img/LogoINICIO.png" alt="RefStats" class="logo-img">
         </a>
         
-        <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')">
-            <i class="fas fa-bars"></i>
+        <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')" aria-label="Menu">
+            ☰
         </button>
         
         <div class="navbar-menu" id="navMenu">
-            <a href="../refstats_home.html">INÍCIO</a>
+            <a href="../index.html">INÍCIO</a>
             <a href="#" class="active">JOGOS DO DIA</a>
             <a href="../refstats_historico.html">HISTÓRICO</a>
-            <a href="../refstats_home.html#contato">CONTATO</a>
+            <a href="../refstats_contato.html">CONTATO</a>
         </div>
     </nav>
     
@@ -4832,10 +4945,45 @@
             </div>
         </div>
 
+        <!-- Card de Doação -->
+        <div class="donation-section">
+            <h2>💖 Apoie o RefStats</h2>
+            <p>O RefStats é gratuito e mantido com dedicação. Se você gosta do projeto, considere fazer uma doação!</p>
+            
+            <div class="donation-grid">
+                <div class="donation-card">
+                    <h4>🔲 PIX (Brasil)</h4>
+                    <p>Rápido, fácil e sem taxas</p>
+                    <div class="pix-key" onclick="copyPix()">
+                        <span id="pixKey">seuemail@exemplo.com</span>
+                        <span>📋</span>
+                    </div>
+                </div>
+                
+                <div class="donation-card">
+                    <h4>🅿️ PayPal</h4>
+                    <p>Para doações internacionais</p>
+                    <a href="https://paypal.me/seuusuario" target="_blank" class="paypal-btn">
+                        Doar via PayPal
+                    </a>
+                </div>
+            </div>
+            
+            <div class="donation-info">
+                <h4>💡 Por que doar?</h4>
+                <p>Suas doações ajudam a manter o servidor online, melhorar as funcionalidades e adicionar novas features. Qualquer valor é bem-vindo e nos motiva a continuar!</p>
+            </div>
+        </div>
+
         <div class="footer">
             <p><strong>⚽ RefStats - Jogos do Dia</strong></p>
-            <p>Análise completa de árbitros e times para apostas esportivas</p>
-            <p style="margin-top: 10px; font-size: 0.9em;">Dados coletados do SofaScore • 25/12/2025 02:35</p>
+            <p>
+                <a href="../refstats_termos.html" style="color: #3498db; text-decoration: none;">Termos de Uso</a> | 
+                <a href="../refstats_privacidade.html" style="color: #3498db; text-decoration: none;">Política de Privacidade</a> | 
+                <a href="../refstats_aviso_legal.html" style="color: #3498db; text-decoration: none;">Aviso Legal</a> |
+                <a href="../refstats_faq.html" style="color: #3498db; text-decoration: none;">FAQ</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Dados coletados de fontes confiáveis • 27/12/2025 11:22</p>
             <p style="margin-top: 5px; font-size: 0.85em; color: #3498db;">💡 Use Ctrl+F ou clique em 🔍 para pesquisar e filtrar por perfil do árbitro</p>
             <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ Este site é apenas para fins informativos. Aposte com responsabilidade.</p>
         </div>
@@ -5140,6 +5288,23 @@
         });
         
     })();
+    
+    // Função para copiar PIX
+    function copyPix() {
+        const pixKey = document.getElementById('pixKey').textContent;
+        navigator.clipboard.writeText(pixKey).then(() => {
+            alert('✅ Chave PIX copiada: ' + pixKey);
+        }).catch(() => {
+            // Fallback para navegadores antigos
+            const textarea = document.createElement('textarea');
+            textarea.value = pixKey;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            alert('✅ Chave PIX copiada: ' + pixKey);
+        });
+    }
     </script>
 </body>
 </html>
