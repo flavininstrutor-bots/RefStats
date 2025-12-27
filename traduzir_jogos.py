@@ -46,7 +46,7 @@ TRADUCOES = {
     '>CONTATO</a>': '>CONTACT</a>',
     
     # === Links de navegação (corrigir caminhos para versão EN) ===
-    'href="index.html"': 'href="../index.html"',
+    'href="index.html"': 'href="index.html"',
     'href="JOGOS_DO_DIA.html"': 'href="Match_TODAY.html"',
     'href="refstats_historico.html"': 'href="../refstats_historico.html"',
     'href="refstats_contato.html"': 'href="../refstats_contato.html"',
