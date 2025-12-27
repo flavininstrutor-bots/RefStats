@@ -4015,7 +4015,7 @@ def main():
         f.write(html_content)
     
     # Para o histórico, ajusta os links para usar ../ (voltar uma pasta)
-    html_historico = html_content.replace('href="index.html', 'href="/RefStats/index.html')
+    html_historico = html_content.replace('href="index.html', 'href="../index.html')
     html_historico = html_historico.replace('href="JOGOS_DO_DIA.html', 'href="../JOGOS_DO_DIA.html')
     html_historico = html_historico.replace('href="refstats_historico.html', 'href="../refstats_historico.html')
     html_historico = html_historico.replace('href="refstats_contato.html', 'href="../refstats_contato.html')
