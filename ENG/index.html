@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RefStats - Análise de Árbitros e Times</title>
+    <title>RefStats - Referee and Team Analysis</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -34,7 +34,7 @@
                     rgba(10, 15, 30, 0.85),
                     rgba(10, 15, 30, 0.85)
                 ),
-                url("./assets/img/FundoMuroFundo.png");
+                url("../assets/img/FundoMuroFundo.png");
 
             background-size: cover;
             background-position: center;
@@ -199,7 +199,7 @@
                     rgba(10, 10, 25, 0.75),
                     rgba(10, 10, 25, 0.75)
                 ),
-                url("./assets/img/FundoSlide_JogosDoDia.png");
+                url("../assets/img/FundoSlide_JogosDoDia.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -222,7 +222,7 @@
                     rgba(10, 10, 25, 0.75),
                     rgba(10, 10, 25, 0.75)
                 ),
-                url("./assets/img/FundoSlide_ComoUsar.png");
+                url("../assets/img/FundoSlide_ComoUsar.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -245,7 +245,7 @@
                     rgba(10, 10, 25, 0.75),
                     rgba(10, 10, 25, 0.75)
                 ),
-                url("./assets/img/FundoSlide_Historico.png");
+                url("../assets/img/FundoSlide_Historico.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -268,7 +268,7 @@
                     rgba(10, 10, 25, 0.75),
                     rgba(10, 10, 25, 0.75)
                 ),
-                url("./assets/img/FundoSlide_Doacao.png");
+                url("../assets/img/FundoSlide_Doacao.png");
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -791,17 +791,17 @@
     <!-- Navbar -->
     <nav class="navbar">
         <a href="#" class="navbar-brand">
-            <img src="./assets/img/LogoINICIO.png" alt="RefStats" class="logo-img">
+            <img src="../assets/img/LogoINICIO.png" alt="RefStats" class="logo-img">
         </a>
         
-        <!-- Seletor de Idioma -->
+        <!-- Language Selector -->
         <div class="lang-selector">
-            <a href="#" class="lang-btn active" onclick="setLanguage('pt'); return false;" title="Português (Brasil)">
+            <a href="../index.html" class="lang-btn" onclick="setLanguage('pt');" title="Português (Brasil)">
                 <span class="flag">🇧🇷</span>
                 <span class="lang-text">PT</span>
             </a>
             <span class="lang-divider">|</span>
-            <a href="ENG/index.html" class="lang-btn" onclick="setLanguage('en');" title="English">
+            <a href="#" class="lang-btn active" onclick="setLanguage('en'); return false;" title="English">
                 <span class="flag">🇺🇸</span>
                 <span class="lang-text">EN</span>
             </a>
@@ -812,10 +812,10 @@
         </button>
         
         <div class="navbar-menu" id="navMenu">
-            <a href="#" class="active">INÍCIO</a>
-            <a href="JOGOS_DO_DIA.html">JOGOS DO DIA</a>
-            <a href="refstats_historico.html">HISTÓRICO</a>
-            <a href="refstats_contato.html">CONTATO</a>
+            <a href="#" class="active">HOME</a>
+            <a href="JOGOS_DO_DIA.html">TODAY'S MATCHES</a>
+            <a href="refstats_historico.html">HISTORY</a>
+            <a href="refstats_contato.html">CONTACT</a>
         </div>
     </nav>
     
@@ -823,62 +823,62 @@
     <section class="hero">
         <div class="slider-container">
             <div class="slider" id="slider">
-                <!-- Slide 1 - Jogos do Dia -->
+                <!-- Slide 1 - Today's Matches -->
                 <div class="slide slide-1">
                     <div class="slide-content">
                         
-                        <h2 class="slide-title">JOGOS DO DIA</h2>
+                        <h2 class="slide-title">TODAY'S MATCHES</h2>
                         <p class="slide-description">
-                            Visualize as informações das principais ligas do mundo aqui. 
-                            Análise completa de árbitros, times, estatísticas e muito mais!
+                            View information from the world's top leagues here. 
+                            Complete analysis of referees, teams, statistics and much more!
                         </p>
                         <a href="JOGOS_DO_DIA.html" class="slide-btn">
-                            <i class="fas fa-futbol"></i> Ver Jogos de Hoje
+                            <i class="fas fa-futbol"></i> View Today's Matches
                         </a>
                     </div>
                 </div>
                 
-                <!-- Slide 2 - Como Utilizar -->
+                <!-- Slide 2 - How to Use -->
                 <div class="slide slide-2">
                     <div class="slide-content">
                         
-                        <h2 class="slide-title">COMO UTILIZAR O REFSTATS</h2>
+                        <h2 class="slide-title">HOW TO USE REFSTATS</h2>
                         <p class="slide-description">
-                            Clique aqui e veja o vídeo intuitivo de como aproveitar 
-                            ao máximo todas as funcionalidades do sistema!
+                            Click here and watch an intuitive video on how to make the most 
+                            of all the system's features!
                         </p>
                         <a href="#como-usar" class="slide-btn">
-                            <i class="fas fa-play-circle"></i> Assistir Tutorial
+                            <i class="fas fa-play-circle"></i> Watch Tutorial
                         </a>
                     </div>
                 </div>
                 
-                <!-- Slide 3 - Histórico -->
+                <!-- Slide 3 - Match History -->
                 <div class="slide slide-3">
                     <div class="slide-content">
                         
-                        <h2 class="slide-title">HISTÓRICO DOS JOGOS</h2>
+                        <h2 class="slide-title">MATCH HISTORY</h2>
                         <p class="slide-description">
-                            Clique e veja os jogos anteriores analisados em nosso calendário. 
-                            Acompanhe o histórico completo de todas as análises!
+                            Click and view previously analyzed matches in our calendar. 
+                            Follow the complete history of all analyses!
                         </p>
                         <a href="refstats_historico.html" class="slide-btn">
-                            <i class="fas fa-calendar-alt"></i> Ver Histórico
+                            <i class="fas fa-calendar-alt"></i> View History
                         </a>
                     </div>
                 </div>
                 
-                <!-- Slide 4 - Doação -->
+                <!-- Slide 4 - Donation -->
                 <div class="slide slide-4">
                     <div class="slide-content">
                         
-                        <h2 class="slide-title">FAÇA UMA DOAÇÃO</h2>
+                        <h2 class="slide-title">MAKE A DONATION</h2>
                         <p class="slide-description">
-                            Se o RefStats te ajudou, considere fazer uma doação para nós! 
-                            Aceitamos PIX (Brasil) e PayPal (Internacional).
+                            If RefStats has helped you, consider making a donation! 
+                            We accept PIX (Brazil) and PayPal (International).
                         </p>
                         <a href="#doacao" class="slide-btn">
-                            <i class="fas fa-heart"></i> Apoiar o Projeto
+                            <i class="fas fa-heart"></i> Support the Project
                         </a>
                     </div>
                 </div>
@@ -901,98 +901,98 @@
         </div>
     </section>
     
-    <!-- Como Utilizar -->
+    <!-- How to Use -->
     <section class="section" id="como-usar">
         <div class="how-to-use">
-            <h2 class="section-title">🎯 Como Utilizar o RefStats</h2>
-            <p class="section-subtitle">Aprenda a usar todas as funcionalidades em poucos passos</p>
+            <h2 class="section-title">🎯 How to Use RefStats</h2>
+            <p class="section-subtitle">Learn how to use all features in a few steps</p>
             
             <div class="steps-container">
                 <div class="step-card">
                     <div class="step-number">1</div>
-                    <h3>Acesse os Jogos do Dia</h3>
-                    <p>Clique em "JOGOS DO DIA" no menu ou no slide para ver todas as partidas disponíveis para análise.</p>
+                    <h3>Access Today's Matches</h3>
+                    <p>Click on "TODAY'S MATCHES" in the menu or slide to see all matches available for analysis.</p>
                 </div>
                 
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <h3>Analise o Árbitro</h3>
-                    <p>Veja o perfil do árbitro (Rigoroso/Médio/Permissivo), médias de cartões e histórico de partidas.</p>
+                    <h3>Analyze the Referee</h3>
+                    <p>View the referee's profile (Strict/Medium/Lenient), card averages and match history.</p>
                 </div>
                 
                 <div class="step-card">
                     <div class="step-number">3</div>
-                    <h3>Confira os Times</h3>
-                    <p>Analise a classificação, próximos jogos, estatísticas de faltas e amarelos de cada time.</p>
+                    <h3>Check the Teams</h3>
+                    <p>Analyze standings, upcoming matches, foul and yellow card statistics for each team.</p>
                 </div>
                 
                 <div class="step-card">
                     <div class="step-number">4</div>
-                    <h3>Compare no Gráfico</h3>
-                    <p>Use o gráfico comparativo para visualizar a tendência de amarelos do árbitro vs times.</p>
+                    <h3>Compare on Chart</h3>
+                    <p>Use the comparison chart to visualize the referee's yellow card trend vs teams.</p>
                 </div>
                 
                 <div class="step-card">
                     <div class="step-number">5</div>
-                    <h3>Use os Filtros</h3>
-                    <p>Filtre os jogos por perfil do árbitro usando a barra de pesquisa (Ctrl+F).</p>
+                    <h3>Use the Filters</h3>
+                    <p>Filter matches by referee profile using the search bar (Ctrl+F).</p>
                 </div>
                 
                 <div class="step-card">
                     <div class="step-number">6</div>
-                    <h3>Tome Sua Decisão</h3>
-                    <p>Com todas as informações em mãos, faça suas análises e tome decisões mais informadas!</p>
+                    <h3>Make Your Decision</h3>
+                    <p>With all information at hand, make your analyses and more informed decisions!</p>
                 </div>
             </div>
             
             <div class="video-container">
-                <h3 style="color: #3498db; margin-bottom: 20px;">📹 Vídeo Tutorial</h3>
+                <h3 style="color: #3498db; margin-bottom: 20px;">📹 Video Tutorial</h3>
                 <div class="video-placeholder">
                     <i class="fas fa-play-circle"></i>
-                    <p>Vídeo tutorial em breve...</p>
-                    <p style="font-size: 0.9em; margin-top: 10px;">Clique aqui para assistir quando disponível</p>
+                    <p>Video tutorial coming soon...</p>
+                    <p style="font-size: 0.9em; margin-top: 10px;">Click here to watch when available</p>
                 </div>
             </div>
         </div>
     </section>
     
-    <!-- Doação -->
+    <!-- Donation -->
     <section class="section" id="doacao">
         <div class="donation-section">
             <div class="donation-icon">
                 <i class="fas fa-hand-holding-heart"></i>
             </div>
-            <h2 class="section-title">💚 Apoie o RefStats</h2>
+            <h2 class="section-title">💚 Support RefStats</h2>
             <p class="donation-text">
-                O RefStats é um projeto gratuito desenvolvido com muito carinho para ajudar você 
-                nas suas análises esportivas. Se o sistema tem sido útil para você, considere fazer 
-                uma doação para nos ajudar a manter e melhorar a plataforma!
+                RefStats is a free project developed with care to help you 
+                with your sports analysis. If the system has been useful to you, consider making 
+                a donation to help us maintain and improve the platform!
             </p>
             
             <div class="donation-methods">
                 <div class="donation-card pix">
                     <i class="fas fa-qrcode"></i>
-                    <h4>PIX (Brasil)</h4>
-                    <p>Rápido e sem taxas</p>
+                    <h4>PIX (Brazil)</h4>
+                    <p>Fast and fee-free</p>
                     <div class="pix-key" onclick="copyPix()">
                         <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="13607666767e727a7f53766b767e637f7c3d707c7e">[email&#160;protected]</a>
                         <i class="fas fa-copy"></i>
                     </div>
-                    <p style="font-size: 0.8em; margin-top: 10px; color: #2ecc71;">Clique para copiar</p>
+                    <p style="font-size: 0.8em; margin-top: 10px; color: #2ecc71;">Click to copy</p>
                 </div>
                 
                 <div class="donation-card paypal">
                     <i class="fab fa-paypal"></i>
-                    <h4>PayPal (Internacional)</h4>
-                    <p>Para doações do exterior</p>
+                    <h4>PayPal (International)</h4>
+                    <p>For international donations</p>
                     <a href="#" class="donation-btn">
-                        <i class="fab fa-paypal"></i> Doar via PayPal
+                        <i class="fab fa-paypal"></i> Donate via PayPal
                     </a>
                 </div>
             </div>
             
             <p style="margin-top: 30px; color: #a0a0a0; font-size: 0.9em;">
-                ❤️ Qualquer valor é muito bem-vindo e nos ajuda a continuar esse trabalho!
+                ❤️ Any amount is very welcome and helps us continue this work!
             </p>
         </div>
     </section>
@@ -1003,8 +1003,8 @@
             <div class="footer-section">
                 <h4>⚽ RefStats</h4>
                 <p>
-                    Sistema de análise de árbitros e times para apostas esportivas. 
-                    Dados coletados de fontes confiáveis com análises detalhadas.
+                    Referee and team analysis system for sports betting. 
+                    Data collected from reliable sources with detailed analyses.
                 </p>
                 <div class="social-links">
                     <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
@@ -1015,48 +1015,48 @@
             </div>
             
             <div class="footer-section">
-                <h4>📌 Links Rápidos</h4>
+                <h4>📌 Quick Links</h4>
                 <ul>
-                    <li><a href="#">Início</a></li>
-                    <li><a href="JOGOS_DO_DIA.html">Jogos do Dia</a></li>
-                    <li><a href="refstats_historico.html">Histórico</a></li>
-                    <li><a href="#como-usar">Como Usar</a></li>
-                    <li><a href="#doacao">Fazer Doação</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="JOGOS_DO_DIA.html">Today's Matches</a></li>
+                    <li><a href="refstats_historico.html">History</a></li>
+                    <li><a href="#como-usar">How to Use</a></li>
+                    <li><a href="#doacao">Make Donation</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
-                <h4>📋 Políticas</h4>
+                <h4>📋 Policies</h4>
                 <ul>
-                    <li><a href="refstats_termos.html">Termos de Uso</a></li>
-                    <li><a href="refstats_privacidade.html">Política de Privacidade</a></li>
-                    <li><a href="refstats_aviso_legal.html">Aviso Legal</a></li>
+                    <li><a href="refstats_termos.html">Terms of Use</a></li>
+                    <li><a href="refstats_privacidade.html">Privacy Policy</a></li>
+                    <li><a href="refstats_aviso_legal.html">Legal Disclaimer</a></li>
                     <li><a href="refstats_faq.html">FAQ</a></li>
                 </ul>
             </div>
             
             <div class="footer-section">
-                <h4>📞 Contato</h4>
+                <h4>📞 Contact</h4>
                 <p><i class="fas fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="2a4945445e4b5e456a584f4c595e4b5e5904494547">[email&#160;protected]</a></p>
                 <p><i class="fab fa-telegram"></i> @refstats</p>
                 <p style="margin-top: 15px; font-size: 0.9em; color: #e94560;">
-                    ⚠️ Este site é apenas para fins informativos. 
-                    Aposte com responsabilidade.
+                    ⚠️ This site is for informational purposes only. 
+                    Bet responsibly.
                 </p>
             </div>
         </div>
         
         <div class="footer-bottom">
             <p>
-                © 2025 RefStats. Todos os direitos reservados. | 
-                Desenvolvido com ❤️ | 
-                <a href="refstats_privacidade.html">Política de Privacidade</a> | 
-                <a href="refstats_termos.html">Termos de Uso</a> | 
-                <a href="refstats_aviso_legal.html">Aviso Legal</a></li> | 
+                © 2025 RefStats. All rights reserved. | 
+                Developed with ❤️ | 
+                <a href="refstats_privacidade.html">Privacy Policy</a> | 
+                <a href="refstats_termos.html">Terms of Use</a> | 
+                <a href="refstats_aviso_legal.html">Legal Disclaimer</a></li> | 
                 <a href="refstats_faq.html">FAQ</a></li> | 
             </p>
             <p style="margin-top: 10px; font-size: 0.85em;">
-                ⚽ Os dados são coletados de fontes confiáveis, como SofaScore, WhoScore, FlashScore, entre outros, manualmente e são atualizados diariamente.
+                ⚽ Data is collected from reliable sources such as SofaScore, WhoScore, FlashScore, among others, manually and updated daily.
             </p>
         </div>
     </footer>
@@ -1112,20 +1112,20 @@
             document.getElementById('navMenu').classList.toggle('active');
         }
         
-        // Copiar PIX
+        // Copy PIX
         function copyPix() {
             const pixKey = 'seuemail@exemplo.com';
             navigator.clipboard.writeText(pixKey).then(() => {
-                alert('Chave PIX copiada: ' + pixKey);
+                alert('PIX key copied: ' + pixKey);
             }).catch(() => {
-                // Fallback para navegadores antigos
+                // Fallback for older browsers
                 const textarea = document.createElement('textarea');
                 textarea.value = pixKey;
                 document.body.appendChild(textarea);
                 textarea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textarea);
-                alert('Chave PIX copiada: ' + pixKey);
+                alert('PIX key copied: ' + pixKey);
             });
         }
         
@@ -1144,7 +1144,7 @@
         });
         
         // ========================================
-        // SISTEMA DE IDIOMAS - Cookies
+        // LANGUAGE SYSTEM - Cookies
         // ========================================
         function setLanguage(lang) {
             document.cookie = "refstats_lang=" + lang + ";path=/;max-age=31536000;SameSite=Lax";
@@ -1155,11 +1155,11 @@
             return match ? match[1] : null;
         }
         
-        // Verifica se deve redirecionar para versão EN
+        // Redirect to PT version if cookie is set
         (function() {
             const lang = getLanguage();
-            if (lang === 'en' && !window.location.pathname.includes('/ENG/')) {
-                window.location.href = 'ENG/index.html';
+            if (lang === 'pt' && window.location.pathname.includes('/ENG/')) {
+                window.location.href = '../index.html';
             }
         })();
     </script>
