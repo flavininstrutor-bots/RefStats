@@ -2496,7 +2496,7 @@ def gerar_html_unificado(analises, timestamp, data_jogos):
 <body>
     <!-- Navbar (igual ao Home) -->
     <nav class="navbar">
-        <a href="refstats_home.html" class="navbar-brand">
+        <a href="index.html" class="navbar-brand">
             <img src="./assets/img/LogoINICIO.png" alt="RefStats" class="logo-img">
         </a>
         
@@ -4015,7 +4015,7 @@ def main():
         f.write(html_content)
     
     # Para o histórico, ajusta os links para usar ../ (voltar uma pasta)
-    html_historico = html_content.replace('href="refstats_home.html', 'href="../index.html')
+    html_historico = html_content.replace('href="index.html', 'href="../index.html')
     html_historico = html_historico.replace('href="JOGOS_DO_DIA.html', 'href="../JOGOS_DO_DIA.html')
     html_historico = html_historico.replace('href="refstats_historico.html', 'href="../refstats_historico.html')
     html_historico = html_historico.replace('href="refstats_contato.html', 'href="../refstats_contato.html')
