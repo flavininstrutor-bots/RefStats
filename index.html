@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefStats - Análise de Árbitros e Times</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            min-height: 100vh;
+        }
+        
+        /* ========================================
+           NAVBAR
+           ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+
+            background-image:
+                linear-gradient(
+                    rgba(10, 15, 30, 0.85),
+                    rgba(10, 15, 30, 0.85)
+                ),
+                url("FundoMuroFundo.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid #e94560;
+        }
+
+
+        .navbar {
+            backdrop-filter: blur(2px);
+        }   
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }        
+        
+        @media (max-width: 768px) {
+            .logo-img {
+                height: 36px;
+            }
+        }
+
+        
+        .navbar-brand .logo {
+            font-size: 2em;
+        }
+        
+        .navbar-brand .brand-text {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e94560;
+        }
+        
+        .navbar-brand .brand-text span {
+            color: #3498db;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .navbar-menu a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+        
+        .navbar-menu a:hover {
+            background: rgba(233, 69, 96, 0.2);
+            border-color: #e94560;
+            color: #e94560;
+        }
+        
+        .navbar-menu a.active {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            color: white;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+        
+        /* ========================================
+           HERO / SLIDER
+           ======================================== */
+        .hero {
+            margin-top: 80px;
+            padding: 40px 50px;
+        }
+        
+        .slider-container {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .slide {
+            min-width: 100%;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            position: relative;
+        }
+        
+        .slide-content {
+            text-align: center;
+            z-index: 2;
+            max-width: 700px;
+        }
+        
+        .slide-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+        
+        .slide-title {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: white;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        .slide-description {
+            font-size: 1.2em;
+            color: #e0e0e0;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .slide-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        /* Slide 1 - Jogos do Dia */
+        .slide-1 {
+            background-image:
+                linear-gradient(
+                    rgba(10, 10, 25, 0.75),
+                    rgba(10, 10, 25, 0.75)
+                ),
+                url("FundoSlide_JogosDoDia.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .slide-1 .slide-icon { color: #e94560; }
+        .slide-1 .slide-btn {
+            background: linear-gradient(135deg, #e94560 0%, #ff6b6b 100%);
+            color: white;
+        }
+        .slide-1 .slide-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 25px rgba(233, 69, 96, 0.5);
+        }
+        
+        /* Slide 2 - Como Utilizar */
+        .slide-2 {
+            background-image:
+                linear-gradient(
+                    rgba(10, 10, 25, 0.75),
+                    rgba(10, 10, 25, 0.75)
+                ),
+                url("FundoSlide_ComoUsar.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .slide-2 .slide-icon { color: #3498db; }
+        .slide-2 .slide-btn {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+        }
+        .slide-2 .slide-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 25px rgba(52, 152, 219, 0.5);
+        }
+        
+        /* Slide 3 - Histórico */
+        .slide-3 {
+            background-image:
+                linear-gradient(
+                    rgba(10, 10, 25, 0.75),
+                    rgba(10, 10, 25, 0.75)
+                ),
+                url("FundoSlide_Historico.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .slide-3 .slide-icon { color: #f6e05e; }
+        .slide-3 .slide-btn {
+            background: linear-gradient(135deg, #f6e05e 0%, #ecc94b 100%);
+            color: #1a1a2e;
+        }
+        .slide-3 .slide-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 25px rgba(246, 224, 94, 0.5);
+        }
+        
+        /* Slide 4 - Doação */
+        .slide-4 {
+            background-image:
+                linear-gradient(
+                    rgba(10, 10, 25, 0.75),
+                    rgba(10, 10, 25, 0.75)
+                ),
+                url("FundoSlide_Doacao.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .slide-4 .slide-icon { color: #2ecc71; }
+        .slide-4 .slide-btn {
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+            color: white;
+        }
+        .slide-4 .slide-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 25px rgba(46, 204, 113, 0.5);
+        }
+        
+        /* Slider Navigation */
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+        }
+        
+        .slider-dot.active {
+            background: #e94560;
+            transform: scale(1.2);
+        }
+        
+        .slider-dot:hover {
+            background: rgba(255, 255, 255, 0.8);
+        }
+        
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .slider-arrow:hover {
+            background: #e94560;
+        }
+        
+        .slider-arrow.prev { left: 20px; }
+        .slider-arrow.next { right: 20px; }
+        
+        /* ========================================
+           SEÇÕES DE CONTEÚDO
+           ======================================== */
+        .section {
+            padding: 60px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            color: #e94560;
+            margin-bottom: 15px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 1.1em;
+            margin-bottom: 40px;
+        }
+        
+        /* Como Utilizar */
+        .how-to-use {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid #0f3460;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .step-card {
+            background: #1a1a2e;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #0f3460;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-5px);
+            border-color: #e94560;
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.2);
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            margin: 0 auto 20px;
+        }
+        
+        .step-card h3 {
+            color: #3498db;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .step-card p {
+            color: #a0a0a0;
+            line-height: 1.6;
+        }
+        
+        .video-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .video-placeholder {
+            background: #1a1a2e;
+            border-radius: 15px;
+            padding: 60px;
+            border: 2px dashed #0f3460;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .video-placeholder i {
+            font-size: 4em;
+            color: #e94560;
+            margin-bottom: 20px;
+        }
+        
+        .video-placeholder p {
+            color: #a0a0a0;
+        }
+        
+        /* Doação */
+        .donation-section {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            border-radius: 20px;
+            padding: 50px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid #0f3460;
+            text-align: center;
+        }
+        
+        .donation-icon {
+            font-size: 4em;
+            color: #2ecc71;
+            margin-bottom: 20px;
+        }
+        
+        .donation-text {
+            color: #c0c0c0;
+            font-size: 1.1em;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .donation-methods {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        
+        .donation-card {
+            background: #1a1a2e;
+            padding: 30px 40px;
+            border-radius: 15px;
+            text-align: center;
+            min-width: 250px;
+            transition: all 0.3s;
+            border: 1px solid #0f3460;
+        }
+        
+        .donation-card:hover {
+            transform: translateY(-5px);
+            border-color: #2ecc71;
+            box-shadow: 0 10px 30px rgba(46, 204, 113, 0.2);
+        }
+        
+        .donation-card i {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .donation-card.pix i { color: #2ecc71; }
+        .donation-card.paypal i { color: #3498db; }
+        
+        .donation-card h4 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        
+        .donation-card p {
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+        
+        .donation-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .donation-card.pix .donation-btn {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .donation-card.paypal .donation-btn {
+            background: #3498db;
+            color: white;
+        }
+        
+        .donation-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        .pix-key {
+            background: #0f3460;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #e94560;
+            margin-top: 10px;
+            display: inline-block;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .pix-key:hover {
+            background: #16213e;
+        }
+        
+        .pix-key i {
+            font-size: 1em;
+            margin-left: 10px;
+            color: #a0a0a0;
+        }
+        
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 50px;
+            margin-top: 60px;
+            border-top: 2px solid #e94560;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-section h4 {
+            color: #e94560;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #a0a0a0;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #e94560;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #1a1a2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0a0a0;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #e94560;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 30px;
+            border-top: 1px solid #0f3460;
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 0.9em;
+        }
+        
+        .footer-bottom a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            color: #e94560;
+        }
+        
+        /* ========================================
+           RESPONSIVO
+           ======================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                border-bottom: 2px solid #e94560;
+            }
+            
+            .navbar-menu.active {
+                transform: translateY(0);
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .hero {
+                padding: 20px;
+            }
+            
+            .slide {
+                height: 450px;
+                padding: 30px 20px;
+            }
+            
+            .slide-title {
+                font-size: 1.8em;
+            }
+            
+            .slide-description {
+                font-size: 1em;
+            }
+            
+            .slider-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1em;
+            }
+            
+            .slider-arrow.prev { left: 10px; }
+            .slider-arrow.next { right: 10px; }
+            
+            .section {
+                padding: 40px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.8em;
+            }
+            
+            .how-to-use, .donation-section {
+                padding: 30px 20px;
+            }
+            
+            .footer {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">
+            <img src="LogoINICIO.png" alt="RefStats" class="logo-img">
+        </a>
+        
+        <button class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        
+        <div class="navbar-menu" id="navMenu">
+            <a href="#" class="active">INÍCIO</a>
+            <a href="JOGOS_DO_DIA.html">JOGOS DO DIA</a>
+            <a href="refstats_historico.html">HISTÓRICO</a>
+            <a href="refstats_contato.html">CONTATO</a>
+        </div>
+    </nav>
+    
+    <!-- Hero / Slider -->
+    <section class="hero">
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <!-- Slide 1 - Jogos do Dia -->
+                <div class="slide slide-1">
+                    <div class="slide-content">
+                        
+                        <h2 class="slide-title">JOGOS DO DIA</h2>
+                        <p class="slide-description">
+                            Visualize as informações das principais ligas do mundo aqui. 
+                            Análise completa de árbitros, times, estatísticas e muito mais!
+                        </p>
+                        <a href="JOGOS_DO_DIA.html" class="slide-btn">
+                            <i class="fas fa-futbol"></i> Ver Jogos de Hoje
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 - Como Utilizar -->
+                <div class="slide slide-2">
+                    <div class="slide-content">
+                        
+                        <h2 class="slide-title">COMO UTILIZAR O REFSTATS</h2>
+                        <p class="slide-description">
+                            Clique aqui e veja o vídeo intuitivo de como aproveitar 
+                            ao máximo todas as funcionalidades do sistema!
+                        </p>
+                        <a href="#como-usar" class="slide-btn">
+                            <i class="fas fa-play-circle"></i> Assistir Tutorial
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 - Histórico -->
+                <div class="slide slide-3">
+                    <div class="slide-content">
+                        
+                        <h2 class="slide-title">HISTÓRICO DOS JOGOS</h2>
+                        <p class="slide-description">
+                            Clique e veja os jogos anteriores analisados em nosso calendário. 
+                            Acompanhe o histórico completo de todas as análises!
+                        </p>
+                        <a href="refstats_historico.html" class="slide-btn">
+                            <i class="fas fa-calendar-alt"></i> Ver Histórico
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Slide 4 - Doação -->
+                <div class="slide slide-4">
+                    <div class="slide-content">
+                        
+                        <h2 class="slide-title">FAÇA UMA DOAÇÃO</h2>
+                        <p class="slide-description">
+                            Se o RefStats te ajudou, considere fazer uma doação para nós! 
+                            Aceitamos PIX (Brasil) e PayPal (Internacional).
+                        </p>
+                        <a href="#doacao" class="slide-btn">
+                            <i class="fas fa-heart"></i> Apoiar o Projeto
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Slider Navigation -->
+            <button class="slider-arrow prev" onclick="prevSlide()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="slider-arrow next" onclick="nextSlide()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
+            <div class="slider-nav" id="sliderNav">
+                <button class="slider-dot active" onclick="goToSlide(0)"></button>
+                <button class="slider-dot" onclick="goToSlide(1)"></button>
+                <button class="slider-dot" onclick="goToSlide(2)"></button>
+                <button class="slider-dot" onclick="goToSlide(3)"></button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Como Utilizar -->
+    <section class="section" id="como-usar">
+        <div class="how-to-use">
+            <h2 class="section-title">🎯 Como Utilizar o RefStats</h2>
+            <p class="section-subtitle">Aprenda a usar todas as funcionalidades em poucos passos</p>
+            
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Acesse os Jogos do Dia</h3>
+                    <p>Clique em "JOGOS DO DIA" no menu ou no slide para ver todas as partidas disponíveis para análise.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Analise o Árbitro</h3>
+                    <p>Veja o perfil do árbitro (Rigoroso/Médio/Permissivo), médias de cartões e histórico de partidas.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Confira os Times</h3>
+                    <p>Analise a classificação, próximos jogos, estatísticas de faltas e amarelos de cada time.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Compare no Gráfico</h3>
+                    <p>Use o gráfico comparativo para visualizar a tendência de amarelos do árbitro vs times.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">5</div>
+                    <h3>Use os Filtros</h3>
+                    <p>Filtre os jogos por perfil do árbitro usando a barra de pesquisa (Ctrl+F).</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-number">6</div>
+                    <h3>Tome Sua Decisão</h3>
+                    <p>Com todas as informações em mãos, faça suas análises e tome decisões mais informadas!</p>
+                </div>
+            </div>
+            
+            <div class="video-container">
+                <h3 style="color: #3498db; margin-bottom: 20px;">📹 Vídeo Tutorial</h3>
+                <div class="video-placeholder">
+                    <i class="fas fa-play-circle"></i>
+                    <p>Vídeo tutorial em breve...</p>
+                    <p style="font-size: 0.9em; margin-top: 10px;">Clique aqui para assistir quando disponível</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Doação -->
+    <section class="section" id="doacao">
+        <div class="donation-section">
+            <div class="donation-icon">
+                <i class="fas fa-hand-holding-heart"></i>
+            </div>
+            <h2 class="section-title">💚 Apoie o RefStats</h2>
+            <p class="donation-text">
+                O RefStats é um projeto gratuito desenvolvido com muito carinho para ajudar você 
+                nas suas análises esportivas. Se o sistema tem sido útil para você, considere fazer 
+                uma doação para nos ajudar a manter e melhorar a plataforma!
+            </p>
+            
+            <div class="donation-methods">
+                <div class="donation-card pix">
+                    <i class="fas fa-qrcode"></i>
+                    <h4>PIX (Brasil)</h4>
+                    <p>Rápido e sem taxas</p>
+                    <div class="pix-key" onclick="copyPix()">
+                        seuemail@exemplo.com
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <p style="font-size: 0.8em; margin-top: 10px; color: #2ecc71;">Clique para copiar</p>
+                </div>
+                
+                <div class="donation-card paypal">
+                    <i class="fab fa-paypal"></i>
+                    <h4>PayPal (Internacional)</h4>
+                    <p>Para doações do exterior</p>
+                    <a href="#" class="donation-btn">
+                        <i class="fab fa-paypal"></i> Doar via PayPal
+                    </a>
+                </div>
+            </div>
+            
+            <p style="margin-top: 30px; color: #a0a0a0; font-size: 0.9em;">
+                ❤️ Qualquer valor é muito bem-vindo e nos ajuda a continuar esse trabalho!
+            </p>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer" id="contato">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>⚽ RefStats</h4>
+                <p>
+                    Sistema de análise de árbitros e times para apostas esportivas. 
+                    Dados coletados de fontes confiáveis com análises detalhadas.
+                </p>
+                <div class="social-links">
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" title="Telegram"><i class="fab fa-telegram"></i></a>
+                    <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>📌 Links Rápidos</h4>
+                <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="JOGOS_DO_DIA.html">Jogos do Dia</a></li>
+                    <li><a href="refstats_historico.html">Histórico</a></li>
+                    <li><a href="#como-usar">Como Usar</a></li>
+                    <li><a href="#doacao">Fazer Doação</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>📋 Políticas</h4>
+                <ul>
+                    <li><a href="refstats_termos.html">Termos de Uso</a></li>
+                    <li><a href="refstats_privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="refstats_aviso_legal.html">Aviso Legal</a></li>
+                    <li><a href="refstats_faq.html">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>📞 Contato</h4>
+                <p><i class="fas fa-envelope"></i> contato@refstats.com</p>
+                <p><i class="fab fa-telegram"></i> @refstats</p>
+                <p style="margin-top: 15px; font-size: 0.9em; color: #e94560;">
+                    ⚠️ Este site é apenas para fins informativos. 
+                    Aposte com responsabilidade.
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>
+                © 2025 RefStats. Todos os direitos reservados. | 
+                Desenvolvido com ❤️ | 
+                <a href="refstats_privacidade.html">Política de Privacidade</a> | 
+                <a href="refstats_termos.html">Termos de Uso</a> | 
+                <a href="refstats_aviso_legal.html">Aviso Legal</a></li> | 
+                <a href="refstats_faq.html">FAQ</a></li> | 
+            </p>
+            <p style="margin-top: 10px; font-size: 0.85em;">
+                ⚽ Os dados são coletados de fontes confiáveis, como SofaScore, WhoScore, FlashScore, entre outros, manualmente e são atualizados diariamente.
+            </p>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // Slider
+        let currentSlide = 0;
+        const totalSlides = 4;
+        const slider = document.getElementById('slider');
+        const dots = document.querySelectorAll('.slider-dot');
+        let autoSlideInterval;
+        
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+        
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+            resetAutoSlide();
+        }
+        
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+            resetAutoSlide();
+        }
+        
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+            resetAutoSlide();
+        }
+        
+        function startAutoSlide() {
+            autoSlideInterval = setInterval(nextSlide, 5000);
+        }
+        
+        function resetAutoSlide() {
+            clearInterval(autoSlideInterval);
+            startAutoSlide();
+        }
+        
+        // Inicia slider automático
+        startAutoSlide();
+        
+        // Menu Mobile
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+        
+        // Copiar PIX
+        function copyPix() {
+            const pixKey = 'seuemail@exemplo.com';
+            navigator.clipboard.writeText(pixKey).then(() => {
+                alert('Chave PIX copiada: ' + pixKey);
+            }).catch(() => {
+                // Fallback para navegadores antigos
+                const textarea = document.createElement('textarea');
+                textarea.value = pixKey;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Chave PIX copiada: ' + pixKey);
+            });
+        }
+        
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+        
+        // Fechar menu ao clicar em link (mobile)
+        document.querySelectorAll('.navbar-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>

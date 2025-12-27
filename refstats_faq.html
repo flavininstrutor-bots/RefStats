@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefStats - Perguntas Frequentes (FAQ)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px;
+            padding-top: 100px;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        /* ========================================
+           NAVBAR
+           ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9997;
+            background-image:
+                linear-gradient(
+                    rgba(10, 15, 30, 0.85),
+                    rgba(10, 15, 30, 0.85)
+                ),
+                url("FundoMuroFundo.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid #e94560;
+            backdrop-filter: blur(2px);
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .navbar-menu a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+        
+        .navbar-menu a:hover {
+            background: rgba(233, 69, 96, 0.2);
+            border-color: #e94560;
+            color: #e94560;
+        }
+        
+        .navbar-menu a.active {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            color: white;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        
+        /* ========================================
+           CONTAINER
+           ======================================== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #e94560;
+        }
+        
+        .header h1 {
+            color: #e94560;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #a0a0a0;
+            font-size: 1.1em;
+        }
+        
+        /* ========================================
+           CATEGORIAS
+           ======================================== */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .category-tab {
+            background: #0f3460;
+            border: 1px solid #3498db;
+            color: #e0e0e0;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.95em;
+        }
+        
+        .category-tab:hover,
+        .category-tab.active {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            border-color: #e94560;
+            color: white;
+        }
+        
+        /* ========================================
+           FAQ ITEMS
+           ======================================== */
+        .faq-section {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #0f3460;
+            margin-bottom: 20px;
+        }
+        
+        .faq-section h2 {
+            color: #e94560;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0f3460;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #0f3460;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-item:hover {
+            border-color: #3498db;
+        }
+        
+        .faq-item.active {
+            border-color: #e94560;
+        }
+        
+        .faq-question {
+            background: rgba(15, 52, 96, 0.5);
+            padding: 18px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        
+        .faq-question:hover {
+            background: rgba(15, 52, 96, 0.8);
+        }
+        
+        .faq-question h3 {
+            color: #e0e0e0;
+            font-size: 1.05em;
+            font-weight: 500;
+            flex: 1;
+            padding-right: 15px;
+        }
+        
+        .faq-toggle {
+            color: #e94560;
+            font-size: 1.2em;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: rgba(26, 26, 46, 0.5);
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+        
+        .faq-answer-content {
+            padding: 20px;
+            color: #c0c0c0;
+            line-height: 1.7;
+        }
+        
+        .faq-answer-content p {
+            margin-bottom: 10px;
+        }
+        
+        .faq-answer-content p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .faq-answer-content ul {
+            margin-left: 20px;
+            margin-top: 10px;
+        }
+        
+        .faq-answer-content li {
+            margin-bottom: 5px;
+        }
+        
+        .faq-answer-content strong {
+            color: #e0e0e0;
+        }
+        
+        .faq-answer-content a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .faq-answer-content a:hover {
+            color: #e94560;
+        }
+        
+        /* ========================================
+           CONTATO
+           ======================================== */
+        .contact-box {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #e94560;
+            margin-top: 30px;
+        }
+        
+        .contact-box h3 {
+            color: #e94560;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+        
+        .contact-box p {
+            color: #a0a0a0;
+            margin-bottom: 15px;
+        }
+        
+        .contact-box a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .contact-box a:hover {
+            color: #e94560;
+        }
+        
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            color: #a0a0a0;
+            border: 1px solid #0f3460;
+        }
+        
+        .footer strong {
+            color: #e94560;
+        }
+        
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: #e94560;
+        }
+        
+        /* ========================================
+           RESPONSIVO
+           ======================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                border-bottom: 2px solid #e94560;
+                z-index: 9996;
+            }
+            
+            .navbar-menu.active {
+                transform: translateY(0);
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .logo-img {
+                height: 36px;
+            }
+            
+            body {
+                padding-top: 90px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .faq-section {
+                padding: 20px;
+            }
+            
+            .faq-question {
+                padding: 15px;
+            }
+            
+            .faq-question h3 {
+                font-size: 0.95em;
+            }
+            
+            .category-tab {
+                padding: 8px 15px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="refstats_home.html" class="navbar-brand">
+            <img src="LogoINICIO.png" alt="RefStats" class="logo-img">
+        </a>
+        
+        <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')" aria-label="Menu">
+            ☰
+        </button>
+        
+        <div class="navbar-menu" id="navMenu">
+            <a href="refstats_home.html">INÍCIO</a>
+            <a href="JOGOS_DO_DIA.html">JOGOS DO DIA</a>
+            <a href="refstats_historico.html">HISTÓRICO</a>
+            <a href="refstats_contato.html">CONTATO</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="header">
+            <h1>❓ Perguntas Frequentes</h1>
+            <p>Tire suas dúvidas sobre o RefStats</p>
+        </div>
+        
+        <!-- Sobre o Site -->
+        <div class="faq-section" data-category="geral">
+            <h2>📌 Sobre o RefStats</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>O que é o RefStats?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>O RefStats é uma plataforma de <strong>análise estatística de árbitros e times de futebol</strong>. Coletamos dados públicos e os organizamos de forma visual e intuitiva para facilitar a análise de partidas.</p>
+                        <p>Nosso objetivo é fornecer informações detalhadas sobre o histórico de árbitros (cartões, faltas, perfil) e estatísticas dos times.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>O RefStats é uma casa de apostas?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>NÃO.</strong> O RefStats é apenas um site de informações estatísticas. Não somos uma casa de apostas, não aceitamos apostas e não temos vínculo com operadores de jogos.</p>
+                        <p>As informações são fornecidas apenas para fins educacionais e informativos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>O RefStats é gratuito?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>Sim!</strong> O acesso ao RefStats é totalmente gratuito. Você pode visualizar todas as análises e estatísticas sem precisar pagar nada.</p>
+                        <p>Se quiser apoiar o projeto, aceitamos doações voluntárias via PIX ou PayPal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Como Usar -->
+        <div class="faq-section" data-category="uso">
+            <h2>🎯 Como Usar</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Como acesso os jogos do dia?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Basta clicar em <strong>"JOGOS DO DIA"</strong> no menu principal. Você verá todas as partidas analisadas para a data atual, com informações sobre árbitros e times.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Como funciona a pesquisa na página de jogos?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Na página de jogos, você pode usar a <strong>lupa de pesquisa</strong> (ou pressionar Ctrl+F) para buscar por:</p>
+                        <ul>
+                            <li>Nome do árbitro</li>
+                            <li>Nome do time</li>
+                            <li>Nome da liga/campeonato</li>
+                            <li>Perfil do árbitro (Rigoroso, Moderado, Permissivo)</li>
+                        </ul>
+                        <p>Use os botões de navegação para ir entre os resultados encontrados.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>O que são os filtros por perfil do árbitro?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Os árbitros são classificados em três perfis baseados em seu histórico:</p>
+                        <ul>
+                            <li><strong>🔴 Rigoroso:</strong> Média alta de cartões por jogo</li>
+                            <li><strong>🟡 Moderado:</strong> Média equilibrada de cartões</li>
+                            <li><strong>🟢 Permissivo:</strong> Média baixa de cartões</li>
+                        </ul>
+                        <p>Você pode filtrar os jogos clicando nos botões de perfil na barra de pesquisa.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Como acesso jogos de datas anteriores?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Clique em <strong>"HISTÓRICO"</strong> no menu. Você verá um calendário onde pode selecionar qualquer data com jogos disponíveis.</p>
+                        <p>Os dias com análises disponíveis aparecem marcados em <strong>verde</strong> com a indicação "MATCH DAY".</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>O que significa o gráfico comparativo?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>O gráfico mostra uma comparação visual entre:</p>
+                        <ul>
+                            <li><strong>Média do árbitro:</strong> Quantidade média de cartões amarelos que o árbitro dá por jogo</li>
+                            <li><strong>Médias dos times:</strong> Quantidade média de cartões que cada time recebe por jogo</li>
+                        </ul>
+                        <p>Isso ajuda a visualizar rapidamente se a partida tende a ter mais ou menos cartões.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dados e Fontes -->
+        <div class="faq-section" data-category="dados">
+            <h2>📊 Dados e Fontes</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>De onde vêm os dados?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Os dados são coletados principalmente do <strong>SofaScore, WhoScore, FlashScore,</strong>  entre outras plataformas públicas de estatísticas esportivas.</p>
+                        <p>Processamos e organizamos esses dados para apresentá-los de forma mais visual e intuitiva.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Os dados são confiáveis?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Nos esforçamos para fornecer dados precisos, mas <strong>não garantimos precisão absoluta</strong>. Podem existir erros ou desatualizações.</p>
+                        <p>Recomendamos sempre verificar as informações em múltiplas fontes antes de tomar decisões.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Com que frequência os dados são atualizados?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>As análises são geradas diariamente para os jogos do dia. O histórico do árbitro considera seus últimos jogos disponíveis na base de dados.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Por que alguns árbitros não têm dados?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Isso pode acontecer quando:</p>
+                        <ul>
+                            <li>O árbitro ainda não foi confirmado para a partida</li>
+                            <li>É um árbitro novo com pouco histórico</li>
+                            <li>Os dados não estão disponíveis na fonte</li>
+                        </ul>
+                        <p>Nesses casos, mostramos apenas as informações disponíveis dos times.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Suporte -->
+        <div class="faq-section" data-category="suporte">
+            <h2>🛠️ Suporte</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Como posso apoiar o projeto?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Você pode apoiar o RefStats de várias formas:</p>
+                        <ul>
+                            <li><strong>Doações:</strong> Via PIX ou PayPal (veja na página inicial)</li>
+                            <li><strong>Compartilhando:</strong> Divulgue o site para amigos interessados</li>
+                            <li><strong>Feedback:</strong> Envie sugestões e melhorias</li>
+                        </ul>
+                        <p>Toda ajuda é bem-vinda e nos motiva a continuar melhorando!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Encontrei um erro. Como reporto?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Entre em contato conosco pelo Telegram (@refstats) ou e-mail. Descreva o erro encontrado com o máximo de detalhes possível:</p>
+                        <ul>
+                            <li>Qual página apresentou o erro</li>
+                            <li>O que você estava fazendo</li>
+                            <li>Print da tela (se possível)</li>
+                        </ul>
+                        <p>Agradecemos seu feedback!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>O site funciona no celular?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>Sim!</strong> O RefStats é totalmente responsivo e funciona bem em smartphones e tablets. O menu se adapta automaticamente para telas menores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-box">
+            <h3>Não encontrou sua resposta?</h3>
+            <p>Entre em contato conosco!</p>
+            <p>
+                📧 <a href="mailto:contato@refstats.com">contato@refstats.com</a> | 
+                📱 <a href="#">Telegram: @refstats</a>
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p><strong>⚽ RefStats</strong></p>
+            <p>
+                <a href="refstats_termos.html">Termos de Uso</a> | 
+                <a href="refstats_privacidade.html">Política de Privacidade</a> | 
+                <a href="refstats_aviso_legal.html">Aviso Legal</a> |
+                <a href="refstats_faq.html">FAQ</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ Este site é apenas para fins informativos. Aposte com responsabilidade.</p>
+        </div>
+    </div>
+    
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Fecha todos os outros
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Abre o clicado (se não estava aberto)
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>

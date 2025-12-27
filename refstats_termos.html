@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefStats - Termos de Uso</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px;
+            padding-top: 100px;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        /* ========================================
+           NAVBAR
+           ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9997;
+            background-image:
+                linear-gradient(
+                    rgba(10, 15, 30, 0.85),
+                    rgba(10, 15, 30, 0.85)
+                ),
+                url("FundoMuroFundo.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid #e94560;
+            backdrop-filter: blur(2px);
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .navbar-menu a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+        
+        .navbar-menu a:hover {
+            background: rgba(233, 69, 96, 0.2);
+            border-color: #e94560;
+            color: #e94560;
+        }
+        
+        .navbar-menu a.active {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            color: white;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        
+        /* ========================================
+           CONTAINER
+           ======================================== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #e94560;
+        }
+        
+        .header h1 {
+            color: #e94560;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #a0a0a0;
+            font-size: 1.1em;
+        }
+        
+        /* ========================================
+           CONTEÚDO
+           ======================================== */
+        .content {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #0f3460;
+            line-height: 1.8;
+        }
+        
+        .content h2 {
+            color: #e94560;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0f3460;
+        }
+        
+        .content h2:first-child {
+            margin-top: 0;
+        }
+        
+        .content p {
+            margin-bottom: 15px;
+            color: #c0c0c0;
+        }
+        
+        .content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content li {
+            margin-bottom: 8px;
+            color: #c0c0c0;
+        }
+        
+        .content strong {
+            color: #e0e0e0;
+        }
+        
+        .highlight-box {
+            background: rgba(233, 69, 96, 0.1);
+            border-left: 4px solid #e94560;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            color: #e0e0e0;
+        }
+        
+        .update-date {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #0f3460;
+        }
+        
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            color: #a0a0a0;
+            border: 1px solid #0f3460;
+        }
+        
+        .footer strong {
+            color: #e94560;
+        }
+        
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: #e94560;
+        }
+        
+        /* ========================================
+           RESPONSIVO
+           ======================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                border-bottom: 2px solid #e94560;
+                z-index: 9996;
+            }
+            
+            .navbar-menu.active {
+                transform: translateY(0);
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .logo-img {
+                height: 36px;
+            }
+            
+            body {
+                padding-top: 90px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .content h2 {
+                font-size: 1.3em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="refstats_home.html" class="navbar-brand">
+            <img src="LogoINICIO.png" alt="RefStats" class="logo-img">
+        </a>
+        
+        <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')" aria-label="Menu">
+            ☰
+        </button>
+        
+        <div class="navbar-menu" id="navMenu">
+            <a href="refstats_home.html">INÍCIO</a>
+            <a href="JOGOS_DO_DIA.html">JOGOS DO DIA</a>
+            <a href="refstats_historico.html">HISTÓRICO</a>
+            <a href="refstats_home.html#contato">CONTATO</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="header">
+            <h1>📋 Termos de Uso</h1>
+            <p>Leia atentamente antes de utilizar o RefStats</p>
+        </div>
+        
+        <div class="content">
+            <h2>1. Aceitação dos Termos</h2>
+            <p>Ao acessar e utilizar o site RefStats, você concorda com estes Termos de Uso. Se você não concordar com qualquer parte destes termos, não deve utilizar nosso site.</p>
+            
+            <h2>2. Descrição do Serviço</h2>
+            <p>O RefStats é uma plataforma de análise estatística de árbitros e times de futebol. Nosso serviço oferece:</p>
+            <ul>
+                <li>Análise de perfil de árbitros (histórico de cartões, faltas, etc.)</li>
+                <li>Estatísticas de times (classificação, desempenho recente)</li>
+                <li>Gráficos comparativos e visualizações de dados</li>
+                <li>Histórico de jogos analisados</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><strong>⚠️ AVISO IMPORTANTE:</strong> O RefStats é um serviço de informação e análise estatística. As informações fornecidas são apenas para fins educacionais e informativos.</p>
+            </div>
+            
+            <h2>3. Isenção de Responsabilidade</h2>
+            <p>O RefStats <strong>NÃO</strong> é uma casa de apostas e <strong>NÃO</strong> incentiva, promove ou facilita apostas esportivas. As informações disponibilizadas:</p>
+            <ul>
+                <li>São baseadas em dados históricos públicos</li>
+                <li>Não garantem resultados futuros</li>
+                <li>Não constituem aconselhamento financeiro</li>
+                <li>Não devem ser utilizadas como única base para decisões</li>
+            </ul>
+            <p>O usuário é inteiramente responsável pelo uso que faz das informações disponibilizadas.</p>
+            
+            <h2>4. Uso Responsável</h2>
+            <p>Ao utilizar o RefStats, você concorda em:</p>
+            <ul>
+                <li>Utilizar o serviço de forma legal e ética</li>
+                <li>Não reproduzir ou distribuir o conteúdo sem autorização</li>
+                <li>Não utilizar sistemas automatizados para acessar o site</li>
+                <li>Respeitar os direitos de propriedade intelectual</li>
+            </ul>
+            
+            <h2>5. Propriedade Intelectual</h2>
+            <p>Todo o conteúdo do RefStats, incluindo textos, gráficos, logotipos, ícones e software, é de propriedade exclusiva do RefStats ou de seus licenciadores e está protegido por leis de direitos autorais.</p>
+            
+            <h2>6. Fonte dos Dados</h2>
+            <p>Os dados estatísticos apresentados são coletados de fontes públicas, como SofaScore, WhoScore, FlashScore, entre outras plataformas públicas de informações sobre futebol e estatística. O RefStats não garante a precisão absoluta dos dados e recomenda a verificação em múltiplas fontes.</p>
+            
+            <h2>7. Disponibilidade do Serviço</h2>
+            <p>O RefStats se esforça para manter o serviço disponível, mas não garante disponibilidade ininterrupta. Podemos:</p>
+            <ul>
+                <li>Suspender temporariamente o serviço para manutenção</li>
+                <li>Modificar ou descontinuar funcionalidades</li>
+                <li>Limitar o acesso em caso de uso abusivo</li>
+            </ul>
+            
+            <h2>8. Limitação de Responsabilidade</h2>
+            <p>Em nenhuma circunstância o RefStats será responsável por:</p>
+            <ul>
+                <li>Perdas financeiras decorrentes do uso das informações</li>
+                <li>Decisões tomadas com base nos dados apresentados</li>
+                <li>Danos diretos ou indiretos relacionados ao uso do site</li>
+                <li>Interrupções no serviço ou perda de dados</li>
+            </ul>
+            
+            <h2>9. Modificações dos Termos</h2>
+            <p>O RefStats reserva-se o direito de modificar estes Termos de Uso a qualquer momento. As alterações entram em vigor imediatamente após sua publicação. O uso continuado do site após as modificações constitui aceitação dos novos termos.</p>
+            
+            <h2>10. Lei Aplicável</h2>
+            <p>Estes Termos de Uso são regidos pelas leis da República Federativa do Brasil. Qualquer disputa será submetida ao foro da comarca de domicílio do usuário.</p>
+            
+            <h2>11. Contato</h2>
+            <p>Para dúvidas sobre estes Termos de Uso, entre em contato conosco através dos canais disponíveis na página de Contato.</p>
+            
+            <div class="update-date">
+                <p>Última atualização: Dezembro de 2025</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>⚽ RefStats</strong></p>
+            <p>
+                <a href="refstats_termos.html">Termos de Uso</a> | 
+                <a href="refstats_privacidade.html">Política de Privacidade</a> | 
+                <a href="refstats_home.html">Página Inicial</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ Este site é apenas para fins informativos. Aposte com responsabilidade.</p>
+        </div>
+    </div>
+</body>
+</html>

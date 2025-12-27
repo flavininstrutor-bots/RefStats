@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefStats - Contato</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px;
+            padding-top: 100px;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        /* ========================================
+           NAVBAR
+           ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9997;
+            background-image:
+                linear-gradient(
+                    rgba(10, 15, 30, 0.85),
+                    rgba(10, 15, 30, 0.85)
+                ),
+                url("FundoMuroFundo.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid #e94560;
+            backdrop-filter: blur(2px);
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .navbar-menu a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+        
+        .navbar-menu a:hover {
+            background: rgba(233, 69, 96, 0.2);
+            border-color: #e94560;
+            color: #e94560;
+        }
+        
+        .navbar-menu a.active {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            color: white;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        
+        /* ========================================
+           CONTAINER
+           ======================================== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #e94560;
+        }
+        
+        .header h1 {
+            color: #e94560;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #a0a0a0;
+            font-size: 1.1em;
+        }
+        
+        /* ========================================
+           CARDS DE CONTATO
+           ======================================== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .contact-card {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #0f3460;
+            transition: all 0.3s;
+        }
+        
+        .contact-card:hover {
+            border-color: #e94560;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(233, 69, 96, 0.2);
+        }
+        
+        .contact-card .icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .contact-card h3 {
+            color: #e94560;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        
+        .contact-card p {
+            color: #a0a0a0;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .contact-card a {
+            display: inline-block;
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .contact-card a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(233, 69, 96, 0.4);
+        }
+        
+        /* ========================================
+           SEÇÃO DE DOAÇÃO
+           ======================================== */
+        .donation-section {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #0f3460;
+            margin-bottom: 30px;
+        }
+        
+        .donation-section h2 {
+            color: #e94560;
+            font-size: 1.8em;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .donation-section > p {
+            color: #a0a0a0;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .donation-card {
+            background: rgba(15, 52, 96, 0.5);
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid #3498db;
+        }
+        
+        .donation-card h4 {
+            color: #3498db;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .donation-card p {
+            color: #a0a0a0;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        
+        .pix-key {
+            background: #1a1a2e;
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #2ecc71;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid #2ecc71;
+        }
+        
+        .pix-key:hover {
+            background: rgba(46, 204, 113, 0.1);
+        }
+        
+        .pix-key i {
+            color: #a0a0a0;
+        }
+        
+        .copy-feedback {
+            color: #2ecc71;
+            font-size: 0.85em;
+            margin-top: 8px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .copy-feedback.show {
+            opacity: 1;
+        }
+        
+        .paypal-btn {
+            display: inline-block;
+            background: #0070ba;
+            color: white;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .paypal-btn:hover {
+            background: #005ea6;
+            transform: scale(1.05);
+        }
+        
+        /* ========================================
+           REDES SOCIAIS
+           ======================================== */
+        .social-section {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #e94560;
+            margin-bottom: 30px;
+        }
+        
+        .social-section h3 {
+            color: #e94560;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(15, 52, 96, 0.5);
+            padding: 12px 25px;
+            border-radius: 25px;
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+        
+        .social-link:hover {
+            border-color: #e94560;
+            color: #e94560;
+            transform: translateY(-3px);
+        }
+        
+        .social-link i {
+            font-size: 1.2em;
+        }
+        
+        .social-link.telegram:hover {
+            border-color: #0088cc;
+            color: #0088cc;
+        }
+        
+        .social-link.instagram:hover {
+            border-color: #e4405f;
+            color: #e4405f;
+        }
+        
+        .social-link.twitter:hover {
+            border-color: #1da1f2;
+            color: #1da1f2;
+        }
+        
+        /* ========================================
+           INFO BOX
+           ======================================== */
+        .info-box {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid #3498db;
+            padding: 20px 25px;
+            margin: 25px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .info-box h4 {
+            color: #3498db;
+            margin-bottom: 10px;
+        }
+        
+        .info-box p {
+            color: #c0c0c0;
+            line-height: 1.7;
+        }
+        
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            color: #a0a0a0;
+            border: 1px solid #0f3460;
+        }
+        
+        .footer strong {
+            color: #e94560;
+        }
+        
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: #e94560;
+        }
+        
+        /* ========================================
+           RESPONSIVO
+           ======================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                border-bottom: 2px solid #e94560;
+                z-index: 9996;
+            }
+            
+            .navbar-menu.active {
+                transform: translateY(0);
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .logo-img {
+                height: 36px;
+            }
+            
+            body {
+                padding-top: 90px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .contact-card {
+                padding: 25px;
+            }
+            
+            .donation-section {
+                padding: 25px;
+            }
+            
+            .donation-section h2 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="refstats_home.html" class="navbar-brand">
+            <img src="LogoINICIO.png" alt="RefStats" class="logo-img">
+        </a>
+        
+        <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')" aria-label="Menu">
+            ☰
+        </button>
+        
+        <div class="navbar-menu" id="navMenu">
+            <a href="refstats_home.html">INÍCIO</a>
+            <a href="JOGOS_DO_DIA.html">JOGOS DO DIA</a>
+            <a href="refstats_historico.html">HISTÓRICO</a>
+            <a href="#" class="active">CONTATO</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="header">
+            <h1>📬 Contato</h1>
+            <p>Entre em contato conosco ou apoie o projeto</p>
+        </div>
+        
+        <!-- Cards de Contato -->
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="icon">📧</div>
+                <h3>E-mail</h3>
+                <p>Envie suas dúvidas, sugestões ou feedback. Responderemos o mais breve possível.</p>
+                <a href="mailto:contato@refstats.com">Enviar E-mail</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="icon">💬</div>
+                <h3>Telegram</h3>
+                <p>Converse conosco diretamente pelo Telegram para respostas mais rápidas.</p>
+                <a href="https://t.me/refstats" target="_blank">Abrir Telegram</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="icon">❓</div>
+                <h3>FAQ</h3>
+                <p>Confira as perguntas frequentes. Sua dúvida pode já ter sido respondida!</p>
+                <a href="refstats_faq.html">Ver FAQ</a>
+            </div>
+        </div>
+        
+        <!-- Seção de Doação -->
+        <div class="donation-section">
+            <h2>💖 Apoie o RefStats</h2>
+            <p>O RefStats é gratuito e mantido com dedicação. Se você gosta do projeto, considere fazer uma doação!</p>
+            
+            <div class="donation-grid">
+                <div class="donation-card">
+                    <h4><i class="fas fa-qrcode"></i> PIX (Brasil)</h4>
+                    <p>Rápido, fácil e sem taxas</p>
+                    <div class="pix-key" onclick="copyPix()">
+                        <span id="pixKey">seuemail@exemplo.com</span>
+                        <i class="fas fa-copy"></i>
+                    </div>
+                    <p class="copy-feedback" id="copyFeedback">✓ Chave copiada!</p>
+                </div>
+                
+                <div class="donation-card">
+                    <h4><i class="fab fa-paypal"></i> PayPal</h4>
+                    <p>Para doações internacionais</p>
+                    <a href="https://paypal.me/seuusuario" target="_blank" class="paypal-btn">
+                        Doar via PayPal
+                    </a>
+                </div>
+            </div>
+            
+            <div class="info-box" style="margin-top: 25px;">
+                <h4>💡 Por que doar?</h4>
+                <p>Suas doações ajudam a manter o servidor online, melhorar as funcionalidades e adicionar novas features. Qualquer valor é bem-vindo e nos motiva a continuar!</p>
+            </div>
+        </div>
+        
+        <!-- Redes Sociais -->
+        <div class="social-section">
+            <h3>📱 Siga-nos nas Redes Sociais</h3>
+            <div class="social-links">
+                <a href="https://t.me/refstats" target="_blank" class="social-link telegram">
+                    <i class="fab fa-telegram"></i>
+                    <span>Telegram</span>
+                </a>
+                <a href="https://instagram.com/refstats" target="_blank" class="social-link instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://twitter.com/refstats" target="_blank" class="social-link twitter">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>⚽ RefStats</strong></p>
+            <p>
+                <a href="refstats_termos.html">Termos de Uso</a> | 
+                <a href="refstats_privacidade.html">Política de Privacidade</a> | 
+                <a href="refstats_aviso_legal.html">Aviso Legal</a> |
+                <a href="refstats_faq.html">FAQ</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ Este site é apenas para fins informativos. Aposte com responsabilidade.</p>
+        </div>
+    </div>
+    
+    <script>
+        function copyPix() {
+            const pixKey = document.getElementById('pixKey').textContent;
+            navigator.clipboard.writeText(pixKey).then(() => {
+                const feedback = document.getElementById('copyFeedback');
+                feedback.classList.add('show');
+                setTimeout(() => {
+                    feedback.classList.remove('show');
+                }, 2000);
+            }).catch(() => {
+                // Fallback para navegadores antigos
+                const textarea = document.createElement('textarea');
+                textarea.value = pixKey;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                
+                const feedback = document.getElementById('copyFeedback');
+                feedback.classList.add('show');
+                setTimeout(() => {
+                    feedback.classList.remove('show');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefStats - Política de Privacidade</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px;
+            padding-top: 100px;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        /* ========================================
+           NAVBAR
+           ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9997;
+            background-image:
+                linear-gradient(
+                    rgba(10, 15, 30, 0.85),
+                    rgba(10, 15, 30, 0.85)
+                ),
+                url("FundoMuroFundo.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid #e94560;
+            backdrop-filter: blur(2px);
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .navbar-menu a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+        
+        .navbar-menu a:hover {
+            background: rgba(233, 69, 96, 0.2);
+            border-color: #e94560;
+            color: #e94560;
+        }
+        
+        .navbar-menu a.active {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            color: white;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        
+        /* ========================================
+           CONTAINER
+           ======================================== */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #e94560;
+        }
+        
+        .header h1 {
+            color: #e94560;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #a0a0a0;
+            font-size: 1.1em;
+        }
+        
+        /* ========================================
+           CONTEÚDO
+           ======================================== */
+        .content {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #0f3460;
+            line-height: 1.8;
+        }
+        
+        .content h2 {
+            color: #e94560;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #0f3460;
+        }
+        
+        .content h2:first-child {
+            margin-top: 0;
+        }
+        
+        .content p {
+            margin-bottom: 15px;
+            color: #c0c0c0;
+        }
+        
+        .content ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .content li {
+            margin-bottom: 8px;
+            color: #c0c0c0;
+        }
+        
+        .content strong {
+            color: #e0e0e0;
+        }
+        
+        .highlight-box {
+            background: rgba(46, 204, 113, 0.1);
+            border-left: 4px solid #2ecc71;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 10px 10px 0;
+        }
+        
+        .highlight-box.warning {
+            background: rgba(233, 69, 96, 0.1);
+            border-left-color: #e94560;
+        }
+        
+        .highlight-box p {
+            margin: 0;
+            color: #e0e0e0;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #0f3460;
+        }
+        
+        .data-table th {
+            background: #0f3460;
+            color: #e94560;
+            font-weight: bold;
+        }
+        
+        .data-table td {
+            color: #c0c0c0;
+        }
+        
+        .data-table tr:hover td {
+            background: rgba(15, 52, 96, 0.3);
+        }
+        
+        .update-date {
+            text-align: center;
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #0f3460;
+        }
+        
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            color: #a0a0a0;
+            border: 1px solid #0f3460;
+        }
+        
+        .footer strong {
+            color: #e94560;
+        }
+        
+        .footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            color: #e94560;
+        }
+        
+        /* ========================================
+           RESPONSIVO
+           ======================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                border-bottom: 2px solid #e94560;
+                z-index: 9996;
+            }
+            
+            .navbar-menu.active {
+                transform: translateY(0);
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .logo-img {
+                height: 36px;
+            }
+            
+            body {
+                padding-top: 90px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 25px;
+            }
+            
+            .content h2 {
+                font-size: 1.3em;
+            }
+            
+            .data-table {
+                font-size: 0.9em;
+            }
+            
+            .data-table th,
+            .data-table td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="refstats_home.html" class="navbar-brand">
+            <img src="LogoINICIO.png" alt="RefStats" class="logo-img">
+        </a>
+        
+        <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')" aria-label="Menu">
+            ☰
+        </button>
+        
+        <div class="navbar-menu" id="navMenu">
+            <a href="refstats_home.html">INÍCIO</a>
+            <a href="JOGOS_DO_DIA.html">JOGOS DO DIA</a>
+            <a href="refstats_historico.html">HISTÓRICO</a>
+            <a href="refstats_home.html#contato">CONTATO</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🔒 Política de Privacidade</h1>
+            <p>Como coletamos, usamos e protegemos suas informações</p>
+        </div>
+        
+        <div class="content">
+            <h2>1. Introdução</h2>
+            <p>O RefStats valoriza a privacidade de seus usuários. Esta Política de Privacidade explica como coletamos, usamos, armazenamos e protegemos suas informações quando você utiliza nosso site.</p>
+            
+            <div class="highlight-box">
+                <p><strong>✅ Compromisso:</strong> O RefStats se compromete a proteger sua privacidade e a tratar seus dados de forma transparente e responsável.</p>
+            </div>
+            
+            <h2>2. Informações que Coletamos</h2>
+            <p>O RefStats pode coletar os seguintes tipos de informações:</p>
+            
+            <table class="data-table">
+                <tr>
+                    <th>Tipo de Dado</th>
+                    <th>Descrição</th>
+                    <th>Finalidade</th>
+                </tr>
+                <tr>
+                    <td>Dados de Navegação</td>
+                    <td>Páginas visitadas, tempo de acesso</td>
+                    <td>Melhorar a experiência do usuário</td>
+                </tr>
+                <tr>
+                    <td>Informações do Dispositivo</td>
+                    <td>Tipo de navegador, sistema operacional</td>
+                    <td>Compatibilidade e otimização</td>
+                </tr>
+                <tr>
+                    <td>Endereço IP</td>
+                    <td>Identificação de rede</td>
+                    <td>Segurança e análise de tráfego</td>
+                </tr>
+                <tr>
+                    <td>Cookies</td>
+                    <td>Preferências do usuário</td>
+                    <td>Personalização da experiência</td>
+                </tr>
+            </table>
+            
+            <h2>3. Como Usamos suas Informações</h2>
+            <p>As informações coletadas são utilizadas para:</p>
+            <ul>
+                <li><strong>Operar e manter o site:</strong> Garantir o funcionamento adequado dos serviços</li>
+                <li><strong>Melhorar a experiência:</strong> Entender como os usuários interagem com o site</li>
+                <li><strong>Análises estatísticas:</strong> Compreender padrões de uso e tendências</li>
+                <li><strong>Segurança:</strong> Proteger contra uso fraudulento ou abusivo</li>
+                <li><strong>Comunicação:</strong> Responder a dúvidas e solicitações (quando aplicável)</li>
+            </ul>
+            
+            <h2>4. Cookies</h2>
+            <p>O RefStats utiliza cookies para melhorar sua experiência de navegação. Cookies são pequenos arquivos de texto armazenados em seu dispositivo.</p>
+            
+            <p><strong>Tipos de cookies utilizados:</strong></p>
+            <ul>
+                <li><strong>Cookies essenciais:</strong> Necessários para o funcionamento básico do site</li>
+                <li><strong>Cookies de desempenho:</strong> Ajudam a entender como o site é utilizado</li>
+                <li><strong>Cookies de funcionalidade:</strong> Lembram suas preferências</li>
+            </ul>
+            
+            <p>Você pode gerenciar ou desativar cookies nas configurações do seu navegador. Note que isso pode afetar algumas funcionalidades do site.</p>
+            
+            <h2>5. Compartilhamento de Dados</h2>
+            <p>O RefStats <strong>NÃO</strong> vende, aluga ou compartilha suas informações pessoais com terceiros, exceto:</p>
+            <ul>
+                <li>Quando exigido por lei ou ordem judicial</li>
+                <li>Para proteger nossos direitos legais</li>
+                <li>Com prestadores de serviços essenciais (hospedagem, análise), que estão sujeitos a obrigações de confidencialidade</li>
+            </ul>
+            
+            <h2>6. Segurança dos Dados</h2>
+            <p>Implementamos medidas de segurança para proteger suas informações, incluindo:</p>
+            <ul>
+                <li>Conexão segura (HTTPS) quando disponível</li>
+                <li>Acesso restrito aos dados coletados</li>
+                <li>Monitoramento contra acessos não autorizados</li>
+            </ul>
+            
+            <div class="highlight-box warning">
+                <p><strong>⚠️ Importante:</strong> Nenhum método de transmissão pela internet é 100% seguro. Embora nos esforcemos para proteger suas informações, não podemos garantir segurança absoluta.</p>
+            </div>
+            
+            <h2>7. Seus Direitos</h2>
+            <p>De acordo com a Lei Geral de Proteção de Dados (LGPD), você tem direito a:</p>
+            <ul>
+                <li><strong>Acesso:</strong> Solicitar informações sobre os dados que coletamos</li>
+                <li><strong>Correção:</strong> Pedir a correção de dados incorretos</li>
+                <li><strong>Exclusão:</strong> Solicitar a exclusão de seus dados</li>
+                <li><strong>Portabilidade:</strong> Receber seus dados em formato estruturado</li>
+                <li><strong>Revogação:</strong> Retirar seu consentimento a qualquer momento</li>
+            </ul>
+            <p>Para exercer esses direitos, entre em contato conosco através dos canais disponíveis.</p>
+            
+            <h2>8. Retenção de Dados</h2>
+            <p>Mantemos suas informações apenas pelo tempo necessário para cumprir as finalidades descritas nesta política ou conforme exigido por lei. Dados de navegação são geralmente retidos por até 12 meses.</p>
+            
+            <h2>9. Links para Sites de Terceiros</h2>
+            <p>O RefStats pode conter links para sites externos. Não nos responsabilizamos pelas práticas de privacidade desses sites. Recomendamos que você leia as políticas de privacidade de qualquer site que visitar.</p>
+            
+            <h2>10. Menores de Idade</h2>
+            <p>O RefStats não é direcionado a menores de 18 anos. Não coletamos intencionalmente informações de menores. Se você acredita que coletamos dados de um menor, entre em contato conosco para que possamos tomar as medidas apropriadas.</p>
+            
+            <h2>11. Alterações nesta Política</h2>
+            <p>Podemos atualizar esta Política de Privacidade periodicamente. Quaisquer alterações serão publicadas nesta página com a data de atualização revisada. Recomendamos que você revise esta política regularmente.</p>
+            
+            <h2>12. Contato</h2>
+            <p>Se você tiver dúvidas sobre esta Política de Privacidade ou sobre como tratamos seus dados, entre em contato conosco:</p>
+            <ul>
+                <li><strong>E-mail:</strong> contato@refstats.com</li>
+                <li><strong>Telegram:</strong> @refstats</li>
+            </ul>
+            
+            <div class="update-date">
+                <p>Última atualização: Dezembro de 2025</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>⚽ RefStats</strong></p>
+            <p>
+                <a href="refstats_termos.html">Termos de Uso</a> | 
+                <a href="refstats_privacidade.html">Política de Privacidade</a> | 
+                <a href="refstats_home.html">Página Inicial</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ Este site é apenas para fins informativos. Aposte com responsabilidade.</p>
+        </div>
+    </div>
+</body>
+</html>
