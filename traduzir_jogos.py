@@ -46,14 +46,14 @@ TRADUCOES = {
     '>CONTATO</a>': '>CONTACT</a>',
     
     # === Links de navegação (corrigir caminhos para versão EN) ===
-    'href="index.html"': 'href="../index.html"',
+    'href="index.html"': 'href="index.html"',
     'href="JOGOS_DO_DIA.html"': 'href="Match_TODAY.html"',
-    'href="refstats_historico.html"': 'href="../refstats_historico.html"',
-    'href="refstats_contato.html"': 'href="../refstats_contato.html"',
-    'href="refstats_termos.html"': 'href="../refstats_termos.html"',
-    'href="refstats_privacidade.html"': 'href="../refstats_privacidade.html"',
-    'href="refstats_aviso_legal.html"': 'href="../refstats_aviso_legal.html"',
-    'href="refstats_faq.html"': 'href="../refstats_faq.html"',
+    'href="refstats_historico.html"': 'href="refstats_historico.html"',
+    'href="refstats_contato.html"': 'href="refstats_contato.html"',
+    'href="refstats_termos.html"': 'href="refstats_termos.html"',
+    'href="refstats_privacidade.html"': 'href="refstats_privacidade.html"',
+    'href="refstats_aviso_legal.html"': 'href="refstats_aviso_legal.html"',
+    'href="refstats_faq.html"': 'href="refstats_faq.html"',
     
     # === Header ===
     '<h1>⚽ Jogos do Dia</h1>': '<h1>⚽ Today\'s Matches</h1>',
@@ -320,20 +320,17 @@ def traduzir_conteudo(conteudo: str) -> str:
 
 
 def corrigir_caminhos_history(conteudo: str) -> str:
-    """Corrige caminhos específicos para arquivos na pasta History."""
+    """Corrige caminhos específicos para arquivos na pasta ENG/History/."""
     # Para arquivos em ENG/History/, os assets estão em ../../assets/
+    # (após a tradução inicial, estão com ../assets/ que seria ENG/assets - errado)
     conteudo = conteudo.replace('"../assets/', '"../../assets/')
     conteudo = conteudo.replace("'../assets/", "'../../assets/")
     
-    # Corrigir links de navegação para subir dois níveis
-    conteudo = conteudo.replace('href="../index.html"', 'href="../../index.html"')
+    # Os links de navegação já estão corretos após traduzir_conteudo():
+    # - ../index.html -> ENG/index.html ✓
+    # - ../refstats_historico.html -> ENG/refstats_historico.html ✓
+    # - Match_TODAY.html -> precisa virar ../Match_TODAY.html
     conteudo = conteudo.replace('href="Match_TODAY.html"', 'href="../Match_TODAY.html"')
-    conteudo = conteudo.replace('href="../refstats_historico.html"', 'href="../../refstats_historico.html"')
-    conteudo = conteudo.replace('href="../refstats_contato.html"', 'href="../../refstats_contato.html"')
-    conteudo = conteudo.replace('href="../refstats_termos.html"', 'href="../../refstats_termos.html"')
-    conteudo = conteudo.replace('href="../refstats_privacidade.html"', 'href="../../refstats_privacidade.html"')
-    conteudo = conteudo.replace('href="../refstats_aviso_legal.html"', 'href="../../refstats_aviso_legal.html"')
-    conteudo = conteudo.replace('href="../refstats_faq.html"', 'href="../../refstats_faq.html"')
     
     return conteudo
 

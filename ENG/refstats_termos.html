@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefStats - Terms of Use</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px;
+            padding-top: 100px;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9997;
+            background-image: linear-gradient(rgba(10, 15, 30, 0.85), rgba(10, 15, 30, 0.85)), url("../assets/img/FundoMuroFundo.png");
+            background-size: cover;
+            background-position: center;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid #e94560;
+        }
+        
+        .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 48px; width: auto; display: block; }
+        .navbar-menu { display: flex; gap: 10px; }
+        .navbar-menu a { color: #e0e0e0; text-decoration: none; padding: 10px 20px; border-radius: 25px; transition: all 0.3s; font-weight: 500; border: 1px solid transparent; }
+        .navbar-menu a:hover { background: rgba(233, 69, 96, 0.2); border-color: #e94560; color: #e94560; }
+        .navbar-menu a.active { background: linear-gradient(135deg, #e94560 0%, #0f3460 100%); color: white; }
+        .menu-toggle { display: none; background: none; border: none; color: #e0e0e0; font-size: 1.5em; cursor: pointer; padding: 5px 10px; }
+        
+        .lang-selector { display: flex; align-items: center; gap: 5px; margin-left: 20px; }
+        .lang-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 20px; border: 2px solid #3498db; background: transparent; color: #a0a0a0; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease; text-decoration: none; }
+        .lang-btn:hover { background: rgba(52, 152, 219, 0.15); color: #3498db; }
+        .lang-btn.active { background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); border-color: #3498db; color: white; }
+        .lang-divider { color: #3498db; font-weight: bold; margin: 0 2px; }
+        
+        .container { max-width: 900px; margin: 0 auto; width: 100%; }
+        .header { background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 30px; text-align: center; border: 1px solid #e94560; }
+        .header h1 { color: #e94560; font-size: 2.5em; margin-bottom: 10px; }
+        .header p { color: #a0a0a0; font-size: 1.1em; }
+        
+        .content { background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%); border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #0f3460; line-height: 1.8; }
+        .content h2 { color: #e94560; font-size: 1.5em; margin-top: 30px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #0f3460; }
+        .content h2:first-child { margin-top: 0; }
+        .content p { margin-bottom: 15px; color: #c0c0c0; }
+        .content ul { margin-left: 20px; margin-bottom: 15px; }
+        .content li { margin-bottom: 8px; color: #c0c0c0; }
+        .content strong { color: #e0e0e0; }
+        
+        .highlight-box { background: rgba(233, 69, 96, 0.1); border-left: 4px solid #e94560; padding: 15px 20px; margin: 20px 0; border-radius: 0 10px 10px 0; }
+        .highlight-box p { margin: 0; color: #e0e0e0; }
+        .update-date { text-align: center; color: #a0a0a0; font-size: 0.9em; margin-top: 30px; padding-top: 20px; border-top: 1px solid #0f3460; }
+        
+        .footer { background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); padding: 20px; border-radius: 15px; text-align: center; margin-top: 30px; color: #a0a0a0; border: 1px solid #0f3460; }
+        .footer strong { color: #e94560; }
+        .footer a { color: #3498db; text-decoration: none; }
+        .footer a:hover { color: #e94560; }
+        
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .navbar-menu { position: fixed; top: 70px; left: 0; right: 0; background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); flex-direction: column; padding: 20px; gap: 10px; transform: translateY(-150%); transition: transform 0.3s; border-bottom: 2px solid #e94560; z-index: 9996; }
+            .navbar-menu.active { transform: translateY(0); }
+            .menu-toggle { display: block; }
+            .logo-img { height: 36px; }
+            body { padding-top: 90px; }
+            .header h1 { font-size: 1.8em; }
+            .content { padding: 25px; }
+            .content h2 { font-size: 1.3em; }
+            .lang-selector { position: absolute; top: 50%; right: 60px; transform: translateY(-50%); margin-left: 0; }
+            .lang-btn { padding: 6px 10px; font-size: 0.75em; }
+            .lang-btn .lang-text { display: none; }
+            .lang-divider { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <img src="../assets/img/LogoINICIO.png" alt="RefStats" class="logo-img">
+        </a>
+        
+        <div class="lang-selector">
+            <a href="../refstats_termos.html" class="lang-btn" title="Português (Brasil)">
+                <span class="flag">🇧🇷</span>
+                <span class="lang-text">PT</span>
+            </a>
+            <span class="lang-divider">|</span>
+            <a href="#" class="lang-btn active" title="English">
+                <span class="flag">🇺🇸</span>
+                <span class="lang-text">EN</span>
+            </a>
+        </div>
+        
+        <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')" aria-label="Menu">☰</button>
+        
+        <div class="navbar-menu" id="navMenu">
+            <a href="index.html">HOME</a>
+            <a href="Match_TODAY.html">TODAY'S MATCHES</a>
+            <a href="refstats_historico.html">HISTORY</a>
+            <a href="refstats_contato.html">CONTACT</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="header">
+            <h1>📋 Terms of Use</h1>
+            <p>Please read carefully before using RefStats</p>
+        </div>
+        
+        <div class="content">
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing and using the RefStats website, you agree to these Terms of Use. If you do not agree with any part of these terms, you should not use our website.</p>
+            
+            <h2>2. Service Description</h2>
+            <p>RefStats is a statistical analysis platform for soccer referees and teams. Our service offers:</p>
+            <ul>
+                <li>Referee profile analysis (card history, fouls, etc.)</li>
+                <li>Team statistics (standings, recent performance)</li>
+                <li>Comparative charts and data visualizations</li>
+                <li>History of analyzed matches</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><strong>⚠️ IMPORTANT NOTICE:</strong> RefStats is an information and statistical analysis service. The information provided is for educational and informational purposes only.</p>
+            </div>
+            
+            <h2>3. Disclaimer</h2>
+            <p>RefStats is <strong>NOT</strong> a betting house and does <strong>NOT</strong> encourage, promote, or facilitate sports betting. The information provided:</p>
+            <ul>
+                <li>Is based on public historical data</li>
+                <li>Does not guarantee future results</li>
+                <li>Does not constitute financial advice</li>
+                <li>Should not be used as the sole basis for decisions</li>
+            </ul>
+            <p>The user is entirely responsible for how they use the information provided.</p>
+            
+            <h2>4. Responsible Use</h2>
+            <p>By using RefStats, you agree to:</p>
+            <ul>
+                <li>Use the service legally and ethically</li>
+                <li>Not reproduce or distribute content without authorization</li>
+                <li>Not use automated systems to access the site</li>
+                <li>Respect intellectual property rights</li>
+            </ul>
+            
+            <h2>5. Intellectual Property</h2>
+            <p>All RefStats content, including texts, graphics, logos, icons, and software, is the exclusive property of RefStats or its licensors and is protected by copyright laws.</p>
+            
+            <h2>6. Data Sources</h2>
+            <p>The statistical data presented is collected from public sources such as SofaScore, WhoScored, FlashScore, and other public soccer information and statistics platforms. RefStats does not guarantee absolute data accuracy and recommends verification from multiple sources.</p>
+            
+            <h2>7. Service Availability</h2>
+            <p>RefStats strives to keep the service available but does not guarantee uninterrupted availability. We may:</p>
+            <ul>
+                <li>Temporarily suspend service for maintenance</li>
+                <li>Modify or discontinue features</li>
+                <li>Limit access in case of abusive use</li>
+            </ul>
+            
+            <h2>8. Limitation of Liability</h2>
+            <p>Under no circumstances shall RefStats be liable for:</p>
+            <ul>
+                <li>Financial losses resulting from use of the information</li>
+                <li>Decisions made based on presented data</li>
+                <li>Direct or indirect damages related to site use</li>
+                <li>Service interruptions or data loss</li>
+            </ul>
+            
+            <h2>9. Terms Modifications</h2>
+            <p>RefStats reserves the right to modify these Terms of Use at any time. Changes take effect immediately upon publication. Continued use of the site after modifications constitutes acceptance of the new terms.</p>
+            
+            <h2>10. Applicable Law</h2>
+            <p>These Terms of Use are governed by the laws of the Federative Republic of Brazil. Any dispute shall be submitted to the jurisdiction of the user's domicile.</p>
+            
+            <h2>11. Contact</h2>
+            <p>For questions about these Terms of Use, contact us through the channels available on the Contact page.</p>
+            
+            <div class="update-date">
+                <p>Last updated: December 2025</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>⚽ RefStats</strong></p>
+            <p>
+                <a href="refstats_termos.html">Terms of Use</a> | 
+                <a href="refstats_privacidade.html">Privacy Policy</a> |
+                <a href="refstats_aviso_legal.html">Legal Disclaimer</a> |
+                <a href="refstats_faq.html">FAQ</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ This site is for informational purposes only. Bet responsibly.</p>
+        </div>
+    </div>
+</body>
+</html>

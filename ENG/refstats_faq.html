@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefStats - Frequently Asked Questions (FAQ)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 20px; padding-top: 100px; min-height: 100vh; color: #e0e0e0; }
+        
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 9997; background-image: linear-gradient(rgba(10, 15, 30, 0.85), rgba(10, 15, 30, 0.85)), url("../assets/img/FundoMuroFundo.png"); background-size: cover; background-position: center; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); border-bottom: 2px solid #e94560; }
+        .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 48px; width: auto; display: block; }
+        .navbar-menu { display: flex; gap: 10px; }
+        .navbar-menu a { color: #e0e0e0; text-decoration: none; padding: 10px 20px; border-radius: 25px; transition: all 0.3s; font-weight: 500; border: 1px solid transparent; }
+        .navbar-menu a:hover { background: rgba(233, 69, 96, 0.2); border-color: #e94560; color: #e94560; }
+        .menu-toggle { display: none; background: none; border: none; color: #e0e0e0; font-size: 1.5em; cursor: pointer; padding: 5px 10px; }
+        
+        .lang-selector { display: flex; align-items: center; gap: 5px; margin-left: 20px; }
+        .lang-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 20px; border: 2px solid #3498db; background: transparent; color: #a0a0a0; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease; text-decoration: none; }
+        .lang-btn:hover { background: rgba(52, 152, 219, 0.15); color: #3498db; }
+        .lang-btn.active { background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); border-color: #3498db; color: white; }
+        .lang-divider { color: #3498db; font-weight: bold; margin: 0 2px; }
+        
+        .container { max-width: 900px; margin: 0 auto; width: 100%; }
+        .header { background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 30px; text-align: center; border: 1px solid #e94560; }
+        .header h1 { color: #e94560; font-size: 2.5em; margin-bottom: 10px; }
+        .header p { color: #a0a0a0; font-size: 1.1em; }
+        
+        .category-tabs { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-bottom: 30px; }
+        .category-tab { background: #0f3460; border: 1px solid #3498db; color: #e0e0e0; padding: 10px 20px; border-radius: 25px; cursor: pointer; transition: all 0.3s; font-size: 0.95em; }
+        .category-tab:hover, .category-tab.active { background: linear-gradient(135deg, #e94560 0%, #0f3460 100%); border-color: #e94560; color: white; }
+        
+        .faq-section { background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%); border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #0f3460; margin-bottom: 20px; }
+        .faq-section h2 { color: #e94560; font-size: 1.4em; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #0f3460; display: flex; align-items: center; gap: 10px; }
+        
+        .faq-item { margin-bottom: 15px; border: 1px solid #0f3460; border-radius: 10px; overflow: hidden; transition: all 0.3s; }
+        .faq-item:hover { border-color: #3498db; }
+        .faq-item.active { border-color: #e94560; }
+        
+        .faq-question { display: flex; justify-content: space-between; align-items: center; padding: 18px 20px; cursor: pointer; background: rgba(15, 52, 96, 0.3); transition: all 0.3s; }
+        .faq-question:hover { background: rgba(15, 52, 96, 0.5); }
+        .faq-question h3 { font-size: 1.05em; color: #e0e0e0; font-weight: 500; }
+        .faq-toggle { color: #e94560; font-size: 0.9em; transition: transform 0.3s; }
+        .faq-item.active .faq-toggle { transform: rotate(180deg); }
+        
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; background: rgba(26, 26, 46, 0.5); }
+        .faq-item.active .faq-answer { max-height: 500px; }
+        .faq-answer-content { padding: 20px; color: #c0c0c0; line-height: 1.7; }
+        .faq-answer-content p { margin-bottom: 10px; }
+        .faq-answer-content ul { margin-left: 20px; margin-top: 10px; }
+        .faq-answer-content li { margin-bottom: 5px; }
+        .faq-answer-content strong { color: #e0e0e0; }
+        
+        .contact-box { background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); padding: 30px; border-radius: 15px; text-align: center; border: 1px solid #e94560; margin-bottom: 20px; }
+        .contact-box h3 { color: #e94560; margin-bottom: 10px; }
+        .contact-box p { color: #a0a0a0; }
+        .contact-box a { color: #3498db; text-decoration: none; }
+        .contact-box a:hover { color: #e94560; }
+        
+        .footer { background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); padding: 20px; border-radius: 15px; text-align: center; color: #a0a0a0; border: 1px solid #0f3460; }
+        .footer strong { color: #e94560; }
+        .footer a { color: #3498db; text-decoration: none; }
+        .footer a:hover { color: #e94560; }
+        
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .navbar-menu { position: fixed; top: 70px; left: 0; right: 0; background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); flex-direction: column; padding: 20px; gap: 10px; transform: translateY(-150%); transition: transform 0.3s; border-bottom: 2px solid #e94560; z-index: 9996; }
+            .navbar-menu.active { transform: translateY(0); }
+            .menu-toggle { display: block; }
+            .logo-img { height: 36px; }
+            body { padding-top: 90px; }
+            .header h1 { font-size: 1.8em; }
+            .faq-section { padding: 20px; }
+            .faq-question { padding: 15px; }
+            .faq-question h3 { font-size: 0.95em; }
+            .lang-selector { position: absolute; top: 50%; right: 60px; transform: translateY(-50%); margin-left: 0; }
+            .lang-btn { padding: 6px 10px; font-size: 0.75em; }
+            .lang-btn .lang-text { display: none; }
+            .lang-divider { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <img src="../assets/img/LogoINICIO.png" alt="RefStats" class="logo-img">
+        </a>
+        
+        <div class="lang-selector">
+            <a href="../refstats_faq.html" class="lang-btn" title="Português (Brasil)">
+                <span class="flag">🇧🇷</span>
+                <span class="lang-text">PT</span>
+            </a>
+            <span class="lang-divider">|</span>
+            <a href="#" class="lang-btn active" title="English">
+                <span class="flag">🇺🇸</span>
+                <span class="lang-text">EN</span>
+            </a>
+        </div>
+        
+        <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')" aria-label="Menu">☰</button>
+        
+        <div class="navbar-menu" id="navMenu">
+            <a href="index.html">HOME</a>
+            <a href="Match_TODAY.html">TODAY'S MATCHES</a>
+            <a href="refstats_historico.html">HISTORY</a>
+            <a href="refstats_contato.html">CONTACT</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="header">
+            <h1>❓ Frequently Asked Questions</h1>
+            <p>Find answers to the most common questions about RefStats</p>
+        </div>
+        
+        <div class="category-tabs">
+            <button class="category-tab active" onclick="filterCategory('all')">All</button>
+            <button class="category-tab" onclick="filterCategory('general')">General</button>
+            <button class="category-tab" onclick="filterCategory('features')">Features</button>
+            <button class="category-tab" onclick="filterCategory('data')">Data</button>
+            <button class="category-tab" onclick="filterCategory('support')">Support</button>
+        </div>
+        
+        <!-- General -->
+        <div class="faq-section" data-category="general">
+            <h2>📌 General</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>What is RefStats?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>RefStats is a <strong>soccer statistical analysis platform</strong> that organizes and displays information about referees and teams to help with understanding matches.</p>
+                        <p>We collect public data and present it in a visual and intuitive way, including: referee card and foul averages, team performance, comparative charts, and more.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Is RefStats free?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>Yes!</strong> RefStats is completely free. We maintain the project through voluntary donations from users who wish to support our work.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Is RefStats a betting site?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>No!</strong> RefStats is <strong>NOT</strong> a betting house and does not encourage betting. We are an information and statistics site.</p>
+                        <p>We provide data for informational purposes only. How you use this information is your sole responsibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Features -->
+        <div class="faq-section" data-category="features">
+            <h2>🔧 Features</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>How does the search work?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>On the "TODAY'S MATCHES" page, use the search bar to find matches by:</p>
+                        <ul>
+                            <li><strong>Team name:</strong> Type "Flamengo" or "Real Madrid"</li>
+                            <li><strong>Referee name:</strong> Type the referee's name</li>
+                            <li><strong>League:</strong> Type "Premier League" or "La Liga"</li>
+                        </ul>
+                        <p>Use the navigation buttons to move between found results.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>What are the referee profile filters?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Referees are classified into three profiles based on their history:</p>
+                        <ul>
+                            <li><strong>🔴 Strict:</strong> High average of cards per game</li>
+                            <li><strong>🟡 Moderate:</strong> Balanced average of cards</li>
+                            <li><strong>🟢 Lenient:</strong> Low average of cards</li>
+                        </ul>
+                        <p>You can filter matches by clicking the profile buttons in the search bar.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>How do I access matches from previous dates?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Click on <strong>"HISTORY"</strong> in the menu. You'll see a calendar where you can select any date with available matches.</p>
+                        <p>Days with available analyses appear marked in <strong>green</strong> with the "MATCH DAY" indication.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>What does the comparison chart mean?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>The chart shows a visual comparison between:</p>
+                        <ul>
+                            <li><strong>Referee average:</strong> Average number of yellow cards the referee gives per game</li>
+                            <li><strong>Team averages:</strong> Average number of cards each team receives per game</li>
+                        </ul>
+                        <p>This helps quickly visualize if the match tends to have more or fewer cards.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Data and Sources -->
+        <div class="faq-section" data-category="data">
+            <h2>📊 Data and Sources</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Where does the data come from?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Data is collected mainly from <strong>SofaScore, WhoScored, FlashScore,</strong> and other public sports statistics platforms.</p>
+                        <p>We process and organize this data to present it in a more visual and intuitive way.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Is the data reliable?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>We strive to provide accurate data, but <strong>we do not guarantee absolute accuracy</strong>. Errors or outdated information may exist.</p>
+                        <p>We always recommend verifying information from multiple sources before making decisions.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>How often is the data updated?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Analyses are generated daily for the day's matches. The referee's history considers their most recent games available in the database.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Why don't some referees have data?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>This can happen when:</p>
+                        <ul>
+                            <li>The referee has not yet been confirmed for the match</li>
+                            <li>It's a new referee with little history</li>
+                            <li>Data is not available from the source</li>
+                        </ul>
+                        <p>In these cases, we show only available team information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Support -->
+        <div class="faq-section" data-category="support">
+            <h2>🛠️ Support</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>How can I support the project?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>You can support RefStats in several ways:</p>
+                        <ul>
+                            <li><strong>Donations:</strong> Via PIX or PayPal (see on the Contact page)</li>
+                            <li><strong>Sharing:</strong> Share the site with interested friends</li>
+                            <li><strong>Feedback:</strong> Send suggestions and improvements</li>
+                        </ul>
+                        <p>All help is welcome and motivates us to keep improving!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>I found an error. How do I report it?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p>Contact us via Telegram (@refstats) or email. Describe the error found with as much detail as possible:</p>
+                        <ul>
+                            <li>Which page showed the error</li>
+                            <li>What you were doing</li>
+                            <li>Screenshot (if possible)</li>
+                        </ul>
+                        <p>We appreciate your feedback!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <h3>Does the site work on mobile?</h3>
+                    <span class="faq-toggle">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-content">
+                        <p><strong>Yes!</strong> RefStats is fully responsive and works well on smartphones and tablets. The menu adapts automatically for smaller screens.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="contact-box">
+            <h3>Didn't find your answer?</h3>
+            <p>Contact us!</p>
+            <p>
+                📧 <a href="mailto:contato@refstats.com">contato@refstats.com</a> | 
+                📱 <a href="https://t.me/refstats">Telegram: @refstats</a>
+            </p>
+        </div>
+        
+        <div class="footer">
+            <p><strong>⚽ RefStats</strong></p>
+            <p>
+                <a href="refstats_termos.html">Terms of Use</a> | 
+                <a href="refstats_privacidade.html">Privacy Policy</a> |
+                <a href="refstats_aviso_legal.html">Legal Disclaimer</a> |
+                <a href="refstats_faq.html">FAQ</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ This site is for informational purposes only. Bet responsibly.</p>
+        </div>
+    </div>
+    
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all others
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Toggle current
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+        
+        function filterCategory(category) {
+            // Update tabs
+            document.querySelectorAll('.category-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Filter sections
+            document.querySelectorAll('.faq-section').forEach(section => {
+                if (category === 'all' || section.dataset.category === category) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefStats - Match History</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px;
+            padding-top: 100px;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        /* ========================================
+           NAVBAR (same as Home)
+           ======================================== */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9997;
+            background-image:
+                linear-gradient(
+                    rgba(10, 15, 30, 0.85),
+                    rgba(10, 15, 30, 0.85)
+                ),
+                url("../assets/img/FundoMuroFundo.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            border-bottom: 2px solid #e94560;
+            backdrop-filter: blur(2px);
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        
+        .logo-img {
+            height: 48px;
+            width: auto;
+            display: block;
+        }
+        
+        .navbar-brand .brand-text {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #e94560;
+        }
+        
+        .navbar-brand .brand-text span {
+            color: #3498db;
+        }
+        
+        .navbar-menu {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .navbar-menu a {
+            color: #e0e0e0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-weight: 500;
+            border: 1px solid transparent;
+        }
+        
+        .navbar-menu a:hover {
+            background: rgba(233, 69, 96, 0.2);
+            border-color: #e94560;
+            color: #e94560;
+        }
+        
+        .navbar-menu a.active {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            color: white;
+        }
+        
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #e0e0e0;
+            font-size: 1.5em;
+            cursor: pointer;
+            padding: 5px 10px;
+        }
+        
+        .menu-toggle i {
+            pointer-events: none;
+        }
+        
+        /* ========================================
+           LANGUAGE SELECTOR
+           ======================================== */
+        .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-left: 20px;
+        }
+        
+        .lang-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 2px solid #3498db;
+            background: transparent;
+            color: #a0a0a0;
+            font-size: 0.85em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(52, 152, 219, 0.15);
+            color: #3498db;
+            transform: translateY(-2px);
+        }
+        
+        .lang-btn.active {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            border-color: #3498db;
+            color: white;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.4);
+        }
+        
+        .lang-btn .flag {
+            font-size: 1.2em;
+        }
+        
+        .lang-divider {
+            color: #3498db;
+            font-weight: bold;
+            margin: 0 2px;
+        }
+        
+        @media (max-width: 768px) {
+            .lang-selector {
+                position: absolute;
+                top: 50%;
+                right: 60px;
+                transform: translateY(-50%);
+                margin-left: 0;
+            }
+            
+            .lang-btn {
+                padding: 6px 10px;
+                font-size: 0.75em;
+            }
+            
+            .lang-btn .lang-text {
+                display: none;
+            }
+            
+            .lang-divider {
+                display: none;
+            }
+        }
+        
+        /* ========================================
+           CONTAINER
+           ======================================== */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #e94560;
+        }
+        
+        .header h1 {
+            color: #e94560;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #a0a0a0;
+            font-size: 1.1em;
+        }
+        
+        /* ========================================
+           CALENDAR
+           ======================================== */
+        .calendar-container {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #0f3460;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .calendar-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .calendar-nav button {
+            background: #0f3460;
+            border: 1px solid #3498db;
+            color: #e0e0e0;
+            padding: 10px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1em;
+        }
+        
+        .calendar-nav button:hover {
+            background: #3498db;
+            color: white;
+        }
+        
+        .calendar-title {
+            font-size: 1.8em;
+            color: #e94560;
+            font-weight: bold;
+        }
+        
+        .calendar-selectors {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        
+        .calendar-selectors select {
+            background: #0f3460;
+            border: 1px solid #3498db;
+            color: #e0e0e0;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            outline: none;
+        }
+        
+        .calendar-selectors select:focus {
+            border-color: #e94560;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 8px;
+        }
+        
+        .calendar-weekday {
+            text-align: center;
+            padding: 10px;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .calendar-day {
+            aspect-ratio: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #1a1a2e;
+            border-radius: 10px;
+            cursor: default;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            padding: 5px;
+            min-height: 70px;
+        }
+        
+        .calendar-day.empty {
+            background: transparent;
+        }
+        
+        .calendar-day.other-month {
+            opacity: 0.3;
+        }
+        
+        .calendar-day .day-number {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #e0e0e0;
+        }
+        
+        .calendar-day .day-label {
+            font-size: 0.65em;
+            margin-top: 3px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        
+        /* Day with available match */
+        .calendar-day.has-match {
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+            border-color: #2ecc71;
+            cursor: pointer;
+        }
+        
+        .calendar-day.has-match:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(46, 204, 113, 0.4);
+        }
+        
+        .calendar-day.has-match .day-number {
+            color: #2ecc71;
+        }
+        
+        .calendar-day.has-match .day-label {
+            color: #2ecc71;
+        }
+        
+        /* Today */
+        .calendar-day.today {
+            border-color: #e94560;
+        }
+        
+        .calendar-day.today .day-number {
+            color: #e94560;
+        }
+        
+        /* Selected day */
+        .calendar-day.selected {
+            background: linear-gradient(135deg, #e94560 0%, #0f3460 100%);
+            border-color: #e94560;
+        }
+        
+        .calendar-day.selected .day-number {
+            color: white;
+        }
+        
+        /* ========================================
+           LEGEND
+           ======================================== */
+        .calendar-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            color: #a0a0a0;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+        }
+        
+        .legend-color.available {
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3d 100%);
+            border: 2px solid #2ecc71;
+        }
+        
+        .legend-color.today {
+            background: #1a1a2e;
+            border: 2px solid #e94560;
+        }
+        
+        .legend-color.unavailable {
+            background: #1a1a2e;
+            border: 2px solid transparent;
+        }
+        
+        /* ========================================
+           STATISTICS
+           ======================================== */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat-card {
+            background: #1a1a2e;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #0f3460;
+        }
+        
+        .stat-card .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #e94560;
+        }
+        
+        .stat-card .stat-label {
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        /* ========================================
+           FOOTER
+           ======================================== */
+        .footer {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            color: #a0a0a0;
+            border: 1px solid #0f3460;
+        }
+        
+        .footer strong {
+            color: #e94560;
+        }
+        
+        /* ========================================
+           RESPONSIVE
+           ======================================== */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 20px;
+            }
+            
+            .navbar-menu {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+                transform: translateY(-150%);
+                transition: transform 0.3s;
+                border-bottom: 2px solid #e94560;
+                z-index: 9996;
+            }
+            
+            .navbar-menu.active {
+                transform: translateY(0);
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .logo-img {
+                height: 36px;
+            }
+            
+            body {
+                padding-top: 90px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .calendar-container {
+                padding: 15px;
+            }
+            
+            .calendar-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .calendar-title {
+                font-size: 1.4em;
+            }
+            
+            .calendar-day {
+                min-height: 50px;
+            }
+            
+            .calendar-day .day-number {
+                font-size: 1em;
+            }
+            
+            .calendar-day .day-label {
+                font-size: 0.5em;
+            }
+            
+            .calendar-selectors {
+                flex-wrap: wrap;
+            }
+
+            /* ensure nothing overflows the card */
+            .calendar-container {
+                max-width: 100%;
+                overflow: hidden;
+                padding: 12px;
+                box-sizing: border-box;
+            }
+
+            /* grid must fit properly */
+            .calendar-grid {
+                width: 100%;
+                max-width: 100%;
+                gap: 4px;
+                box-sizing: border-box;
+            }
+
+            /* weekday headers */
+            .calendar-weekday {
+                padding: 6px 0;
+                font-size: 0.75em;
+            }
+
+            /* each day square */
+            .calendar-day {
+                min-height: 42px;
+                padding: 3px;
+                border-radius: 8px;
+            }
+
+            .calendar-day .day-number {
+                font-size: 0.95em;
+            }
+
+            .calendar-day .day-label {
+                font-size: 0.45em;
+                margin-top: 2px;
+            }            
+
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <img src="../assets/img/LogoINICIO.png" alt="RefStats" class="logo-img">
+        </a>
+        
+        <!-- Language Selector -->
+        <div class="lang-selector">
+            <a href="../refstats_historico.html" class="lang-btn" title="Português (Brasil)">
+                <span class="flag">🇧🇷</span>
+                <span class="lang-text">PT</span>
+            </a>
+            <span class="lang-divider">|</span>
+            <a href="#" class="lang-btn active" title="English">
+                <span class="flag">🇺🇸</span>
+                <span class="lang-text">EN</span>
+            </a>
+        </div>
+        
+        <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')" aria-label="Menu">
+            ☰
+        </button>
+        
+        <div class="navbar-menu" id="navMenu">
+            <a href="index.html">HOME</a>
+            <a href="Match_TODAY.html">TODAY'S MATCHES</a>
+            <a href="#" class="active">HISTORY</a>
+            <a href="refstats_contato.html">CONTACT</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="header">
+            <h1>📅 Match History</h1>
+            <p>Select a date to view analyzed matches</p>
+        </div>
+        
+        <div class="calendar-container">
+            <div class="calendar-header">
+                <div class="calendar-nav">
+                    <button onclick="previousMonth()" title="Previous month">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                </div>
+                
+                <div class="calendar-title" id="calendarTitle">December 2025</div>
+                
+                <div class="calendar-nav">
+                    <button onclick="nextMonth()" title="Next month">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="calendar-selectors">
+                <select id="monthSelect" onchange="changeMonth()">
+                    <option value="0">January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <option value="8">September</option>
+                    <option value="9">October</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                </select>
+                
+                <select id="yearSelect" onchange="changeYear()">
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                </select>
+            </div>
+            
+            <div class="calendar-grid" id="calendarGrid">
+                <!-- Weekdays -->
+                <div class="calendar-weekday">SUN</div>
+                <div class="calendar-weekday">MON</div>
+                <div class="calendar-weekday">TUE</div>
+                <div class="calendar-weekday">WED</div>
+                <div class="calendar-weekday">THU</div>
+                <div class="calendar-weekday">FRI</div>
+                <div class="calendar-weekday">SAT</div>
+                <!-- Days will be inserted via JavaScript -->
+            </div>
+            
+            <div class="calendar-legend">
+                <div class="legend-item">
+                    <div class="legend-color available"></div>
+                    <span>Match Day (available)</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color today"></div>
+                    <span>Today</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color unavailable"></div>
+                    <span>No data</span>
+                </div>
+            </div>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalDays">0</div>
+                    <div class="stat-label">Days with matches</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="currentMonthDays">0</div>
+                    <div class="stat-label">This month</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="firstDate">-</div>
+                    <div class="stat-label">First record</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="lastDate">-</div>
+                    <div class="stat-label">Last record</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>⚽ RefStats - History</strong></p>
+            <p>Access analyzed matches from previous dates</p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ This site is for informational purposes only. Bet responsibly.</p>
+        </div>
+    </div>
+    
+    <!-- Load available dates from root -->
+    <script src="../datas_disponiveis.js"></script>
+    
+    <script>
+    // Configuration
+    const START_DATE = new Date(2025, 9, 1); // 01/10/2025 (month is 0-indexed)
+    const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 
+                   'July', 'August', 'September', 'October', 'November', 'December'];
+    
+    // Calendar state
+    let currentYear = new Date().getFullYear();
+    let currentMonth = new Date().getMonth();
+    
+    // Available dates (loaded from external JS file)
+    let datasDisponiveis = (typeof DATAS_DISPONIVEIS !== 'undefined') ? DATAS_DISPONIVEIS : [];
+    
+    // Initialize calendar
+    function initCalendar() {
+        console.log('Dates loaded:', datasDisponiveis.length);
+        updateStats();
+        renderCalendar();
+    }
+    
+    // Check if a date is available
+    function isDateAvailable(day, month, year) {
+        const dateStr = String(day).padStart(2, '0') + 
+                       String(month + 1).padStart(2, '0') + 
+                       year;
+        return datasDisponiveis.includes(dateStr);
+    }
+    
+    // Format date for filename
+    function formatDateForFile(day, month, year) {
+        return String(day).padStart(2, '0') + 
+               String(month + 1).padStart(2, '0') + 
+               year;
+    }
+    
+    // Render calendar
+    function renderCalendar() {
+        const grid = document.getElementById('calendarGrid');
+        const title = document.getElementById('calendarTitle');
+        const monthSelect = document.getElementById('monthSelect');
+        const yearSelect = document.getElementById('yearSelect');
+        
+        // Update title and selectors
+        title.textContent = `${MONTHS[currentMonth]} ${currentYear}`;
+        monthSelect.value = currentMonth;
+        yearSelect.value = currentYear;
+        
+        // Clear previous days (keep weekday header)
+        const weekdays = grid.querySelectorAll('.calendar-weekday');
+        grid.innerHTML = '';
+        weekdays.forEach(wd => grid.appendChild(wd));
+        
+        // First day of month
+        const firstDay = new Date(currentYear, currentMonth, 1);
+        const lastDay = new Date(currentYear, currentMonth + 1, 0);
+        const startDayOfWeek = firstDay.getDay();
+        const daysInMonth = lastDay.getDate();
+        
+        // Today
+        const today = new Date();
+        const isCurrentMonth = today.getFullYear() === currentYear && today.getMonth() === currentMonth;
+        
+        // Empty days before first day
+        for (let i = 0; i < startDayOfWeek; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.className = 'calendar-day empty';
+            grid.appendChild(emptyDay);
+        }
+        
+        // Days of month
+        let monthMatchDays = 0;
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayEl = document.createElement('div');
+            dayEl.className = 'calendar-day';
+            
+            const dateToCheck = new Date(currentYear, currentMonth, day);
+            const isBeforeStart = dateToCheck < START_DATE;
+            const hasMatch = !isBeforeStart && isDateAvailable(day, currentMonth, currentYear);
+            
+            if (hasMatch) {
+                dayEl.classList.add('has-match');
+                monthMatchDays++;
+                dayEl.onclick = () => {
+                    const fileName = `History/JOGOS_DO_DIA_${formatDateForFile(day, currentMonth, currentYear)}.html`;
+                    window.location.href = fileName;
+                };
+            }
+            
+            if (isCurrentMonth && day === today.getDate()) {
+                dayEl.classList.add('today');
+            }
+            
+            if (isBeforeStart) {
+                dayEl.style.opacity = '0.3';
+            }
+            
+            dayEl.innerHTML = `
+                <span class="day-number">${day}</span>
+                ${hasMatch ? '<span class="day-label">Match Day</span>' : ''}
+            `;
+            
+            grid.appendChild(dayEl);
+        }
+        
+        // Update current month stats
+        document.getElementById('currentMonthDays').textContent = monthMatchDays;
+    }
+    
+    // Update statistics
+    function updateStats() {
+        document.getElementById('totalDays').textContent = datasDisponiveis.length;
+        
+        if (datasDisponiveis.length > 0) {
+            // Sort dates
+            const sorted = [...datasDisponiveis].sort();
+            const first = sorted[0];
+            const last = sorted[sorted.length - 1];
+            
+            // Format for display DD/MM
+            document.getElementById('firstDate').textContent = 
+                first.substring(0, 2) + '/' + first.substring(2, 4);
+            document.getElementById('lastDate').textContent = 
+                last.substring(0, 2) + '/' + last.substring(2, 4);
+        }
+    }
+    
+    // Navigation
+    function previousMonth() {
+        currentMonth--;
+        if (currentMonth < 0) {
+            currentMonth = 11;
+            currentYear--;
+        }
+        
+        // Don't allow before October/2025
+        if (currentYear < 2025 || (currentYear === 2025 && currentMonth < 9)) {
+            currentMonth = 9;
+            currentYear = 2025;
+        }
+        
+        renderCalendar();
+    }
+    
+    function nextMonth() {
+        currentMonth++;
+        if (currentMonth > 11) {
+            currentMonth = 0;
+            currentYear++;
+        }
+        renderCalendar();
+    }
+    
+    function changeMonth() {
+        currentMonth = parseInt(document.getElementById('monthSelect').value);
+        
+        // Don't allow before October/2025
+        if (currentYear === 2025 && currentMonth < 9) {
+            currentMonth = 9;
+        }
+        
+        renderCalendar();
+    }
+    
+    function changeYear() {
+        currentYear = parseInt(document.getElementById('yearSelect').value);
+        
+        // If 2025 and month less than October, adjust
+        if (currentYear === 2025 && currentMonth < 9) {
+            currentMonth = 9;
+        }
+        
+        renderCalendar();
+    }
+    
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+        initCalendar();
+    });
+    </script>
+</body>
+</html>

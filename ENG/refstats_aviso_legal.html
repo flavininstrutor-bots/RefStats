@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefStats - Legal Disclaimer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); padding: 20px; padding-top: 100px; min-height: 100vh; color: #e0e0e0; }
+        
+        .navbar { position: fixed; top: 0; left: 0; right: 0; z-index: 9997; background-image: linear-gradient(rgba(10, 15, 30, 0.85), rgba(10, 15, 30, 0.85)), url("../assets/img/FundoMuroFundo.png"); background-size: cover; background-position: center; padding: 15px 50px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); border-bottom: 2px solid #e94560; }
+        .navbar-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 48px; width: auto; display: block; }
+        .navbar-menu { display: flex; gap: 10px; }
+        .navbar-menu a { color: #e0e0e0; text-decoration: none; padding: 10px 20px; border-radius: 25px; transition: all 0.3s; font-weight: 500; border: 1px solid transparent; }
+        .navbar-menu a:hover { background: rgba(233, 69, 96, 0.2); border-color: #e94560; color: #e94560; }
+        .menu-toggle { display: none; background: none; border: none; color: #e0e0e0; font-size: 1.5em; cursor: pointer; padding: 5px 10px; }
+        
+        .lang-selector { display: flex; align-items: center; gap: 5px; margin-left: 20px; }
+        .lang-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; border-radius: 20px; border: 2px solid #3498db; background: transparent; color: #a0a0a0; font-size: 0.85em; font-weight: 600; transition: all 0.3s ease; text-decoration: none; }
+        .lang-btn:hover { background: rgba(52, 152, 219, 0.15); color: #3498db; }
+        .lang-btn.active { background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); border-color: #3498db; color: white; }
+        .lang-divider { color: #3498db; font-weight: bold; margin: 0 2px; }
+        
+        .container { max-width: 900px; margin: 0 auto; width: 100%; }
+        .header { background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 30px; text-align: center; border: 1px solid #e94560; }
+        .header h1 { color: #e94560; font-size: 2.5em; margin-bottom: 10px; }
+        .header p { color: #a0a0a0; font-size: 1.1em; }
+        
+        .content { background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%); border-radius: 15px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); border: 1px solid #0f3460; line-height: 1.8; }
+        .content h2 { color: #e94560; font-size: 1.5em; margin-top: 30px; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #0f3460; }
+        .content h2:first-child { margin-top: 0; }
+        .content p { margin-bottom: 15px; color: #c0c0c0; }
+        .content ul { margin-left: 20px; margin-bottom: 15px; }
+        .content li { margin-bottom: 8px; color: #c0c0c0; }
+        .content strong { color: #e0e0e0; }
+        
+        .warning-box { background: rgba(233, 69, 96, 0.15); border: 2px solid #e94560; padding: 25px; margin: 25px 0; border-radius: 15px; text-align: center; }
+        .warning-box .icon { font-size: 3em; margin-bottom: 15px; }
+        .warning-box h3 { color: #e94560; font-size: 1.4em; margin-bottom: 10px; }
+        .warning-box p { margin: 0; color: #e0e0e0; font-size: 1.1em; }
+        
+        .highlight-box { background: rgba(52, 152, 219, 0.1); border-left: 4px solid #3498db; padding: 15px 20px; margin: 20px 0; border-radius: 0 10px 10px 0; }
+        .highlight-box.warning { background: rgba(241, 196, 15, 0.1); border-left-color: #f1c40f; }
+        .highlight-box p { margin: 0; color: #e0e0e0; }
+        
+        .legal-points { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 25px 0; }
+        .legal-point { background: rgba(15, 52, 96, 0.5); padding: 20px; border-radius: 12px; text-align: center; border: 1px solid #0f3460; }
+        .legal-point .icon { font-size: 2em; margin-bottom: 10px; }
+        .legal-point h4 { color: #e94560; margin-bottom: 8px; }
+        .legal-point p { color: #a0a0a0; font-size: 0.9em; margin: 0; }
+        
+        .update-date { text-align: center; color: #a0a0a0; font-size: 0.9em; margin-top: 30px; padding-top: 20px; border-top: 1px solid #0f3460; }
+        
+        .footer { background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); padding: 20px; border-radius: 15px; text-align: center; margin-top: 30px; color: #a0a0a0; border: 1px solid #0f3460; }
+        .footer strong { color: #e94560; }
+        .footer a { color: #3498db; text-decoration: none; }
+        .footer a:hover { color: #e94560; }
+        
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .navbar-menu { position: fixed; top: 70px; left: 0; right: 0; background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%); flex-direction: column; padding: 20px; gap: 10px; transform: translateY(-150%); transition: transform 0.3s; border-bottom: 2px solid #e94560; z-index: 9996; }
+            .navbar-menu.active { transform: translateY(0); }
+            .menu-toggle { display: block; }
+            .logo-img { height: 36px; }
+            body { padding-top: 90px; }
+            .header h1 { font-size: 1.8em; }
+            .content { padding: 25px; }
+            .content h2 { font-size: 1.3em; }
+            .warning-box { padding: 20px; }
+            .warning-box .icon { font-size: 2.5em; }
+            .lang-selector { position: absolute; top: 50%; right: 60px; transform: translateY(-50%); margin-left: 0; }
+            .lang-btn { padding: 6px 10px; font-size: 0.75em; }
+            .lang-btn .lang-text { display: none; }
+            .lang-divider { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="navbar-brand">
+            <img src="../assets/img/LogoINICIO.png" alt="RefStats" class="logo-img">
+        </a>
+        
+        <div class="lang-selector">
+            <a href="../refstats_aviso_legal.html" class="lang-btn" title="Português (Brasil)">
+                <span class="flag">🇧🇷</span>
+                <span class="lang-text">PT</span>
+            </a>
+            <span class="lang-divider">|</span>
+            <a href="#" class="lang-btn active" title="English">
+                <span class="flag">🇺🇸</span>
+                <span class="lang-text">EN</span>
+            </a>
+        </div>
+        
+        <button class="menu-toggle" onclick="document.getElementById('navMenu').classList.toggle('active')" aria-label="Menu">☰</button>
+        
+        <div class="navbar-menu" id="navMenu">
+            <a href="index.html">HOME</a>
+            <a href="Match_TODAY.html">TODAY'S MATCHES</a>
+            <a href="refstats_historico.html">HISTORY</a>
+            <a href="refstats_contato.html">CONTACT</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="header">
+            <h1>⚖️ Legal Disclaimer</h1>
+            <p>Important information about using RefStats</p>
+        </div>
+        
+        <div class="content">
+            <div class="warning-box">
+                <div class="icon">⚠️</div>
+                <h3>ATTENTION: READ CAREFULLY</h3>
+                <p>RefStats is an <strong>information and statistical analysis</strong> website. We are NOT a betting house and do NOT encourage sports betting.</p>
+            </div>
+            
+            <h2>1. Nature of Service</h2>
+            <p>RefStats is a platform that provides <strong>statistical analysis</strong> of soccer referees and teams. Our goal is to:</p>
+            <ul>
+                <li>Provide organized historical data</li>
+                <li>Facilitate statistics visualization</li>
+                <li>Offer comparative analysis tools</li>
+            </ul>
+            
+            <div class="legal-points">
+                <div class="legal-point">
+                    <div class="icon">📊</div>
+                    <h4>Information Only</h4>
+                    <p>We provide statistical data, not betting recommendations</p>
+                </div>
+                <div class="legal-point">
+                    <div class="icon">🚫</div>
+                    <h4>No Guarantees</h4>
+                    <p>Past results do not guarantee future outcomes</p>
+                </div>
+                <div class="legal-point">
+                    <div class="icon">👤</div>
+                    <h4>Your Responsibility</h4>
+                    <p>The use of information is entirely the user's responsibility</p>
+                </div>
+                <div class="legal-point">
+                    <div class="icon">🔞</div>
+                    <h4>Adults Only</h4>
+                    <p>This site is exclusively for adults 18+</p>
+                </div>
+            </div>
+            
+            <h2>2. Betting Disclaimer</h2>
+            <p>RefStats expressly declares that it:</p>
+            <ul>
+                <li>Is <strong>NOT</strong> a betting house or gaming operator</li>
+                <li>Does <strong>NOT</strong> accept, process, or facilitate bets of any kind</li>
+                <li>Has <strong>NO</strong> affiliation with betting houses or operators</li>
+                <li>Does <strong>NOT</strong> receive commissions from betting houses</li>
+                <li>Does <strong>NOT</strong> encourage, promote, or recommend betting</li>
+            </ul>
+            
+            <div class="highlight-box warning">
+                <p><strong>⚠️ IMPORTANT:</strong> If you or someone you know has problems with gambling, seek professional help. In the US, the National Problem Gambling Helpline can be reached at 1-800-522-4700.</p>
+            </div>
+            
+            <h2>3. Sports Betting Risks</h2>
+            <p>If you choose to use information from this site for sports betting (at your own risk), be aware that:</p>
+            <ul>
+                <li>Sports betting involves <strong>significant risk of financial loss</strong></li>
+                <li>You can lose <strong>all the money you bet</strong></li>
+                <li>Betting can cause <strong>addiction</strong> (gambling disorder)</li>
+                <li>Past statistics do <strong>not predict</strong> future results</li>
+                <li>Sporting events are <strong>unpredictable</strong> by nature</li>
+            </ul>
+            
+            <h2>4. Data Accuracy</h2>
+            <p>Although we strive to provide accurate information:</p>
+            <ul>
+                <li>Data is collected from public sources (SofaScore, WhoScored, FlashScore, among others)</li>
+                <li>Errors, omissions, or outdated information may exist</li>
+                <li>We do not guarantee absolute accuracy of any information</li>
+                <li>We recommend verification from multiple sources</li>
+            </ul>
+            
+            <div class="highlight-box">
+                <p><strong>💡 Recommendation:</strong> Always verify information from official sources before making any decision.</p>
+            </div>
+            
+            <h2>5. Limitation of Liability</h2>
+            <p>RefStats and its creators shall <strong>NOT</strong> be liable for:</p>
+            <ul>
+                <li>Financial losses of any kind</li>
+                <li>Direct, indirect, incidental, or consequential damages</li>
+                <li>Decisions made based on site information</li>
+                <li>Misuse of information by third parties</li>
+                <li>Service interruptions or unavailability</li>
+                <li>Errors or inaccuracies in presented data</li>
+            </ul>
+            
+            <h2>6. Responsible Use</h2>
+            <p>If you decide to use information from this site, commit to:</p>
+            <ul>
+                <li>Never bet more than you can afford to lose</li>
+                <li>Set time and money limits</li>
+                <li>Not chase losses by increasing bets</li>
+                <li>Recognize signs of problematic behavior</li>
+                <li>Seek help if needed</li>
+            </ul>
+            
+            <h2>7. Applicable Law</h2>
+            <p>The user is responsible for knowing and complying with the legislation of their jurisdiction. In many countries and states, sports betting is regulated or prohibited. RefStats is not responsible for the use of its information in jurisdictions where betting is illegal.</p>
+            
+            <h2>8. Intellectual Property Rights</h2>
+            <p>All RefStats content, including design, code, texts, and graphics, is protected by copyright. Reproduction without express authorization is prohibited.</p>
+            
+            <h2>9. Acceptance</h2>
+            <p>By using RefStats, you declare that you:</p>
+            <ul>
+                <li>Are 18 years of age or older</li>
+                <li>Have read and understood this Legal Disclaimer</li>
+                <li>Agree to all terms established herein</li>
+                <li>Assume full responsibility for the use of information</li>
+            </ul>
+            
+            <div class="update-date">
+                <p>Last updated: December 2025</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>⚽ RefStats</strong></p>
+            <p>
+                <a href="refstats_termos.html">Terms of Use</a> | 
+                <a href="refstats_privacidade.html">Privacy Policy</a> |
+                <a href="refstats_aviso_legal.html">Legal Disclaimer</a> |
+                <a href="refstats_faq.html">FAQ</a>
+            </p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ This site is for informational purposes only. Bet responsibly.</p>
+        </div>
+    </div>
+</body>
+</html>
