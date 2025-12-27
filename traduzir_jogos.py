@@ -46,7 +46,7 @@ TRADUCOES = {
     '>CONTATO</a>': '>CONTACT</a>',
     
     # === Links de navegação (corrigir caminhos para versão EN) ===
-    'href="index.html"': 'href="index.html"',
+    'href="index.html"': 'href="../index.html"',
     'href="JOGOS_DO_DIA.html"': 'href="Match_TODAY.html"',
     'href="refstats_historico.html"': 'href="../refstats_historico.html"',
     'href="refstats_contato.html"': 'href="../refstats_contato.html"',
@@ -129,10 +129,18 @@ TRADUCOES = {
     'O perfil é calculado comparando a média de amarelos do árbitro com a média da competição (baseline). Rigoroso: +15% acima da média. Permissivo: -15% abaixo da média.':
         'The profile is calculated by comparing the referee\'s yellow average with the competition average (baseline). Strict: +15% above average. Lenient: -15% below average.',
     
-    # === Badges de perfil ===
+    # === Badges de perfil (nos botões de filtro) ===
     '>🔴 Rigoroso</span>': '>🔴 Strict</span>',
     '>🟡 Médio</span>': '>🟡 Average</span>',
     '>🟢 Permissivo</span>': '>🟢 Lenient</span>',
+    
+    # === Badges de perfil (no card do árbitro - texto em linha separada) ===
+    '🟡 Médio\n': '🟡 Average\n',
+    '🟡 Médio\r\n': '🟡 Average\r\n',
+    '🔴 Rigoroso\n': '🔴 Strict\n',
+    '🔴 Rigoroso\r\n': '🔴 Strict\r\n',
+    '🟢 Permissivo\n': '🟢 Lenient\n',
+    '🟢 Permissivo\r\n': '🟢 Lenient\r\n',
     
     # === Descrições de perfil ===
     'Este árbitro está na média da competição em termos de cartões amarelos. Comportamento equilibrado.':
