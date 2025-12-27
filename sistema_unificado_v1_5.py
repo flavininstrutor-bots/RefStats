@@ -4023,8 +4023,8 @@ def main():
     html_historico = html_historico.replace('href="refstats_privacidade.html', 'href="../refstats_privacidade.html')
     html_historico = html_historico.replace('href="refstats_aviso_legal.html', 'href="../refstats_aviso_legal.html')
     html_historico = html_historico.replace('href="refstats_faq.html', 'href="../refstats_faq.html')
-    html_historico = html_historico.replace('src="../assets/img/LogoINICIO.png', 'src="../assets/img/LogoINICIO.png')
-    html_historico = html_historico.replace('url("../assets/img/FundoMuroFundo.png")', 'url("../assets/img/FundoMuroFundo.png")')
+    html_historico = html_historico.replace('src="./assets/img/LogoINICIO.png', 'src="../assets/img/LogoINICIO.png')
+    html_historico = html_historico.replace('url("./assets/img/FundoMuroFundo.png")', 'url("../assets/img/FundoMuroFundo.png")')
     
     # Salva arquivo com data na pasta Historico/
     data_arquivo = data_str.replace('/', '')
