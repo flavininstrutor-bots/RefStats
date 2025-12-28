@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RefStats - Today's Matches 29/12/2025</title>
+    <title>RefStats - Jogos do Dia 17/12/2025</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -22,7 +22,7 @@
         }
         
         /* ========================================
-           NAVBAR (same as Home)
+           NAVBAR (igual ao Home)
            ======================================== */
         .navbar {
             position: fixed;
@@ -1312,7 +1312,7 @@
 <body>
     <!-- Navbar (igual ao Home) -->
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">
+        <a href="../index.html" class="navbar-brand">
             <img src="../assets/img/LogoINICIO.png" alt="RefStats" class="logo-img">
         </a>
         
@@ -1321,10 +1321,10 @@
         </button>
         
         <div class="navbar-menu" id="navMenu">
-            <a href="index.html">HOME</a>
-            <a href="#" class="active">TODAY'S MATCHES</a>
-            <a href="refstats_historico.html">HISTORY</a>
-            <a href="refstats_contato.html">CONTACT</a>
+            <a href="../index.html">INÍCIO</a>
+            <a href="#" class="active">JOGOS DO DIA</a>
+            <a href="../refstats_historico.html">HISTÓRICO</a>
+            <a href="../refstats_contato.html">CONTATO</a>
         </div>
     </nav>
     
@@ -1332,164 +1332,164 @@
     <div class="search-bar" id="searchBar">
         <div class="search-container">
             <span class="search-icon">🔍</span>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search on page..." autocomplete="off">
+            <input type="text" class="search-input" id="searchInput" placeholder="Pesquisar na página..." autocomplete="off">
             <span class="search-counter" id="searchCounter"></span>
         </div>
         <div class="search-nav">
-            <button id="searchPrev" title="Previous (↑)" disabled>▲</button>
-            <button id="searchNext" title="Next (↓)" disabled>▼</button>
+            <button id="searchPrev" title="Anterior (↑)" disabled>▲</button>
+            <button id="searchNext" title="Próximo (↓)" disabled>▼</button>
         </div>
         <div class="filter-container">
-            <span class="filter-label">Profile:</span>
-            <button class="filter-btn rigoroso" data-filter="Rigoroso" title="Show strict referees">🔴 Strict</button>
-            <button class="filter-btn medio" data-filter="Médio" title="Show average referees">🟡 Average</button>
-            <button class="filter-btn permissivo" data-filter="Permissivo" title="Show lenient referees">🟢 Lenient</button>
-            <button class="filter-clear hidden" id="filterClear" title="Clear filter">✕</button>
+            <span class="filter-label">Perfil:</span>
+            <button class="filter-btn rigoroso" data-filter="Rigoroso" title="Mostrar árbitros rigorosos">🔴 Rigoroso</button>
+            <button class="filter-btn medio" data-filter="Médio" title="Mostrar árbitros médios">🟡 Médio</button>
+            <button class="filter-btn permissivo" data-filter="Permissivo" title="Mostrar árbitros permissivos">🟢 Permissivo</button>
+            <button class="filter-clear hidden" id="filterClear" title="Limpar filtro">✕</button>
             <span class="filter-counter" id="filterCounter"></span>
         </div>
-        <button class="search-close" id="searchClose" title="Close (Esc)">✕</button>
+        <button class="search-close" id="searchClose" title="Fechar (Esc)">✕</button>
     </div>
     
     <!-- Botão flutuante para abrir pesquisa -->
-    <button class="search-toggle" id="searchToggle" title="Search (Ctrl+F)">🔍</button>
+    <button class="search-toggle" id="searchToggle" title="Pesquisar (Ctrl+F)">🔍</button>
     
     <!-- Dica de atalho -->
     <div class="search-hint" id="searchHint">
-        Press <kbd>Ctrl</kbd> + <kbd>F</kbd> to search
+        Pressione <kbd>Ctrl</kbd> + <kbd>F</kbd> para pesquisar
     </div>
     
     <div class="container">
         <div class="header">
-            <h1>⚽ Today's Matches</h1>
-            <p>📅 29/12/2025 • 1 match(es) analyzed</p>
+            <h1>⚽ Jogos do Dia</h1>
+            <p>📅 17/12/2025 • 1 partida(s) analisada(s)</p>
         </div>
 
         <div class="jogo-card" data-perfil="Médio">
             <div class="jogo-header">
-                <div class="jogo-titulo">Roma (5º) vs Genoa (17º)</div>
+                <div class="jogo-titulo">Corinthians vs Vasco da Gama</div>
                 <div class="jogo-data">
-                    <div class="horario">16:45</div>
-                    <div class="data">29/12/2025</div>
+                    <div class="horario">21:30</div>
+                    <div class="data">17/12/2025</div>
                 </div>
             </div>
             
             <div class="jogo-info-bar">
                 <span>
-                    <span class="info-label">🏆 Competition:</span>
-                    <span class="info-value">Serie A</span>
+                    <span class="info-label">🏆 Competição:</span>
+                    <span class="info-value">Copa Betano do Brasil</span>
                 </span>
                 <span>
-                    <span class="info-label">🏟️ Stadium:</span>
-                    <span class="info-value">Stadio Olimpico</span>
+                    <span class="info-label">🏟️ Estádio:</span>
+                    <span class="info-value">Neo Química Arena</span>
                 </span>
                 <span>
-                    <span class="info-label">📍 Location:</span>
-                    <span class="info-value">Rome, Italy</span>
+                    <span class="info-label">📍 Local:</span>
+                    <span class="info-value">São Paulo, Brazil</span>
                 </span>
-                <span><span class="info-label">📋 Stage:</span><span class="info-value">17ª Round</span></span>
+                <span><span class="info-label">📋 Fase:</span><span class="info-value">FINAL</span></span>
             </div>
             
             <div class="jogo-content">
 
                 <div class="secao">
-                    <div class="secao-titulo">⚖️ Referee</div>
+                    <div class="secao-titulo">⚖️ Árbitro</div>
 
                     <div class="arbitro-card">
                         <div class="arbitro-nome">
-                            Marco Di Bello
-                            <span class="badge badge-liga">League</span>
+                            Rafael Rodrigo Klein
+                            <span class="badge badge-copa">Copa</span>
                         </div>
-                        <div class="arbitro-pais">🌍 Italy</div>
+                        <div class="arbitro-pais">🌍 Brazil</div>
 
                         <div class="metricas-grid">
 
                             <div class="metrica-card">
-                                <div class="valor">3.6</div>
+                                <div class="valor">5.7</div>
                                 <div class="label">
-                                    📊 Yellow Avg (10g)
+                                    📊 Média Amarelos (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards per game in the last 10 games refereed (sum of both teams).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos por jogo nos últimos 10 jogos apitados pelo árbitro (soma dos dois times).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
-                                <div class="valor">3.4</div>
+                                <div class="valor">5.6</div>
                                 <div class="label">
-                                    📊 Yellow Avg (5g)
+                                    📊 Média Amarelos (5j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards per game in the last 5 games. Smaller but more recent sample.</span>
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="metrica-card">
-                                <div class="valor">0.9</div>
-                                <div class="label">
-                                    📊 Yellow Avg 1H
-                                    <span class="tooltip">
-                                        <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards given only in 1st half (first 45 minutes).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos por jogo nos últimos 5 jogos apitados. Amostra menor, mas mais recente.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">2.7</div>
                                 <div class="label">
-                                    📊 Yellow Avg 2H
+                                    📊 Média Amarelos 1T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards given only in 2nd half (after 45 minutes).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos aplicados apenas no 1º tempo (primeiros 45 minutos).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
-                                <div class="valor">28.9</div>
+                                <div class="valor">3.0</div>
                                 <div class="label">
-                                    📊 Fouls Avg (10g)
+                                    📊 Média Amarelos 2T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Total average fouls per game in the last 10 games (sum of both teams).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos aplicados apenas no 2º tempo (após os 45 minutos).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
-                                <div class="valor">26.4</div>
+                                <div class="valor">26.0</div>
                                 <div class="label">
-                                    📊 Fouls Avg (5g)
+                                    📊 Média Faltas (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls in the last 5 games. More recent sample.</span>
+                                        <span class="tooltip-text">Média total de faltas por jogo nos últimos 10 jogos (soma dos dois times).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
-                                <div class="valor">13.2</div>
+                                <div class="valor">20.4</div>
                                 <div class="label">
-                                    📊 Fouls Avg 1H
+                                    📊 Média Faltas (5j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls committed in 1st half.</span>
+                                        <span class="tooltip-text">Média de faltas nos últimos 5 jogos. Amostra mais recente.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
-                                <div class="valor">13.2</div>
+                                <div class="valor">13.71</div>
                                 <div class="label">
-                                    📊 Fouls Avg 2H
+                                    📊 Média Faltas 1T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls committed in 2nd half.</span>
+                                        <span class="tooltip-text">Média de faltas cometidas no 1º tempo.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
-                                <div class="valor">0.1</div>
+                                <div class="valor">11.0</div>
                                 <div class="label">
-                                    📊 Red Avg
+                                    📊 Média Faltas 2T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average red cards per game in the last 10 games.</span>
+                                        <span class="tooltip-text">Média de faltas cometidas no 2º tempo.</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="metrica-card">
+                                <div class="valor">0.8</div>
+                                <div class="label">
+                                    📊 Média Vermelhos
+                                    <span class="tooltip">
+                                        <span class="tooltip-icon">i</span>
+                                        <span class="tooltip-text">Média de cartões vermelhos por jogo nos últimos 10 jogos.</span>
                                     </span>
                                 </div>
                             </div>
@@ -1497,53 +1497,53 @@
 
                         <div class="perfil-section">
                             <div class="perfil-header">
-                                <span class="perfil-titulo">📋 Referee Profile</span>
+                                <span class="perfil-titulo">📋 Perfil do Árbitro</span>
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">The profile is calculated by comparing the referee's yellow average with the competition average (baseline). Strict: +15% above average. Lenient: -15% below average.</span>
+                                    <span class="tooltip-text">O perfil é calculado comparando a média de amarelos do árbitro com a média da competição (baseline). Rigoroso: +15% acima da média. Permissivo: -15% abaixo da média.</span>
                                 </span>
                             </div>
                             <div class="perfil-badges">
                                 <span class="perfil-badge perfil-medio">
-                                    🟡 Average
+                                    🟡 Médio
                                 </span>
 
                             </div>
-                            <div class="perfil-descricao">This referee is at the competition average in terms of yellow cards. Balanced behavior.</div>
+                            <div class="perfil-descricao">Este árbitro está na média da competição em termos de cartões amarelos. Comportamento equilibrado.</div>
                         </div>
 
                         <div class="baseline-section">
                             <div class="baseline-titulo">
-                                📈 Competition Baseline (Bundesliga)
+                                📈 Baseline da Competição (Série D Brasil)
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">Historical average values of the competition. Used as reference to classify referee profile.</span>
+                                    <span class="tooltip-text">Valores médios históricos da competição. Usados como referência para classificar o perfil do árbitro.</span>
                                 </span>
                             </div>
                             <div class="baseline-valores">
                                 <div class="baseline-item">
-                                    <span>Yellow Avg:</span>
-                                    <span class="valor">4.2</span>
+                                    <span>Média Amarelos:</span>
+                                    <span class="valor">6.2</span>
                                 </div>
                                 <div class="baseline-item">
-                                    <span>Fouls Avg:</span>
-                                    <span class="valor">20.4</span>
+                                    <span>Média Faltas:</span>
+                                    <span class="valor">32.0</span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="baseline-section">
                             <div class="baseline-titulo">
-                                📉 Data Quality
+                                📉 Qualidade dos Dados
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">Percentage of games from the last 10 that have fouls data per half (1H/2H). The higher, the more reliable the half averages.</span>
+                                    <span class="tooltip-text">Percentual de jogos dos últimos 10 que possuem dados de faltas por tempo (1T/2T). Quanto maior, mais confiáveis as médias por tempo.</span>
                                 </span>
                             </div>
                             <div class="baseline-valores">
                                 <div class="baseline-item">
-                                    <span>Fouls Availability 1H/2H:</span>
-                                    <span class="valor">50.0%</span>
+                                    <span>Disponibilidade Faltas 1T/2T:</span>
+                                    <span class="valor">70.0%</span>
                                 </div>
                             </div>
                         </div>
@@ -1551,182 +1551,214 @@
                         <div class="tendencias">
                             <div class="tendencia-item">
                                 <span>
-                                    % games with ≥5 yellows (10g)
+                                    % jogos com ≥5 amarelos (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Percentage of games where total yellows were 5 or more. Useful for Over 4.5 cards market.</span>
+                                        <span class="tooltip-text">Percentual de jogos onde o total de amarelos foi 5 ou mais. Útil para mercado de Over 4.5 cartões.</span>
                                     </span>
                                 </span>
-                                <span style="color: #e94560; font-weight: bold;">20.0%</span>
+                                <span style="color: #e94560; font-weight: bold;">80.0%</span>
                             </div>
                             <div class="tendencia-item">
                                 <span>
-                                    % games with ≥3 yellows in 1H (10g)
+                                    % jogos com ≥3 amarelos no 1T (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Percentage of games where 3+ yellows were given in 1st half. Useful for 1H cards market.</span>
+                                        <span class="tooltip-text">Percentual de jogos onde foram aplicados 3+ amarelos no 1º tempo. Útil para mercado de cartões no 1T.</span>
                                     </span>
                                 </span>
-                                <span style="color: #e94560; font-weight: bold;">10.0%</span>
+                                <span style="color: #e94560; font-weight: bold;">40.0%</span>
                             </div>
                         </div>
 
                     </div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📰 Recent news involving Marco Di Bello</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📰 Notícias recentes envolvendo Rafael Rodrigo Klein</div>
 
-                    <div class="sem-noticias">ℹ️ Nenhuma notícia recente encontrada</div>
+                    <div class="noticias-lista">
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📊 History — Serie A</div>
+                        <div class="noticia-card">
+                            <div class="noticia-titulo">Números de Rafael Rodrigo Klein, árbitro da final da Copa do Brasil entre Corinthians e Vasco - MSN</div>
+                            <div class="noticia-meta">
+                                <span>📰 MSN</span>
+                                <span>📅 24/12/2025</span>
+                            </div>
+                            <div class='noticia-resumo'>Números de Rafael Rodrigo Klein, árbitro da final da Copa do Brasil entre Corinthians e Vasco&nbsp;&nbsp;MSN</div>
+                            <a href="https://news.google.com/rss/articles/CBMihANBVV95cUxPU2xoVkRJaGwyTU00MGMxTnlZcUZKdDlZdkZvWFVUNFJTdzFVZFdObFFkbW1WWkVlbmRlOVBocTBkek1idzlLX25VUFprNTlQMGVYcXlFYVVDTm1qd3ZGeHZaTWpuSUZqbmpTaGZYT2FWdVZDWlBIYmNzSWVhczhIelZoVWdSOFU1b3lKZlI2Mm9Ucm5kbWZiZEtNU01PcnhRdTFiVURQeFVIWU4tbnM4S1B1UWMzRnBWbFh2Yk9oOGk5eGNWcmJ3SHByUDJlWkNFckFqRTNTRldHSW5jb3lBRnJIcC0td29ZaU5zY09ONzRTZ051c0dqR0Mwb2dGelBFdmdDTjdadk1ncXV5WEZ6QXlnU2RBUUhEMTZuclAxcEdVNnhQN3hCZ3pSTGpUSVdHMWdlNEpjZUJiRm1yOXNoTW5MX3UtcnlfOEZGS1IzbFBMUVlDVHd4UWJRQzE1RlE5YktjdWlSWkNPLXR4TVd3YTFrQ3VFaE8tM0NPRVY4bEFDVjU3?oc=5" target="_blank" class="noticia-link">Ler mais →</a>
+                        </div>
+
+                        <div class="noticia-card">
+                            <div class="noticia-titulo">Rafael Klein apita a primeira final entre Corinthians e Vasco; veja a escala - Terra</div>
+                            <div class="noticia-meta">
+                                <span>📰 Terra</span>
+                                <span>📅 15/12/2025</span>
+                            </div>
+                            <div class='noticia-resumo'>Rafael Klein apita a primeira final entre Corinthians e Vasco; veja a escala&nbsp;&nbsp;Terra</div>
+                            <a href="https://news.google.com/rss/articles/CBMi-wFBVV95cUxOOTB6S0RrRW5iNmo5VVhCeDF3VWp0RTh6ZDNxQzVsdlZfZFNoQlZ3T1NWdXVROW43by15dDVqeWJmNkdyUFFGazhfRFFCRnR5eXZYZi13X3ZhRUtHWURoell6eFJ1SS1IM3dnRHdQYnFDQW5mZXVDc3Y4Q0VIUkkxM2pQbnlnZmlTaldubXRIczBIa1NCZnI1Y1hQalNaNzBPRFRfR29Ccl91ajJkbGM5ZEhmN2xSYjFJR2JNS3R2UXJUck5YNTJ1bkRFZWZQS2JOMk1IYlBPdW1RblZwZkc4bDlFRjdrVDc0WmpTYWZiUkhzSUQ3bENZVHRvWQ?oc=5" target="_blank" class="noticia-link">Ler mais →</a>
+                        </div>
+
+                    </div>
+
+                    <div class="secao-titulo" style="margin-top: 25px;">📊 Histórico — Copa Betano do Brasil</div>
                     <div class="tabela-scroll">
                     <table class="tabela">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Match</th>
-                                <th>Score</th>
-                                <th>Fouls 1H</th>
-                                <th>Fouls 2H</th>
-                                <th>Total Fouls</th>
-                                <th>Yellows</th>
-                                <th>Reds</th>
+                                <th>Data</th>
+                                <th>Partida</th>
+                                <th>Placar</th>
+                                <th>Faltas 1T</th>
+                                <th>Faltas 2T</th>
+                                <th>Faltas Total</th>
+                                <th>Amarelos</th>
+                                <th>Vermelhos</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             <tr>
-                                <td>06/12/2025</td>
-                                <td>Inter vs Como</td>
-                                <td style="font-weight: bold;">4 - 0</td>
-                                <td>15</td>
-                                <td>14</td>
-                                <td>29</td>
-                                <td><span class="stat-amarelo">3</span></td>
-                                <td><span class="stat-vermelho">0</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>22/11/2025</td>
-                                <td>Napoli vs Atalanta</td>
-                                <td style="font-weight: bold;">3 - 1</td>
-                                <td>9</td>
-                                <td>14</td>
-                                <td>23</td>
-                                <td><span class="stat-amarelo">3</span></td>
-                                <td><span class="stat-vermelho">0</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>08/11/2025</td>
-                                <td>Parma vs Milan</td>
-                                <td style="font-weight: bold;">2 - 2</td>
-                                <td>12</td>
-                                <td>12</td>
-                                <td>24</td>
-                                <td><span class="stat-amarelo">2</span></td>
-                                <td><span class="stat-vermelho">0</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>29/10/2025</td>
-                                <td>Juventus vs Udinese</td>
-                                <td style="font-weight: bold;">3 - 1</td>
-                                <td>15</td>
-                                <td>10</td>
-                                <td>25</td>
-                                <td><span class="stat-amarelo">5</span></td>
-                                <td><span class="stat-vermelho">0</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>27/09/2025</td>
-                                <td>Como vs Cremonese</td>
-                                <td style="font-weight: bold;">1 - 1</td>
-                                <td>—</td>
-                                <td>—</td>
-                                <td>33</td>
-                                <td><span class="stat-amarelo">7</span></td>
-                                <td><span class="stat-vermelho">1</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>25/05/2025</td>
-                                <td>Torino vs Roma</td>
-                                <td style="font-weight: bold;">0 - 2</td>
-                                <td>—</td>
-                                <td>—</td>
-                                <td>26</td>
-                                <td><span class="stat-amarelo">2</span></td>
-                                <td><span class="stat-vermelho">0</span></td>
+                                <td colspan="8" style="text-align: center; color: #a0a0a0;">Nenhum jogo nesta competição</td>
                             </tr>
 
                         </tbody>
                     </table>
                     </div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📊 History — Other Competitions</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📊 Histórico — Outras Competições</div>
                     <div class="tabela-scroll">
                     <table class="tabela">
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                <th>Data</th>
                                 <th>Competição</th>
-                                <th>Match</th>
-                                <th>Score</th>
-                                <th>Fouls 1H</th>
-                                <th>Fouls 2H</th>
-                                <th>Total Fouls</th>
-                                <th>Yellows</th>
-                                <th>Reds</th>
+                                <th>Partida</th>
+                                <th>Placar</th>
+                                <th>Faltas 1T</th>
+                                <th>Faltas 2T</th>
+                                <th>Faltas Total</th>
+                                <th>Amarelos</th>
+                                <th>Vermelhos</th>
                             </tr>
                         </thead>
                         <tbody>
 
                             <tr>
-                                <td>17/10/2025</td>
-                                <td>Serie B</td>
-                                <td>Virtus Entella vs Sampdoria</td>
-                                <td style="font-weight: bold;">3 - 1</td>
+                                <td>03/12/2025</td>
+                                <td>Brasileirão Betano</td>
+                                <td>Atlético Mineiro vs Palmeiras</td>
+                                <td style="font-weight: bold;">0 - 3</td>
+                                <td>20</td>
+                                <td>11</td>
+                                <td>31</td>
+                                <td><span class="stat-amarelo">3</span></td>
+                                <td><span class="stat-vermelho">1</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>25/11/2025</td>
+                                <td>Brasileirão Betano</td>
+                                <td>Atlético Mineiro vs Flamengo</td>
+                                <td style="font-weight: bold;">1 - 1</td>
+                                <td>9</td>
+                                <td>9</td>
+                                <td>18</td>
+                                <td><span class="stat-amarelo">5</span></td>
+                                <td><span class="stat-vermelho">1</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>20/11/2025</td>
+                                <td>Brasileirão Betano</td>
+                                <td>Bahia vs Fortaleza</td>
+                                <td style="font-weight: bold;">2 - 3</td>
+                                <td>13</td>
+                                <td>7</td>
+                                <td>20</td>
+                                <td><span class="stat-amarelo">6</span></td>
+                                <td><span class="stat-vermelho">0</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>15/11/2025</td>
+                                <td>Brasileirão Betano</td>
+                                <td>Sport Recife vs Flamengo</td>
+                                <td style="font-weight: bold;">1 - 5</td>
+                                <td>7</td>
+                                <td>3</td>
+                                <td>10</td>
+                                <td><span class="stat-amarelo">8</span></td>
+                                <td><span class="stat-vermelho">2</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>08/11/2025</td>
+                                <td>Brasileirão Série B</td>
+                                <td>Grêmio Novorizontino vs Remo</td>
+                                <td style="font-weight: bold;">1 - 1</td>
+                                <td>14</td>
+                                <td>9</td>
+                                <td>23</td>
+                                <td><span class="stat-amarelo">6</span></td>
+                                <td><span class="stat-vermelho">1</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>26/10/2025</td>
+                                <td>Brasileirão Betano</td>
+                                <td>Palmeiras vs Cruzeiro</td>
+                                <td style="font-weight: bold;">0 - 0</td>
+                                <td>18</td>
+                                <td>22</td>
+                                <td>40</td>
+                                <td><span class="stat-amarelo">8</span></td>
+                                <td><span class="stat-vermelho">1</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>20/10/2025</td>
+                                <td>Brasileirão Betano</td>
+                                <td>Santos vs Vitória</td>
+                                <td style="font-weight: bold;">0 - 1</td>
                                 <td>15</td>
                                 <td>16</td>
                                 <td>31</td>
-                                <td><span class="stat-amarelo">4</span></td>
+                                <td><span class="stat-amarelo">6</span></td>
                                 <td><span class="stat-vermelho">0</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>09/10/2025</td>
+                                <td>Brasileirão Série B</td>
+                                <td>Coritiba vs Atlético Goianiense</td>
+                                <td style="font-weight: bold;">2 - 1</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>41</td>
+                                <td><span class="stat-amarelo">3</span></td>
+                                <td><span class="stat-vermelho">1</span></td>
+                            </tr>
+
+                            <tr>
+                                <td>27/09/2025</td>
+                                <td>Brasileirão Betano</td>
+                                <td>Atlético Mineiro vs Mirassol</td>
+                                <td style="font-weight: bold;">1 - 0</td>
+                                <td>—</td>
+                                <td>—</td>
+                                <td>19</td>
+                                <td><span class="stat-amarelo">7</span></td>
+                                <td><span class="stat-vermelho">1</span></td>
                             </tr>
 
                             <tr>
                                 <td>21/09/2025</td>
-                                <td>Serie B</td>
-                                <td>Pescara vs Empoli</td>
-                                <td style="font-weight: bold;">4 - 0</td>
+                                <td>Brasileirão Betano</td>
+                                <td>Flamengo vs Vasco da Gama</td>
+                                <td style="font-weight: bold;">1 - 1</td>
                                 <td>—</td>
                                 <td>—</td>
-                                <td>34</td>
-                                <td><span class="stat-amarelo">3</span></td>
-                                <td><span class="stat-vermelho">0</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>30/08/2025</td>
-                                <td>Serie B</td>
-                                <td>Palermo vs Frosinone</td>
-                                <td style="font-weight: bold;">0 - 0</td>
-                                <td>—</td>
-                                <td>—</td>
-                                <td>31</td>
-                                <td><span class="stat-amarelo">4</span></td>
-                                <td><span class="stat-vermelho">0</span></td>
-                            </tr>
-
-                            <tr>
-                                <td>17/05/2025</td>
-                                <td>Serie B, Promotion Playoffs</td>
-                                <td>Juve Stabia vs Palermo</td>
-                                <td style="font-weight: bold;">1 - 0</td>
-                                <td>—</td>
-                                <td>—</td>
-                                <td>33</td>
-                                <td><span class="stat-amarelo">3</span></td>
+                                <td>27</td>
+                                <td><span class="stat-amarelo">5</span></td>
                                 <td><span class="stat-vermelho">0</span></td>
                             </tr>
 
@@ -1737,204 +1769,204 @@
                 </div>
 
                 <div class="secao">
-                    <div class="secao-titulo">⚽ Teams</div>
+                    <div class="secao-titulo">⚽ Times</div>
                     <div class="times-grid">
 
                         <div class="time-card">
                             <div class="time-header">
-                                <div class="time-nome">🏠 Roma</div>
-                                <div class='time-posicao'>5º</div>
+                                <div class="time-nome">🏠 Corinthians</div>
+                                
                             </div>
                             <div class="time-content">
 
                                 <div class="proximos-jogos">
-                                    <h5>📅 Next 3 Matches</h5>
+                                    <h5>📅 Próximos 3 Jogos</h5>
 
                                     <div class="proximo-jogo">
                                         <span class="local">✈️</span>
                                         <span class="adversario-info">
-                                            Atalanta
-                                            <span class='adversario-pos'>9º</span>
+                                            Vasco da Gama
+                                            
                                         </span>
-                                        <span style="color: #a0a0a0;">03/01 - 16:45</span>
-                                        <span class='campeonato'>Serie A</span>
-                                        <span style='color: #a0a0a0;'>(R18)</span>
-                                    </div>
-
-                                    <div class="proximo-jogo">
-                                        <span class="local">✈️</span>
-                                        <span class="adversario-info">
-                                            Lecce
-                                            <span class='adversario-pos'>16º</span>
-                                        </span>
-                                        <span style="color: #a0a0a0;">06/01 - 14:00</span>
-                                        <span class='campeonato'>Serie A</span>
-                                        <span style='color: #a0a0a0;'>(R19)</span>
+                                        <span style="color: #a0a0a0;">21/12 - 18:00</span>
+                                        <span class='campeonato'>Copa Betano do Brasil</span>
+                                        <span style='color: #a0a0a0;'>(Final)</span>
                                     </div>
 
                                     <div class="proximo-jogo">
                                         <span class="local">🏠</span>
                                         <span class="adversario-info">
-                                            Sassuolo
-                                            <span class='adversario-pos'>10º</span>
+                                            Ponte Preta
+                                            <span class='adversario-pos'>1º</span>
                                         </span>
-                                        <span style="color: #a0a0a0;">10/01 - 14:00</span>
-                                        <span class='campeonato'>Serie A</span>
-                                        <span style='color: #a0a0a0;'>(R20)</span>
+                                        <span style="color: #a0a0a0;">11/01 - 16:00</span>
+                                        <span class='campeonato'>Paulista Série A1</span>
+                                        <span style='color: #a0a0a0;'>(R1)</span>
+                                    </div>
+
+                                    <div class="proximo-jogo">
+                                        <span class="local">✈️</span>
+                                        <span class="adversario-info">
+                                            Red Bull Bragantino
+                                            <span class='adversario-pos'>11º</span>
+                                        </span>
+                                        <span style="color: #a0a0a0;">15/01 - 19:30</span>
+                                        <span class='campeonato'>Paulista Série A1</span>
+                                        <span style='color: #a0a0a0;'>(R2)</span>
                                     </div>
 
                                 </div>
 
                                 <div class="medias-time">
                                     <div class="media-item">
-                                        <div class="valor">13.6</div>
+                                        <div class="valor">15.8</div>
                                         <div class="label">
-                                            Fouls For
+                                            Faltas Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls COMMITTED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de faltas COMETIDAS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
-                                        <div class="valor">12.6</div>
+                                        <div class="valor">14.0</div>
                                         <div class="label">
-                                            Fouls Against
+                                            Faltas Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls SUFFERED by the team in the last 5 games (committed by opponent).</span>
+                                                <span class="tooltip-text">Média de faltas SOFRIDAS pelo time nos últimos 5 jogos (cometidas pelo adversário).</span>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="media-item">
+                                        <div class="valor">2.8</div>
+                                        <div class="label">
+                                            Amarelos Pró
+                                            <span class="tooltip">
+                                                <span class="tooltip-icon">i</span>
+                                                <span class="tooltip-text">Média de cartões amarelos RECEBIDOS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">3.2</div>
                                         <div class="label">
-                                            Yellows For
+                                            Amarelos Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards RECEIVED by the team in the last 5 games.</span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="media-item">
-                                        <div class="valor">2.0</div>
-                                        <div class="label">
-                                            Yellows Against
-                                            <span class="tooltip">
-                                                <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards of the OPPONENT in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos do ADVERSÁRIO nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="tabela-titulo">
-                                    📊 Fouls - Last 5 Games
+                                    📊 Faltas - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Fouls committed by the team.<br><strong>Against:</strong> Fouls suffered (committed by opponent).</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Faltas cometidas pelo time.<br><strong>Contra:</strong> Faltas sofridas (cometidas pelo adversário).</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         <tr>
-                                            <td>Juventus</td>
-                                            <td>✈️</td>
-                                            <td>13</td>
-                                            <td>14</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Como</td>
+                                            <td>Cruzeiro</td>
                                             <td>🏠</td>
-                                            <td>16</td>
-                                            <td>8</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Celtic</td>
-                                            <td>✈️</td>
-                                            <td>9</td>
+                                            <td>13</td>
                                             <td>10</td>
                                         </tr>
 
                                         <tr>
-                                            <td>Cagliari</td>
+                                            <td>Cruzeiro</td>
                                             <td>✈️</td>
-                                            <td>16</td>
-                                            <td>18</td>
+                                            <td>17</td>
+                                            <td>10</td>
                                         </tr>
 
                                         <tr>
-                                            <td>Napoli</td>
+                                            <td>Juventude</td>
                                             <td>🏠</td>
-                                            <td>14</td>
+                                            <td>18</td>
+                                            <td>17</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Fortaleza</td>
+                                            <td>✈️</td>
+                                            <td>18</td>
+                                            <td>15</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Botafogo</td>
+                                            <td>🏠</td>
                                             <td>13</td>
+                                            <td>18</td>
                                         </tr>
 
                                     </tbody>
                                 </table>
 
                                 <div class="tabela-titulo">
-                                    📊 Yellows - Last 5 Games
+                                    📊 Amarelos - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Cards received by the team.<br><strong>Against:</strong> Cards received by opponent.</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Cartões recebidos pelo time.<br><strong>Contra:</strong> Cartões recebidos pelo adversário.</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         <tr>
-                                            <td>Juventus</td>
-                                            <td>✈️</td>
-                                            <td><span class="stat-amarelo">3</span></td>
-                                            <td><span class="stat-amarelo">2</span></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Como</td>
-                                            <td>🏠</td>
-                                            <td><span class="stat-amarelo">3</span></td>
-                                            <td><span class="stat-amarelo">3</span></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Celtic</td>
-                                            <td>✈️</td>
-                                            <td><span class="stat-amarelo">5</span></td>
-                                            <td><span class="stat-amarelo">0</span></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Cagliari</td>
-                                            <td>✈️</td>
-                                            <td><span class="stat-amarelo">1</span></td>
-                                            <td><span class="stat-amarelo">2</span></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Napoli</td>
+                                            <td>Cruzeiro</td>
                                             <td>🏠</td>
                                             <td><span class="stat-amarelo">4</span></td>
+                                            <td><span class="stat-amarelo">2</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Cruzeiro</td>
+                                            <td>✈️</td>
+                                            <td><span class="stat-amarelo">6</span></td>
                                             <td><span class="stat-amarelo">3</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Juventude</td>
+                                            <td>🏠</td>
+                                            <td><span class="stat-amarelo">0</span></td>
+                                            <td><span class="stat-amarelo">1</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Fortaleza</td>
+                                            <td>✈️</td>
+                                            <td><span class="stat-amarelo">1</span></td>
+                                            <td><span class="stat-amarelo">5</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Botafogo</td>
+                                            <td>🏠</td>
+                                            <td><span class="stat-amarelo">3</span></td>
+                                            <td><span class="stat-amarelo">5</span></td>
                                         </tr>
 
                                     </tbody>
@@ -1945,199 +1977,199 @@
 
                         <div class="time-card">
                             <div class="time-header">
-                                <div class="time-nome">✈️ Genoa</div>
-                                <div class='time-posicao'>17º</div>
+                                <div class="time-nome">✈️ Vasco da Gama</div>
+                                
                             </div>
                             <div class="time-content">
 
                                 <div class="proximos-jogos">
-                                    <h5>📅 Next 3 Matches</h5>
+                                    <h5>📅 Próximos 3 Jogos</h5>
 
                                     <div class="proximo-jogo">
                                         <span class="local">🏠</span>
                                         <span class="adversario-info">
-                                            Pisa
-                                            <span class='adversario-pos'>19º</span>
+                                            Corinthians
+                                            
                                         </span>
-                                        <span style="color: #a0a0a0;">03/01 - 11:00</span>
-                                        <span class='campeonato'>Serie A</span>
-                                        <span style='color: #a0a0a0;'>(R18)</span>
-                                    </div>
-
-                                    <div class="proximo-jogo">
-                                        <span class="local">✈️</span>
-                                        <span class="adversario-info">
-                                            Milan
-                                            <span class='adversario-pos'>1º</span>
-                                        </span>
-                                        <span style="color: #a0a0a0;">08/01 - 16:45</span>
-                                        <span class='campeonato'>Serie A</span>
-                                        <span style='color: #a0a0a0;'>(R19)</span>
+                                        <span style="color: #a0a0a0;">21/12 - 18:00</span>
+                                        <span class='campeonato'>Copa Betano do Brasil</span>
+                                        <span style='color: #a0a0a0;'>(Final)</span>
                                     </div>
 
                                     <div class="proximo-jogo">
                                         <span class="local">🏠</span>
                                         <span class="adversario-info">
-                                            Cagliari
-                                            <span class='adversario-pos'>14º</span>
+                                            Maricá FC
+                                            <span class='adversario-pos'>5º</span>
                                         </span>
-                                        <span style="color: #a0a0a0;">12/01 - 14:30</span>
-                                        <span class='campeonato'>Serie A</span>
-                                        <span style='color: #a0a0a0;'>(R20)</span>
+                                        <span style="color: #a0a0a0;">15/01 - 21:30</span>
+                                        <span class='campeonato'>Carioca</span>
+                                        <span style='color: #a0a0a0;'>(R1)</span>
+                                    </div>
+
+                                    <div class="proximo-jogo">
+                                        <span class="local">🏠</span>
+                                        <span class="adversario-info">
+                                            Nova Iguaçu
+                                            <span class='adversario-pos'>6º</span>
+                                        </span>
+                                        <span style="color: #a0a0a0;">18/01 - 15:00</span>
+                                        <span class='campeonato'>Carioca</span>
+                                        <span style='color: #a0a0a0;'>(R2)</span>
                                     </div>
 
                                 </div>
 
                                 <div class="medias-time">
                                     <div class="media-item">
-                                        <div class="valor">10.2</div>
+                                        <div class="valor">10.6</div>
                                         <div class="label">
-                                            Fouls For
+                                            Faltas Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls COMMITTED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de faltas COMETIDAS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
-                                        <div class="valor">17.6</div>
+                                        <div class="valor">12.2</div>
                                         <div class="label">
-                                            Fouls Against
+                                            Faltas Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls SUFFERED by the team in the last 5 games (committed by opponent).</span>
+                                                <span class="tooltip-text">Média de faltas SOFRIDAS pelo time nos últimos 5 jogos (cometidas pelo adversário).</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
-                                        <div class="valor">0.8</div>
+                                        <div class="valor">1.4</div>
                                         <div class="label">
-                                            Yellows For
+                                            Amarelos Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards RECEIVED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos RECEBIDOS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
-                                        <div class="valor">1.8</div>
+                                        <div class="valor">2.0</div>
                                         <div class="label">
-                                            Yellows Against
+                                            Amarelos Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards of the OPPONENT in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos do ADVERSÁRIO nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="tabela-titulo">
-                                    📊 Fouls - Last 5 Games
+                                    📊 Faltas - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Fouls committed by the team.<br><strong>Against:</strong> Fouls suffered (committed by opponent).</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Faltas cometidas pelo time.<br><strong>Contra:</strong> Faltas sofridas (cometidas pelo adversário).</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         <tr>
-                                            <td>Atalanta</td>
-                                            <td>🏠</td>
-                                            <td>11</td>
-                                            <td>19</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Inter</td>
-                                            <td>🏠</td>
-                                            <td>10</td>
-                                            <td>20</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Udinese</td>
+                                            <td>Fluminense</td>
                                             <td>✈️</td>
                                             <td>12</td>
-                                            <td>16</td>
+                                            <td>17</td>
                                         </tr>
 
                                         <tr>
-                                            <td>Atalanta</td>
-                                            <td>✈️</td>
-                                            <td>9</td>
-                                            <td>14</td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Hellas Verona</td>
+                                            <td>Fluminense</td>
                                             <td>🏠</td>
-                                            <td>9</td>
-                                            <td>19</td>
+                                            <td>3</td>
+                                            <td>7</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Atlético Mineiro</td>
+                                            <td>✈️</td>
+                                            <td>4</td>
+                                            <td>13</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Mirassol</td>
+                                            <td>🏠</td>
+                                            <td>21</td>
+                                            <td>10</td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Internacional</td>
+                                            <td>🏠</td>
+                                            <td>13</td>
+                                            <td>14</td>
                                         </tr>
 
                                     </tbody>
                                 </table>
 
                                 <div class="tabela-titulo">
-                                    📊 Yellows - Last 5 Games
+                                    📊 Amarelos - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Cards received by the team.<br><strong>Against:</strong> Cards received by opponent.</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Cartões recebidos pelo time.<br><strong>Contra:</strong> Cartões recebidos pelo adversário.</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
 
                                         <tr>
-                                            <td>Atalanta</td>
-                                            <td>🏠</td>
-                                            <td><span class="stat-amarelo">1</span></td>
-                                            <td><span class="stat-amarelo">2</span></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Inter</td>
-                                            <td>🏠</td>
-                                            <td><span class="stat-amarelo">2</span></td>
-                                            <td><span class="stat-amarelo">3</span></td>
-                                        </tr>
-
-                                        <tr>
-                                            <td>Udinese</td>
+                                            <td>Fluminense</td>
                                             <td>✈️</td>
-                                            <td><span class="stat-amarelo">0</span></td>
-                                            <td><span class="stat-amarelo">1</span></td>
+                                            <td><span class="stat-amarelo">3</span></td>
+                                            <td><span class="stat-amarelo">6</span></td>
                                         </tr>
 
                                         <tr>
-                                            <td>Atalanta</td>
+                                            <td>Fluminense</td>
+                                            <td>🏠</td>
+                                            <td><span class="stat-amarelo">2</span></td>
+                                            <td><span class="stat-amarelo">0</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Atlético Mineiro</td>
                                             <td>✈️</td>
                                             <td><span class="stat-amarelo">0</span></td>
                                             <td><span class="stat-amarelo">0</span></td>
                                         </tr>
 
                                         <tr>
-                                            <td>Hellas Verona</td>
+                                            <td>Mirassol</td>
                                             <td>🏠</td>
-                                            <td><span class="stat-amarelo">1</span></td>
+                                            <td><span class="stat-amarelo">2</span></td>
                                             <td><span class="stat-amarelo">3</span></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td>Internacional</td>
+                                            <td>🏠</td>
+                                            <td><span class="stat-amarelo">0</span></td>
+                                            <td><span class="stat-amarelo">1</span></td>
                                         </tr>
 
                                     </tbody>
@@ -2151,37 +2183,37 @@
 
                 <!-- Seção Comparativo de Amarelos -->
                 <div class="secao">
-                    <div class="secao-titulo">📊 Yellow Cards Comparison - Last 5 Games</div>
+                    <div class="secao-titulo">📊 Comparativo de Amarelos - Últimos 5 Jogos</div>
                     <div class="grafico-comparativo">
                         <div class="grafico-container">
-                            <canvas id="grafico_13981586"></canvas>
+                            <canvas id="grafico_15223764"></canvas>
                         </div>
                         <div class="grafico-legenda">
                             <div class="legenda-item">
                                 <div class="legenda-cor" style="background: #e94560;"></div>
-                                <span>🗣️ Referee <small style="color: #a0a0a0;">(in league)</small></span>
+                                <span>🗣️ Árbitro <small style="color: #a0a0a0;">(geral)</small></span>
                             </div>
                             <div class="legenda-item">
                                 <div class="legenda-cor" style="background: #3498db;"></div>
-                                <span>🏠 Roma</span>
+                                <span>🏠 Corinthians</span>
                             </div>
                             <div class="legenda-item">
                                 <div class="legenda-cor" style="background: #2ecc71;"></div>
-                                <span>✈️ Genoa</span>
+                                <span>✈️ Vasco da Gama</span>
                             </div>
                         </div>
                     </div>
                     <script>
                     (function() {
-                        const ctx = document.getElementById('grafico_13981586').getContext('2d');
+                        const ctx = document.getElementById('grafico_15223764').getContext('2d');
                         new Chart(ctx, {
                             type: 'line',
                             data: {
-                                labels: ['Game 1', 'Game 2', 'Game 3', 'Game 4', 'Game 5'],
+                                labels: ['Jogo 1', 'Jogo 2', 'Jogo 3', 'Jogo 4', 'Jogo 5'],
                                 datasets: [
                                     {
-                                        label: 'Referee',
-                                        data: [7, 5, 2, 3, 3],
+                                        label: 'Árbitro',
+                                        data: [6, 8, 6, 5, 3],
                                         borderColor: '#e94560',
                                         backgroundColor: 'rgba(233, 69, 96, 0.1)',
                                         borderWidth: 3,
@@ -2191,8 +2223,8 @@
                                         fill: false
                                     },
                                     {
-                                        label: 'Home Team',
-                                        data: [4, 1, 5, 3, 3],
+                                        label: 'Time Casa',
+                                        data: [3, 1, 0, 6, 4],
                                         borderColor: '#3498db',
                                         backgroundColor: 'rgba(52, 152, 219, 0.1)',
                                         borderWidth: 3,
@@ -2202,8 +2234,8 @@
                                         fill: false
                                     },
                                     {
-                                        label: 'Away Team',
-                                        data: [1, 0, 0, 2, 1],
+                                        label: 'Time Fora',
+                                        data: [0, 2, 0, 2, 3],
                                         borderColor: '#2ecc71',
                                         backgroundColor: 'rgba(46, 204, 113, 0.1)',
                                         borderWidth: 3,
@@ -2263,13 +2295,13 @@
 
         <!-- Card de Doação -->
         <div class="donation-section">
-            <h2>💖 Support RefStats</h2>
-            <p>RefStats is free and maintained with dedication. If you like the project, consider making a donation!</p>
+            <h2>💖 Apoie o RefStats</h2>
+            <p>O RefStats é gratuito e mantido com dedicação. Se você gosta do projeto, considere fazer uma doação!</p>
             
             <div class="donation-grid">
                 <div class="donation-card">
-                    <h4>🔲 PIX (Brazil)</h4>
-                    <p>Fast, easy and fee-free</p>
+                    <h4>🔲 PIX (Brasil)</h4>
+                    <p>Rápido, fácil e sem taxas</p>
                     <div class="pix-key" onclick="copyPix()">
                         <span id="pixKey">seuemail@exemplo.com</span>
                         <span>📋</span>
@@ -2278,7 +2310,7 @@
                 
                 <div class="donation-card">
                     <h4>🅿️ PayPal</h4>
-                    <p>For international donations</p>
+                    <p>Para doações internacionais</p>
                     <a href="https://paypal.me/seuusuario" target="_blank" class="paypal-btn">
                         Doar via PayPal
                     </a>
@@ -2286,22 +2318,22 @@
             </div>
             
             <div class="donation-info">
-                <h4>💡 Why donate?</h4>
-                <p>Your donations help keep the server online, improve features and add new ones. Any amount is welcome and motivates us to continue!</p>
+                <h4>💡 Por que doar?</h4>
+                <p>Suas doações ajudam a manter o servidor online, melhorar as funcionalidades e adicionar novas features. Qualquer valor é bem-vindo e nos motiva a continuar!</p>
             </div>
         </div>
 
         <div class="footer">
-            <p><strong>⚽ RefStats - Today's Matches</strong></p>
+            <p><strong>⚽ RefStats - Jogos do Dia</strong></p>
             <p>
-                <a href="refstats_termos.html" style="color: #3498db; text-decoration: none;">Terms of Use</a> | 
-                <a href="refstats_privacidade.html" style="color: #3498db; text-decoration: none;">Privacy Policy</a> | 
-                <a href="refstats_aviso_legal.html" style="color: #3498db; text-decoration: none;">Legal Disclaimer</a> |
-                <a href="refstats_faq.html" style="color: #3498db; text-decoration: none;">FAQ</a>
+                <a href="../refstats_termos.html" style="color: #3498db; text-decoration: none;">Termos de Uso</a> | 
+                <a href="../refstats_privacidade.html" style="color: #3498db; text-decoration: none;">Política de Privacidade</a> | 
+                <a href="../refstats_aviso_legal.html" style="color: #3498db; text-decoration: none;">Aviso Legal</a> |
+                <a href="../refstats_faq.html" style="color: #3498db; text-decoration: none;">FAQ</a>
             </p>
-            <p style="margin-top: 10px; font-size: 0.9em;">Data collected from reliable sources • 28/12/2025 16:28</p>
-            <p style="margin-top: 5px; font-size: 0.85em; color: #3498db;">💡 Use Ctrl+F or click 🔍 to search and filter by referee profile</p>
-            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ This site is for informational purposes only. Bet responsibly.</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Dados coletados de fontes confiáveis • 28/12/2025 15:10</p>
+            <p style="margin-top: 5px; font-size: 0.85em; color: #3498db;">💡 Use Ctrl+F ou clique em 🔍 para pesquisar e filtrar por perfil do árbitro</p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ Este site é apenas para fins informativos. Aposte com responsabilidade.</p>
         </div>
     </div>
 
@@ -2609,7 +2641,7 @@
     function copyPix() {
         const pixKey = document.getElementById('pixKey').textContent;
         navigator.clipboard.writeText(pixKey).then(() => {
-            alert('✅ PIX key copied: ' + pixKey);
+            alert('✅ Chave PIX copiada: ' + pixKey);
         }).catch(() => {
             // Fallback para navegadores antigos
             const textarea = document.createElement('textarea');
@@ -2618,7 +2650,7 @@
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-            alert('✅ PIX key copied: ' + pixKey);
+            alert('✅ Chave PIX copiada: ' + pixKey);
         });
     }
     </script>
