@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RefStats - Validation Report V2.0 - 14/12/2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 20px;
+            min-height: 100vh;
+            color: #e0e0e0;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #e94560;
+        }
+        
+        .header h1 {
+            color: #e94560;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #9b59b6 0%, #3498db 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid #0f3460;
+        }
+        
+        .stat-card.destaque {
+            border-color: #2ecc71;
+            box-shadow: 0 0 20px rgba(46, 204, 113, 0.2);
+        }
+        
+        .stat-valor {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #e94560;
+        }
+        
+        .stat-card.destaque .stat-valor {
+            color: #2ecc71;
+        }
+        
+        .stat-label {
+            color: #a0a0a0;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+        
+        .section {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border: 1px solid #0f3460;
+        }
+        
+        .section-title {
+            color: #e94560;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e94560;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+        
+        th {
+            background: #0f3460;
+            color: #e0e0e0;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #0f3460;
+        }
+        
+        tr:hover {
+            background: rgba(15, 52, 96, 0.3);
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            color: #a0a0a0;
+            border: 1px solid #0f3460;
+        }
+        
+        .blockeds-box {
+            background: rgba(241, 196, 15, 0.1);
+            border: 1px solid #f1c40f;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .interpretacao {
+            background: rgba(233, 69, 96, 0.1);
+            border-left: 4px solid #e94560;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin-top: 20px;
+        }
+        
+        
+        /* Methodology Guide */
+        .guia-metodologia {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid #0f3460;
+        }
+        
+        .guia-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e94560;
+        }
+        
+        .guia-header h2 {
+            color: #e94560;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        
+        .guia-header p {
+            color: #a0a0a0;
+        }
+        
+        .guia-section {
+            background: rgba(15, 52, 96, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .guia-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .guia-section-title h3 {
+            color: #3498db;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        
+        .guia-icon {
+            font-size: 1.5em;
+        }
+        
+        .guia-content {
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        
+        .guia-content ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        
+        .guia-content li {
+            margin: 8px 0;
+        }
+        
+        .guia-formula {
+            background: #1a1a2e;
+            border: 1px solid #3498db;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            color: #f1c40f;
+        }
+        
+        .guia-example {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid #2ecc71;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .guia-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .guia-table th {
+            background: #0f3460;
+            color: #e0e0e0;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .guia-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #0f3460;
+        }
+        
+        .guia-table tr:hover {
+            background: rgba(15, 52, 96, 0.3);
+        }
+        
+        .guia-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #0f3460;
+            color: #a0a0a0;
+        }
+        
+        @media (max-width: 768px) {
+            .guia-metodologia {
+                padding: 15px;
+            }
+            
+            .guia-section {
+                padding: 15px;
+            }
+            
+            .guia-table {
+                font-size: 0.85em;
+            }
+        }
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Validation Report V2.0</h1>
+            <p>📅 Matchs de 14/12/2025</p>
+            <p style="margin-top: 5px; color: #a0a0a0;">Generated on 31/12/2025 17:54</p>
+            <div class="version-badge">
+                Neg. Binomial + Shrinkage + Calibration + Aprendizado
+            </div>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-valor">26</div>
+                <div class="stat-label">Total Matches</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-valor">25</div>
+                <div class="stat-label">Validated Matches</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-valor">70</div>
+                <div class="stat-label">Highlighted Predictions</div>
+            </div>
+            <div class="stat-card destaque">
+                <div class="stat-valor">72.9%</div>
+                <div class="stat-label">Accuracy Rate (Highlights)</div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">📈 Resumo dos Highlights vs Blockeds</div>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-valor" style="color: #2ecc71;">51</div>
+                    <div class="stat-label">✅ Highlights Hits</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-valor" style="color: #e94560;">19</div>
+                    <div class="stat-label">❌ Highlights Errors</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-valor" style="color: #f1c40f;">26</div>
+                    <div class="stat-label">🚫 Blockeds</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-valor" style="color: #9b59b6;">13</div>
+                    <div class="stat-label">🛡️ Errors Evitados</div>
+                </div>
+            </div>
+            
+            <div class="blockeds-box">
+                <h4 style="color: #f1c40f; margin-bottom: 10px;">🛡️ Analysis de Bloqueios</h4>
+                <p>
+                    Dos <strong>26</strong> mercados blockeds (por variance ou qualidade):
+                </p>
+                <ul style="margin: 10px 0 0 20px;">
+                    <li><strong style="color: #2ecc71;">13</strong> teriam ERRADO → bloqueio correto ✅</li>
+                    <li><strong style="color: #e94560;">13</strong> teriam ACERTADO → bloqueio desnecessário ⚠️</li>
+                </ul>
+                <p style="margin-top: 10px; font-size: 0.9em; color: #a0a0a0;">
+                    Rate de eficácia do bloqueio: <strong>50.0%</strong>
+                </p>
+            </div>
+            
+            <div class="interpretacao">
+                <h4 style="color: #e94560; margin-bottom: 10px;">🧠 Interpretation</h4>
+                <p>
+                    Das <strong>70</strong> previsões destacadas,
+                    <strong>51</strong> acertaram, 
+                    resultando em taxa de <strong style="color: #2ecc71;">72.9%</strong>.
+                </p>
+                <p style="margin-top: 10px; font-size: 0.9em; color: #a0a0a0;">
+                    Para um modelo bem calibrado, espera-se que destaques com ~60% de probabilidade 
+                    acertem ~60% das vezes no longo prazo.
+                </p>
+            </div>
+        </div>
+        
+        
+            <div class="section">
+                <div class="section-title">📊 Metrics de Calibration (Highlights)</div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-valor" style="color: #2ecc71;">0.1879</div>
+                        <div class="stat-label">Brier Score</div>
+                        <div style="font-size: 0.8em; color: #2ecc71;">Excellent</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-valor">0.5558</div>
+                        <div class="stat-label">Log Loss</div>
+                    </div>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <h4 style="color: #e94560; margin-bottom: 10px;">📈 Reliability Curve</h4>
+                    <p style="color: #a0a0a0; font-size: 0.9em; margin-bottom: 15px;">
+                        Compara a probabilidade prevista com a taxa de acerto real por faixa.
+                    </p>
+                    <table style="width: 100%;">
+                        <thead>
+                            <tr>
+                                <th>Range</th>
+                                <th>N</th>
+                                <th>Expected</th>
+                                <th>Actual</th>
+                                <th>Δ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                    <tr>
+                        <td>55-60%</td>
+                        <td>10</td>
+                        <td>58%</td>
+                        <td style="color: #2ecc71; font-weight: bold;">60.0%</td>
+                        <td style="color: #2ecc71;">+2.5%</td>
+                    </tr>
+                
+                    <tr>
+                        <td>60-65%</td>
+                        <td>12</td>
+                        <td>62%</td>
+                        <td style="color: #2ecc71; font-weight: bold;">58.3%</td>
+                        <td style="color: #2ecc71;">-4.2%</td>
+                    </tr>
+                
+                    <tr>
+                        <td>65-70%</td>
+                        <td>2</td>
+                        <td>68%</td>
+                        <td style="color: #e94560; font-weight: bold;">100.0%</td>
+                        <td style="color: #e94560;">+32.5%</td>
+                    </tr>
+                
+                    <tr>
+                        <td>70-75%</td>
+                        <td>12</td>
+                        <td>72%</td>
+                        <td style="color: #f6e05e; font-weight: bold;">66.7%</td>
+                        <td style="color: #f6e05e;">-5.8%</td>
+                    </tr>
+                
+                    <tr>
+                        <td>75-80%</td>
+                        <td>14</td>
+                        <td>78%</td>
+                        <td style="color: #2ecc71; font-weight: bold;">78.6%</td>
+                        <td style="color: #2ecc71;">+1.1%</td>
+                    </tr>
+                
+                    <tr>
+                        <td>80+%</td>
+                        <td>20</td>
+                        <td>90%</td>
+                        <td style="color: #f6e05e; font-weight: bold;">85.0%</td>
+                        <td style="color: #f6e05e;">-5.0%</td>
+                    </tr>
+                
+                        </tbody>
+                    </table>
+                    <p style="color: #a0a0a0; font-size: 0.8em; margin-top: 10px;">
+                        Um modelo bem calibrado tem taxa real ≈ taxa esperada em cada faixa.
+                    </p>
+                </div>
+            </div>
+        
+        
+        
+                <div class="section">
+                    <div class="section-title">🏆 Golden Rules Discovered</div>
+                    <p style="color: #a0a0a0; margin-bottom: 15px;">
+                        Combinações de fatores com alta taxa de acerto histórica.
+                    </p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Level</th>
+                                <th>Market</th>
+                                <th>Conditions</th>
+                                <th>Rate</th>
+                                <th>Samples</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                    <tr>
+                        <td><span style="color: #b9f2ff; font-weight: bold;">Diamond</span></td>
+                        <td>Over 2.5 Cards</td>
+                        <td>Referee=Medium + Region=Other + teams_delta_range=Negative</td>
+                        <td style="font-weight: bold; color: #2ecc71;">100.0%</td>
+                        <td>54/54</td>
+                    </tr>
+                
+                    <tr>
+                        <td><span style="color: #b9f2ff; font-weight: bold;">Diamond</span></td>
+                        <td>Over 2.5 Cards</td>
+                        <td>Type=League + Region=Other + teams_delta_range=Negative</td>
+                        <td style="font-weight: bold; color: #2ecc71;">100.0%</td>
+                        <td>54/54</td>
+                    </tr>
+                
+                    <tr>
+                        <td><span style="color: #b9f2ff; font-weight: bold;">Diamond</span></td>
+                        <td>Over 2.5 Cards</td>
+                        <td>Region=Other + teams_delta_range=Negative + shrinkage_weight_range=High</td>
+                        <td style="font-weight: bold; color: #2ecc71;">100.0%</td>
+                        <td>54/54</td>
+                    </tr>
+                
+                    <tr>
+                        <td><span style="color: #b9f2ff; font-weight: bold;">Diamond</span></td>
+                        <td>Over 2.5 Cards</td>
+                        <td>Variance=High + Region=Other + teams_delta_range=Negative</td>
+                        <td style="font-weight: bold; color: #2ecc71;">100.0%</td>
+                        <td>52/52</td>
+                    </tr>
+                
+                    <tr>
+                        <td><span style="color: #b9f2ff; font-weight: bold;">Diamond</span></td>
+                        <td>Over 2.5 Cards</td>
+                        <td>Referee=Medium + Region=Other + teams_sum_range=Low</td>
+                        <td style="font-weight: bold; color: #2ecc71;">100.0%</td>
+                        <td>48/48</td>
+                    </tr>
+                
+                    <tr>
+                        <td><span style="color: #b9f2ff; font-weight: bold;">Diamond</span></td>
+                        <td>Over 2.5 Cards</td>
+                        <td>Type=League + Region=Other + teams_sum_range=Low</td>
+                        <td style="font-weight: bold; color: #2ecc71;">100.0%</td>
+                        <td>48/48</td>
+                    </tr>
+                
+                    <tr>
+                        <td><span style="color: #b9f2ff; font-weight: bold;">Diamond</span></td>
+                        <td>Over 2.5 Cards</td>
+                        <td>Region=Other + teams_delta_range=Negative + amplitude_range=Wide</td>
+                        <td style="font-weight: bold; color: #2ecc71;">100.0%</td>
+                        <td>48/48</td>
+                    </tr>
+                
+                    <tr>
+                        <td><span style="color: #b9f2ff; font-weight: bold;">Diamond</span></td>
+                        <td>Over 2.5 Cards</td>
+                        <td>Region=Other + teams_delta_range=Negative + teams_sum_range=Low</td>
+                        <td style="font-weight: bold; color: #2ecc71;">100.0%</td>
+                        <td>48/48</td>
+                    </tr>
+                
+                    <tr>
+                        <td><span style="color: #b9f2ff; font-weight: bold;">Diamond</span></td>
+                        <td>Over 2.5 Cards</td>
+                        <td>Region=Other + shrinkage_weight_range=High + teams_sum_range=Low</td>
+                        <td style="font-weight: bold; color: #2ecc71;">100.0%</td>
+                        <td>48/48</td>
+                    </tr>
+                
+                    <tr>
+                        <td><span style="color: #b9f2ff; font-weight: bold;">Diamond</span></td>
+                        <td>Over 2.5 Cards</td>
+                        <td>Variance=High + Region=Other + teams_sum_range=Low</td>
+                        <td style="font-weight: bold; color: #2ecc71;">100.0%</td>
+                        <td>46/46</td>
+                    </tr>
+                
+                        </tbody>
+                    </table>
+                    
+                    <div style="margin-top: 15px; padding: 15px; background: rgba(255, 215, 0, 0.1); border-radius: 8px; border-left: 4px solid #ffd700;">
+                        <p style="margin: 0; color: #ffd700;">
+                            💡 <strong>Tip:</strong> When a match activates a Golden Rule, it will have a special indicator in the probability report.
+                        </p>
+                    </div>
+                </div>
+            
+        
+        <div class="section">
+            <div class="section-title">📊 Estatísticas por Market</div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Market</th>
+                        <th>Total</th>
+                        <th>Hits</th>
+                        <th>Errors</th>
+                        <th>Rate</th>
+                        <th>Brier</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+            <tr>
+                <td>Over 2.5 Cards</td>
+                <td>24</td>
+                <td>19</td>
+                <td>5</td>
+                <td style="color: #2ecc71; font-weight: bold;">79.2%</td>
+                <td>0.1660</td>
+            </tr>
+        
+            <tr>
+                <td>Over 3.5 Cards</td>
+                <td>24</td>
+                <td>16</td>
+                <td>8</td>
+                <td style="color: #2ecc71; font-weight: bold;">66.7%</td>
+                <td>0.2272</td>
+            </tr>
+        
+            <tr>
+                <td>Over 4.5 Cards</td>
+                <td>24</td>
+                <td>10</td>
+                <td>14</td>
+                <td style="color: #e94560; font-weight: bold;">41.7%</td>
+                <td>0.2371</td>
+            </tr>
+        
+            <tr>
+                <td>Over 5.5 Cards</td>
+                <td>24</td>
+                <td>7</td>
+                <td>17</td>
+                <td style="color: #e94560; font-weight: bold;">29.2%</td>
+                <td>0.2023</td>
+            </tr>
+        
+            <tr>
+                <td>Under 3.5 Cards</td>
+                <td>24</td>
+                <td>8</td>
+                <td>16</td>
+                <td style="color: #e94560; font-weight: bold;">33.3%</td>
+                <td>0.2268</td>
+            </tr>
+        
+            <tr>
+                <td>Under 4.5 Cards</td>
+                <td>24</td>
+                <td>14</td>
+                <td>10</td>
+                <td style="color: #2ecc71; font-weight: bold;">58.3%</td>
+                <td>0.2259</td>
+            </tr>
+        
+            <tr>
+                <td>Under 5.5 Cards</td>
+                <td>24</td>
+                <td>17</td>
+                <td>7</td>
+                <td style="color: #2ecc71; font-weight: bold;">70.8%</td>
+                <td>0.1775</td>
+            </tr>
+        
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="section">
+            <div class="section-title">⚽ Detalhes por Match</div>
+            
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>St</th>
+                            <th>Match</th>
+                            <th>Comp.</th>
+                            <th>λ</th>
+                            <th>Range</th>
+                            <th>Cards</th>
+                            <th>Score</th>
+                            <th>Highlights</th>
+                            <th>Block.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+            <tr>
+                <td>✅</td>
+                <td>Crystal Palace vs Manchester City💎 DIAMOND</td>
+                <td>Premier League</td>
+                <td style="color: #9b59b6;">2.58</td>
+                <td>[0-5]</td>
+                <td style="font-weight: bold; color: #3498db;">2</td>
+                <td>0 x 3</td>
+                <td><span style="color: #e94560; margin-right: 8px;">❌ Over 2.5 Cards (74%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 3.5 Cards (89%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (62%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cards (91%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Nottingham Forest vs Tottenham Hotspur🥈 PLATINUM</td>
+                <td>Premier League</td>
+                <td style="color: #9b59b6;">3.23</td>
+                <td>[1-6]</td>
+                <td style="font-weight: bold; color: #3498db;">4</td>
+                <td>3 x 0</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (81%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (64%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cards (81%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Sunderland vs Newcastle United🥈 PLATINUM</td>
+                <td>Premier League</td>
+                <td style="color: #9b59b6;">2.90</td>
+                <td>[0-6]</td>
+                <td style="font-weight: bold; color: #3498db;">9</td>
+                <td>1 x 0</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (73%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Over 3.5 Cards (57%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 4.5 Cards (71%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 5.5 Cards (77%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>West Ham United vs Aston Villa💎 DIAMOND</td>
+                <td>Premier League</td>
+                <td style="color: #9b59b6;">4.28</td>
+                <td>[1-8]</td>
+                <td style="font-weight: bold; color: #3498db;">3</td>
+                <td>2 x 3</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (82%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (58%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Brentford vs Leeds United💎 DIAMOND</td>
+                <td>Premier League</td>
+                <td style="color: #9b59b6;">4.61</td>
+                <td>[1-9]</td>
+                <td style="font-weight: bold; color: #3498db;">N/D</td>
+                <td>1 x 1</td>
+                <td><span style="color: #a0a0a0; margin-right: 8px;">⏳ Over 2.5 Cards (79%)</span><span style="color: #a0a0a0; margin-right: 8px;">⏳ Over 3.5 Cards (68%)</span><span style="color: #a0a0a0; margin-right: 8px;">⏳ Under 4.5 Cards (58%)</span></td>
+                <td><span style="color: #a0a0a0; margin-right: 8px;" title="Blocked: variance">🚫 Over 5.5 Cards</span><span style="color: #a0a0a0; margin-right: 8px;" title="Blocked: variance">🚫 Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Sevilla vs Actual Oviedo🥈 PLATINUM</td>
+                <td>LaLeague</td>
+                <td style="color: #9b59b6;">3.27</td>
+                <td>[1-7]</td>
+                <td style="font-weight: bold; color: #3498db;">3</td>
+                <td>4 x 0</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (73%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (64%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cards (81%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Celta Vigo vs Athletic Club💎 DIAMOND</td>
+                <td>LaLeague</td>
+                <td style="color: #9b59b6;">3.22</td>
+                <td>[0-7]</td>
+                <td style="font-weight: bold; color: #3498db;">5</td>
+                <td>2 x 0</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (73%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 4.5 Cards (64%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>❌</td>
+                <td>Levante UD vs Villarreal🥈 PLATINUM</td>
+                <td>LaLeague</td>
+                <td style="color: #9b59b6;">5.02</td>
+                <td>[1-10]</td>
+                <td style="font-weight: bold; color: #3498db;">N/D</td>
+                <td>N/D</td>
+                <td><span style="color: #a0a0a0; margin-right: 8px;">⏳ Over 2.5 Cards (79%)</span><span style="color: #a0a0a0; margin-right: 8px;">⏳ Over 3.5 Cards (70%)</span><span style="color: #a0a0a0; margin-right: 8px;">⏳ Under 4.5 Cards (57%)</span></td>
+                <td><span style="color: #a0a0a0; margin-right: 8px;" title="Blocked: variance">🚫 Over 5.5 Cards</span><span style="color: #a0a0a0; margin-right: 8px;" title="Blocked: variance">🚫 Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Deportivo Alavés vs Actual Madrid💎 DIAMOND</td>
+                <td>LaLeague</td>
+                <td style="color: #9b59b6;">4.22</td>
+                <td>[1-8]</td>
+                <td style="font-weight: bold; color: #3498db;">4</td>
+                <td>1 x 2</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (82%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (62%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Milan vs Sassuolo🥈 PLATINUM</td>
+                <td>Serie A</td>
+                <td style="color: #9b59b6;">3.53</td>
+                <td>[1-7]</td>
+                <td style="font-weight: bold; color: #3498db;">4</td>
+                <td>2 x 2</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (81%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 3.5 Cards (59%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (64%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cards (78%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Fiorentina vs Hellas Verona💎 DIAMOND</td>
+                <td>Serie A</td>
+                <td style="color: #9b59b6;">6.10</td>
+                <td>[1-12]</td>
+                <td style="font-weight: bold; color: #3498db;">6</td>
+                <td>1 x 2</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (100%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Over 3.5 Cards (85%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Over 4.5 Cards (75%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Udinese vs Napoli💎 DIAMOND</td>
+                <td>Serie A</td>
+                <td style="color: #9b59b6;">3.95</td>
+                <td>[1-8]</td>
+                <td style="font-weight: bold; color: #3498db;">1</td>
+                <td>1 x 0</td>
+                <td><span style="color: #e94560; margin-right: 8px;">❌ Over 2.5 Cards (81%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (62%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Genoa vs Inter💎 DIAMOND</td>
+                <td>Serie A</td>
+                <td style="color: #9b59b6;">2.79</td>
+                <td>[0-6]</td>
+                <td style="font-weight: bold; color: #3498db;">5</td>
+                <td>1 x 2</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (73%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Over 3.5 Cards (57%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 4.5 Cards (62%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cards (77%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Bologna vs Juventus💎 DIAMOND</td>
+                <td>Serie A</td>
+                <td style="color: #9b59b6;">2.37</td>
+                <td>[0-5]</td>
+                <td style="font-weight: bold; color: #3498db;">4</td>
+                <td>0 x 1</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (74%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (78%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cards (91%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Olympique Lyonnais vs Le Havre💎 DIAMOND</td>
+                <td>Ligue 1</td>
+                <td style="color: #9b59b6;">4.39</td>
+                <td>[1-9]</td>
+                <td style="font-weight: bold; color: #3498db;">6</td>
+                <td>1 x 0</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (82%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 4.5 Cards (58%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Auxerre vs Lille🥈 PLATINUM</td>
+                <td>Ligue 1</td>
+                <td style="color: #9b59b6;">2.92</td>
+                <td>[0-6]</td>
+                <td style="font-weight: bold; color: #3498db;">7</td>
+                <td>3 x 4</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (73%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Over 3.5 Cards (57%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 4.5 Cards (71%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 5.5 Cards (77%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>RC Lens vs Nice🥈 PLATINUM</td>
+                <td>Ligue 1</td>
+                <td style="color: #9b59b6;">2.34</td>
+                <td>[0-5]</td>
+                <td style="font-weight: bold; color: #3498db;">2</td>
+                <td>2 x 0</td>
+                <td><span style="color: #e94560; margin-right: 8px;">❌ Over 2.5 Cards (74%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (78%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cards (91%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>RC Strasbourg vs Lorient🥈 PLATINUM</td>
+                <td>Ligue 1</td>
+                <td style="color: #9b59b6;">3.99</td>
+                <td>[1-8]</td>
+                <td style="font-weight: bold; color: #3498db;">1</td>
+                <td>0 x 0</td>
+                <td><span style="color: #e94560; margin-right: 8px;">❌ Over 2.5 Cards (82%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (62%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Olympique de Marseille vs AS Monaco💎 DIAMOND</td>
+                <td>Ligue 1</td>
+                <td style="color: #9b59b6;">3.70</td>
+                <td>[1-7]</td>
+                <td style="font-weight: bold; color: #3498db;">3</td>
+                <td>1 x 0</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (81%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cards (78%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Carrarese vs Virtus Entella💎 DIAMOND</td>
+                <td>Serie B</td>
+                <td style="color: #9b59b6;">4.66</td>
+                <td>[1-9]</td>
+                <td style="font-weight: bold; color: #3498db;">4</td>
+                <td>3 x 1</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (82%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Over 3.5 Cards (68%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (58%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Pescara vs Frosinone💎 DIAMOND</td>
+                <td>Serie B</td>
+                <td style="color: #9b59b6;">4.85</td>
+                <td>[1-10]</td>
+                <td style="font-weight: bold; color: #3498db;">6</td>
+                <td>1 x 2</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (79%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Over 3.5 Cards (68%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 4.5 Cards (57%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Corinthians vs Cruzeiro💎 DIAMOND</td>
+                <td>Cup Betano do Brasil</td>
+                <td style="color: #9b59b6;">3.34</td>
+                <td>[0-7]</td>
+                <td style="font-weight: bold; color: #3498db;">6</td>
+                <td>6 x 6</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (73%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 4.5 Cards (64%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>Fluminense vs Vasco da Gama💎 DIAMOND</td>
+                <td>Cup Betano do Brasil</td>
+                <td style="color: #9b59b6;">3.50</td>
+                <td>[0-7]</td>
+                <td style="font-weight: bold; color: #3498db;">9</td>
+                <td>4 x 4</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (81%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 3.5 Cards (59%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 4.5 Cards (64%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>SC Freiburg vs Borussia Dortmund💎 DIAMOND</td>
+                <td>Bundesliga</td>
+                <td style="color: #9b59b6;">2.84</td>
+                <td>[0-6]</td>
+                <td style="font-weight: bold; color: #3498db;">5</td>
+                <td>1 x 1</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (73%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Over 3.5 Cards (57%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 4.5 Cards (62%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cards (77%)</span></td>
+                <td></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>FC Bayern München vs 1. FSV Mainz 05💎 DIAMOND</td>
+                <td>Bundesliga</td>
+                <td style="color: #9b59b6;">5.46</td>
+                <td>[2-10]</td>
+                <td style="font-weight: bold; color: #3498db;">4</td>
+                <td>2 x 2</td>
+                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cards (79%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Over 3.5 Cards (85%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (76%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Under 5.5 Cards</span></td>
+            </tr>
+        
+            <tr>
+                <td>✅</td>
+                <td>SV Werder Bremen vs VfB Stuttgart💎 DIAMOND</td>
+                <td>Bundesliga</td>
+                <td style="color: #9b59b6;">5.24</td>
+                <td>[1-10]</td>
+                <td style="font-weight: bold; color: #3498db;">2</td>
+                <td>0 x 4</td>
+                <td><span style="color: #e94560; margin-right: 8px;">❌ Over 2.5 Cards (79%)</span><span style="color: #e94560; margin-right: 8px;">❌ Over 3.5 Cards (85%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cards (76%)</span></td>
+                <td><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">🛡️ Over 5.5 Cards</span><span style="color: #f1c40f; margin-right: 8px;" title="Blocked: variance">⚠️ Under 5.5 Cards</span></td>
+            </tr>
+        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        
+        <div class="guia-metodologia">
+            <div class="guia-header">
+                <h2>📚 Methodology Guide - Como Funciona o Sistema</h2>
+                <p>Understand how probabilities are calculated and how the system learns from data.</p>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">📊</span>
+                    <h3>1. Modelo Matemático: Negative Binomial</h3>
+                </div>
+                <div class="guia-content">
+                    <p>The system uses the distribution <strong>Negative Binomial</strong> em vez da Poisson tradicional porque:</p>
+                    <ul>
+                        <li><strong>Poisson assume</strong> que variance = média (eventos independentes)</li>
+                        <li><strong>In reality</strong>, cards têm variance > média (sobredispersão)</li>
+                        <li><strong>Reason:</strong> cards vêm em "clusters" (um cartão leva a mais tensão, que leva a mais cards)</li>
+                    </ul>
+                    
+                    <div class="guia-formula">
+                        <strong>Formula:</strong> P(Y = k) = C(k + r - 1, k) × p<sup>r</sup> × (1-p)<sup>k</sup>
+                    </div>
+                    
+                    <p>Where <strong>r</strong> é o parâmetro de dispersão (varia por liga) e <strong>p</strong> é calculado a partir do λ.</p>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">🧮</span>
+                    <h3>2. Lambda (λ) Calculation - Modelo Aditivo</h3>
+                </div>
+                <div class="guia-content">
+                    <p>λ (card expectation) is calculated by adding contributions:</p>
+                    
+                    <div class="guia-formula">
+                        λ_raw = λ_base + Δ_árbitro + Δ_teams + ajuste_recency
+                    </div>
+                    
+                    <table class="guia-table">
+                        <tr>
+                            <th>Component</th>
+                            <th>What it represents</th>
+                            <th>How it is calculated</th>
+                        </tr>
+                        <tr>
+                            <td><strong>λ_base</strong></td>
+                            <td>League average</td>
+                            <td>Historical card average of the competition</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Δ_árbitro</strong></td>
+                            <td>Referee influence</td>
+                            <td>0.8 × (weighted_avg_árbitro - λ_base)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Δ_teams</strong></td>
+                            <td>Teams profile</td>
+                            <td>0.6 × (cards_sum_times - λ_base)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recency</strong></td>
+                            <td>Recent trend</td>
+                            <td>Ajuste de ±5% baseado nas últimas 5 partidas</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">📐</span>
+                    <h3>3. Bayesian Shrinkage - Fairização</h3>
+                </div>
+                <div class="guia-content">
+                    <p>When data is limited, the system "pulls" the estimate towards the league average:</p>
+                    
+                    <div class="guia-formula">
+                        λ_shrunk = w × λ_raw + (1-w) × λ_base
+                    </div>
+                    
+                    <p>O peso <strong>w</strong> (0 a 1) depende de:</p>
+                    <ul>
+                        <li>Data quality (completeness)</li>
+                        <li>Number of referee matches</li>
+                        <li>Recency data available</li>
+                    </ul>
+                    
+                    <div class="guia-example">
+                        <strong>Example:</strong> Se w = 0.6, λ_raw = 6.5 e λ_base = 5.0:<br>
+                        λ_shrunk = 0.6 × 6.5 + 0.4 × 5.0 = 3.9 + 2.0 = <strong>5.9</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">🎯</span>
+                    <h3>4. Calibration - Aprendendo com os Errors</h3>
+                </div>
+                <div class="guia-content">
+                    <p>The system adjusts probabilities based on accuracy history:</p>
+                    
+                    <table class="guia-table">
+                        <tr>
+                            <th>What the model says</th>
+                            <th>What happens in practice</th>
+                            <th>Calibration</th>
+                        </tr>
+                        <tr>
+                            <td>60% de chance</td>
+                            <td>Hits 55% of the time</td>
+                            <td>Adjusts to 55%</td>
+                        </tr>
+                        <tr>
+                            <td>75% de chance</td>
+                            <td>Hits 78% of the time</td>
+                            <td>Adjusts to 78%</td>
+                        </tr>
+                    </table>
+                    
+                    <p><strong>Minimum required:</strong> 10 amostras por mercado para ativar calibração.</p>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">📈</span>
+                    <h3>5. Confidence Interval [P10 - P90]</h3>
+                </div>
+                <div class="guia-content">
+                    <p>Shows the range where 80% of results should fall:</p>
+                    
+                    <div class="guia-example">
+                        <strong>Example:</strong> Intervalo [2 - 8]<br>
+                        Significa que em jogos com perfil semelhante, 80% têm entre 2 e 8 cards.
+                    </div>
+                    
+                    <p><strong>Variance alta:</strong> Se (P90 - P10) > 6, o sistema bloqueia destaques em mercados extremos (Over 5.5) por falta de previsibilidade.</p>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">🏆</span>
+                    <h3>6. Learning System - Golden Rules</h3>
+                </div>
+                <div class="guia-content">
+                    <p>The system analyzes history and discovers <strong>combinações de fatores</strong> com alta taxa de acerto:</p>
+                    
+                    <table class="guia-table">
+                        <tr>
+                            <th>Level</th>
+                            <th>Accuracy Rate</th>
+                            <th>Minimum Samples</th>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #ffd700;">🥇 Gold</span></td>
+                            <td>≥ 75%</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #e5e4e2;">🥈 Platinum</span></td>
+                            <td>≥ 85%</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #b9f2ff;">💎 Diamond</span></td>
+                            <td>≥ 90%</td>
+                            <td>8</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="guia-example">
+                        <strong>Example of Discovered Rule:</strong><br>
+                        "Over 3.5 Cards + λ High + Árbitro Rigoroso + Brasil"<br>
+                        → Histórico: 14/16 hits = <strong>87.5%</strong> 🥈 Platinum
+                    </div>
+                    
+                    <p>The more matches you validate, the more rules the system discovers!</p>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">📊</span>
+                    <h3>7. Evaluation Metrics</h3>
+                </div>
+                <div class="guia-content">
+                    <table class="guia-table">
+                        <tr>
+                            <th>Metric</th>
+                            <th>What it measures</th>
+                            <th>Good value</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Brier Score</strong></td>
+                            <td>Overall calibration (squared error)</td>
+                            <td>< 0.20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Log Loss</strong></td>
+                            <td>Discrimination (heavily penalizes confident errors)</td>
+                            <td>< 0.50</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Reliability Curve</strong></td>
+                            <td>If 60% predicted = 60% actual</td>
+                            <td>Δ < 5%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">⚠️</span>
+                    <h3>8. Limitations and Warnings</h3>
+                </div>
+                <div class="guia-content">
+                    <ul>
+                        <li><strong>Probability ≠ Certainty:</strong> 80% means 2 out of 10 will be wrong</li>
+                        <li><strong>Limited data:</strong> New referees or unknown competitions have more uncertainty</li>
+                        <li><strong>Natural variance:</strong> Even with good data, football is unpredictable</li>
+                        <li><strong>Educational use:</strong> This system is for statistical analysis, not for betting</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guia-footer">
+                <p>💡 <strong>Tip:</strong> The more validations you do, the more accurate the system becomes!</p>
+            </div>
+        </div>
+    
+        
+        <div class="footer">
+            <p><strong>📊 RefStats - Validação V2.0</strong></p>
+            <p style="margin-top: 10px; font-size: 0.85em;">
+                Metrics: Brier Score, Log Loss, Reliability Curve
+            </p>
+            <p style="margin-top: 5px; font-size: 0.85em;">
+                31/12/2025 17:54
+            </p>
+        </div>
+    </div>
+</body>
+</html>

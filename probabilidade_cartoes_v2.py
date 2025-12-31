@@ -37,6 +37,19 @@ from dataclasses import dataclass, field
 from typing import Optional, List, Dict, Tuple
 from collections import defaultdict
 
+# Importa módulo de aprendizado (se disponível)
+try:
+    from aprendizado_avancado import (
+        gerar_guia_metodologia_html,
+        gerar_css_guia,
+        obter_banco_aprendizado,
+        obter_motor_aprendizado,
+        criar_dados_partida_aprendizado
+    )
+    APRENDIZADO_DISPONIVEL = True
+except ImportError:
+    APRENDIZADO_DISPONIVEL = False
+
 
 # =============================================================================
 # CONFIGURAÇÕES GLOBAIS
@@ -254,6 +267,9 @@ class ResultadoAnalise:
     mercados_destaque: List[str] = field(default_factory=list)
     tendencia: str = "NEUTRA"       # ALTA, MODERADA, BAIXA
     cor_tendencia: str = "#f6e05e"
+    
+    # Regras de Ouro ativadas (preenchido após análise)
+    regras_ativadas: List[any] = field(default_factory=list)
 
 
 # =============================================================================
@@ -736,9 +752,25 @@ class GerenciadorCalibracao:
             caminho = os.path.join(self.pasta, nome_arquivo)
             if os.path.exists(caminho):
                 try:
-                    self.calibradores[mercado] = CalibradorIsotonico.carregar(caminho)
-                except:
-                    pass
+                    with open(caminho, 'rb') as f:
+                        dados = pickle.load(f)
+                    
+                    calibrador = CalibradorIsotonico(mercado)
+                    calibrador.pontos_x = dados.get('pontos_x', [])
+                    calibrador.pontos_y = dados.get('pontos_y', [])
+                    calibrador._mapa_calibracao = dados.get('mapa', None)
+                    calibrador.treinado = True
+                    
+                    self.calibradores[mercado] = calibrador
+                    
+                    n_pontos = len(calibrador.pontos_x)
+                    tem_mapa = calibrador._mapa_calibracao is not None
+                    
+                    if n_pontos > 0:
+                        status = "🟢 ativo" if tem_mapa else "🟡 treinando"
+                        print(f"   📊 {mercado}: {n_pontos} amostras ({status})")
+                except Exception as e:
+                    print(f"   ⚠️ Erro ao carregar {mercado}: {e}")
 
 
 # Instância global
@@ -750,6 +782,258 @@ def obter_gerenciador_calibracao(pasta: str = None) -> GerenciadorCalibracao:
     if _gerenciador_calibracao is None:
         _gerenciador_calibracao = GerenciadorCalibracao(pasta)
     return _gerenciador_calibracao
+
+
+# =============================================================================
+# VERIFICAÇÃO DE REGRAS DE OURO
+# =============================================================================
+
+# Cache global para regras
+_regras_ouro_cache = None
+
+def carregar_regras_ouro(pasta_calibracao: str) -> list:
+    """Carrega as regras de ouro do banco de aprendizado."""
+    global _regras_ouro_cache
+    
+    if _regras_ouro_cache is not None:
+        return _regras_ouro_cache
+    
+    if not APRENDIZADO_DISPONIVEL:
+        return []
+    
+    try:
+        banco = obter_banco_aprendizado(pasta_calibracao)
+        _regras_ouro_cache = banco.regras if banco.regras else []
+        return _regras_ouro_cache
+    except Exception as e:
+        print(f"   ⚠️ Erro ao carregar regras de ouro: {e}")
+        return []
+
+
+def verificar_regras_partida(resultado: 'ResultadoAnalise', regras: list, pasta_calibracao: str) -> list:
+    """
+    Verifica quais regras de ouro uma partida ativa.
+    
+    Retorna lista de regras ativadas com seus mercados correspondentes.
+    """
+    if not APRENDIZADO_DISPONIVEL or not regras:
+        return []
+    
+    regras_ativadas = []
+    mercados_ja_ativados = set()  # Para evitar duplicatas
+    
+    # Extrai fatores da partida
+    partida = resultado.partida
+    calculo = resultado.calculo
+    
+    # Calcula faixa de lambda
+    lambda_val = calculo.lambda_shrunk
+    if lambda_val < 4.0:
+        faixa_lambda = "Baixo"
+    elif lambda_val <= 5.5:
+        faixa_lambda = "Médio"
+    else:
+        faixa_lambda = "Alto"
+    
+    # Tipo de competição
+    termos_copa = ['copa', 'cup', 'taça', 'libertadores', 'sudamericana', 
+                   'champions', 'europa league', 'conference']
+    comp_lower = partida.liga.lower()
+    tipo_competicao = "Copa" if any(t in comp_lower for t in termos_copa) else "Liga"
+    
+    # Região
+    brasil = ['brasileirão', 'série', 'copa do brasil', 'paulista', 'carioca', 
+              'mineiro', 'gaúcho', 'paranaense', 'betano']
+    europa = ['premier', 'la liga', 'laliga', 'bundesliga', 'serie a', 'ligue 1',
+              'champions', 'europa league', 'eredivisie', 'primeira liga']
+    america = ['libertadores', 'sudamericana', 'mls', 'liga mx', 'argentina']
+    
+    if any(t in comp_lower for t in brasil):
+        regiao = "Brasil"
+    elif any(t in comp_lower for t in europa):
+        regiao = "Europa"
+    elif any(t in comp_lower for t in america):
+        regiao = "América"
+    else:
+        regiao = "Outro"
+    
+    # Qualidade
+    qual = calculo.qualidade_dados.score_total
+    if qual < 50:
+        faixa_qualidade = "Baixa"
+    elif qual <= 70:
+        faixa_qualidade = "Média"
+    else:
+        faixa_qualidade = "Alta"
+    
+    # Variância
+    amplitude = resultado.intervalo.p90 - resultado.intervalo.p10
+    variancia = "Alta" if amplitude > 5 else "Baixa"
+    
+    # Perfil árbitro
+    perfil_arbitro = partida.arbitro.perfil if hasattr(partida.arbitro, 'perfil') else "Médio"
+    
+    # Tendência recente
+    media_5j = partida.arbitro.media_amarelos_5j if hasattr(partida.arbitro, 'media_amarelos_5j') else 0
+    media_10j = partida.arbitro.media_amarelos_10j if hasattr(partida.arbitro, 'media_amarelos_10j') else 0
+    if media_5j > 0 and media_10j > 0:
+        diff = media_5j - media_10j
+        if diff > 0.5:
+            tendencia = "Subindo"
+        elif diff < -0.5:
+            tendencia = "Descendo"
+        else:
+            tendencia = "Estável"
+    else:
+        tendencia = "Estável"
+    
+    # =========================================================================
+    # NOVOS FATORES DERIVADOS
+    # =========================================================================
+    
+    # Faixa Delta Árbitro
+    delta_arb = calculo.delta_arbitro
+    if delta_arb < -0.5:
+        faixa_delta_arbitro = "Negativo"
+    elif delta_arb <= 0.5:
+        faixa_delta_arbitro = "Neutro"
+    elif delta_arb <= 1.0:
+        faixa_delta_arbitro = "Positivo"
+    else:
+        faixa_delta_arbitro = "Muito Positivo"
+    
+    # Faixa Delta Times
+    delta_times = calculo.delta_times
+    if delta_times < -0.5:
+        faixa_delta_times = "Negativo"
+    elif delta_times <= 0.5:
+        faixa_delta_times = "Neutro"
+    elif delta_times <= 1.0:
+        faixa_delta_times = "Positivo"
+    else:
+        faixa_delta_times = "Muito Positivo"
+    
+    # Faixa Peso Shrinkage
+    peso_w = calculo.peso_shrinkage
+    if peso_w < 0.5:
+        faixa_peso_shrinkage = "Baixo"
+    elif peso_w <= 0.7:
+        faixa_peso_shrinkage = "Médio"
+    else:
+        faixa_peso_shrinkage = "Alto"
+    
+    # Faixa Média Árbitro 5j
+    if media_5j < 4.0:
+        faixa_media_arb_5j = "Baixa"
+    elif media_5j <= 5.0:
+        faixa_media_arb_5j = "Média"
+    elif media_5j <= 6.0:
+        faixa_media_arb_5j = "Alta"
+    else:
+        faixa_media_arb_5j = "Muito Alta"
+    
+    # Faixa Amplitude
+    if amplitude <= 4:
+        faixa_amplitude = "Estreita"
+    elif amplitude <= 6:
+        faixa_amplitude = "Média"
+    else:
+        faixa_amplitude = "Larga"
+    
+    # Completude dos dados
+    completude = calculo.qualidade_dados.completude_arbitro
+    if completude < 50:
+        completude_dados = "Incompleto"
+    elif completude < 80:
+        completude_dados = "Parcial"
+    else:
+        completude_dados = "Completo"
+    
+    # Faixa Soma Times
+    soma_times = partida.time_mandante.amarelos_pro + partida.time_visitante.amarelos_pro
+    if soma_times < 4.0:
+        faixa_soma_times = "Baixa"
+    elif soma_times <= 5.5:
+        faixa_soma_times = "Média"
+    else:
+        faixa_soma_times = "Alta"
+    
+    # Mapa completo de fatores da partida
+    fatores_partida = {
+        # Fatores básicos
+        'faixa_lambda': faixa_lambda,
+        'perfil_arbitro': perfil_arbitro,
+        'tipo_competicao': tipo_competicao,
+        'faixa_qualidade': faixa_qualidade,
+        'variancia': variancia,
+        'tendencia_recente': tendencia,
+        'regiao_competicao': regiao,
+        # Novos fatores
+        'faixa_delta_arbitro': faixa_delta_arbitro,
+        'faixa_delta_times': faixa_delta_times,
+        'faixa_peso_shrinkage': faixa_peso_shrinkage,
+        'faixa_media_arb_5j': faixa_media_arb_5j,
+        'faixa_amplitude': faixa_amplitude,
+        'completude_dados': completude_dados,
+        'faixa_soma_times': faixa_soma_times,
+    }
+    
+    # Para cada probabilidade, verifica regras
+    for prob in resultado.probabilidades:
+        # Pula se mercado já tem uma regra ativada
+        if prob.mercado in mercados_ja_ativados:
+            continue
+            
+        # Calcula faixa de probabilidade
+        p = prob.p_calibrado
+        if p < 55:
+            faixa_prob = "<55"
+        elif p < 60:
+            faixa_prob = "55-60"
+        elif p < 65:
+            faixa_prob = "60-65"
+        elif p < 70:
+            faixa_prob = "65-70"
+        elif p < 75:
+            faixa_prob = "70-75"
+        elif p < 80:
+            faixa_prob = "75-80"
+        else:
+            faixa_prob = "80+"
+        
+        fatores_partida['faixa_prob'] = faixa_prob
+        
+        # Encontra a melhor regra para este mercado
+        melhor_regra = None
+        melhor_taxa = 0
+        
+        # Verifica cada regra
+        for regra in regras:
+            if regra.mercado != prob.mercado:
+                continue
+            
+            # Verifica se todas as condições são satisfeitas
+            todas_ok = True
+            for fator, valor_esperado in regra.condicoes.items():
+                valor_real = fatores_partida.get(fator)
+                if valor_real != valor_esperado:
+                    todas_ok = False
+                    break
+            
+            if todas_ok and regra.taxa_acerto > melhor_taxa:
+                melhor_regra = regra
+                melhor_taxa = regra.taxa_acerto
+        
+        if melhor_regra:
+            # Regra ativada! (apenas a melhor para este mercado)
+            regras_ativadas.append({
+                'regra': melhor_regra,
+                'mercado': prob.mercado,
+                'prob': prob.p_calibrado
+            })
+            mercados_ja_ativados.add(prob.mercado)
+    
+    return regras_ativadas
 
 
 # =============================================================================
@@ -1108,59 +1392,124 @@ def extrair_dados_arbitro(card) -> DadosArbitro:
     perfil = "Médio"
     n_jogos = 10
     
-    # Busca seção do árbitro
-    secoes = card.find_all(class_='secao')
+    # Busca o card do árbitro diretamente
+    arbitro_card = card.find(class_='arbitro-card')
     
-    for secao in secoes:
-        titulo = secao.find(class_='secao-titulo')
-        if not titulo or 'rbitro' not in titulo.get_text():
-            continue
-        
-        # Nome e país
-        nome_elem = secao.find(class_='arbitro-nome')
+    if arbitro_card:
+        # Nome
+        nome_elem = arbitro_card.find(class_='arbitro-nome')
         if nome_elem:
-            nome = nome_elem.get_text(strip=True)
+            # Remove o badge do texto
+            nome_texto = nome_elem.get_text(strip=True)
+            badge = nome_elem.find(class_='badge')
+            if badge:
+                nome_texto = nome_texto.replace(badge.get_text(strip=True), '').strip()
+            nome = nome_texto
         
-        pais_elem = secao.find(class_='arbitro-pais')
+        # País
+        pais_elem = arbitro_card.find(class_='arbitro-pais')
         if pais_elem:
             pais = pais_elem.get_text(strip=True)
         
-        # Perfil
-        badge = secao.find(class_='badge')
+        # Perfil (badge)
+        badge = arbitro_card.find(class_='badge')
         if badge:
-            perfil = badge.get_text(strip=True)
+            texto_badge = badge.get_text(strip=True).lower()
+            if 'rigoroso' in texto_badge:
+                perfil = "Rigoroso"
+            elif 'permissivo' in texto_badge:
+                perfil = "Permissivo"
+            else:
+                perfil = "Médio"
         
-        # Métricas
-        metricas = secao.find_all(class_='metrica-item')
+        # Métricas - busca em metrica-card
+        metricas = arbitro_card.find_all(class_='metrica-card')
         for metrica in metricas:
-            texto = metrica.get_text()
-            valor_elem = metrica.find(class_='metrica-valor')
+            # Pega o valor (classe 'valor')
+            valor_elem = metrica.find(class_='valor')
             if not valor_elem:
                 continue
             
             valor = extrair_valor_float(valor_elem.get_text())
-            texto_lower = texto.lower()
             
-            if '10j' in texto_lower or '10 j' in texto_lower:
-                if 'amarelo' in texto_lower or 'cartõ' in texto_lower or 'cartoe' in texto_lower:
+            # Pega o label para identificar o tipo
+            label_elem = metrica.find(class_='label')
+            if not label_elem:
+                continue
+            
+            texto_label = label_elem.get_text().lower()
+            
+            # Identifica o tipo de métrica
+            if '10j' in texto_label or '10 j' in texto_label:
+                if 'amarelo' in texto_label:
                     media_10j = valor
-                elif 'falta' in texto_lower:
+                elif 'falta' in texto_label:
                     media_faltas_10j = valor
-            elif '5j' in texto_lower or '5 j' in texto_lower:
-                if 'amarelo' in texto_lower or 'cartõ' in texto_lower or 'cartoe' in texto_lower:
+            elif '5j' in texto_label or '5 j' in texto_label:
+                if 'amarelo' in texto_label:
                     media_5j = valor
-                elif 'falta' in texto_lower:
+                elif 'falta' in texto_label:
                     media_faltas_5j = valor
-            elif '1t' in texto_lower or '1º t' in texto_lower:
-                if 'amarelo' in texto_lower:
+            elif '1t' in texto_label:
+                if 'amarelo' in texto_label:
                     media_1t = valor
-            elif '2t' in texto_lower or '2º t' in texto_lower:
-                if 'amarelo' in texto_lower:
+            elif '2t' in texto_label:
+                if 'amarelo' in texto_label:
                     media_2t = valor
-            elif 'vermelho' in texto_lower:
+            elif 'vermelho' in texto_label:
                 media_vermelhos = valor
+    
+    # Fallback: Busca seção do árbitro (formato antigo)
+    if not nome or (media_10j == 0 and media_5j == 0):
+        secoes = card.find_all(class_='secao')
         
-        break
+        for secao in secoes:
+            titulo = secao.find(class_='secao-titulo')
+            if not titulo or 'rbitro' not in titulo.get_text():
+                continue
+            
+            # Nome e país
+            if not nome:
+                nome_elem = secao.find(class_='arbitro-nome')
+                if nome_elem:
+                    nome = nome_elem.get_text(strip=True)
+            
+            if not pais:
+                pais_elem = secao.find(class_='arbitro-pais')
+                if pais_elem:
+                    pais = pais_elem.get_text(strip=True)
+            
+            # Métricas (formato antigo)
+            metricas = secao.find_all(class_='metrica-item')
+            for metrica in metricas:
+                texto = metrica.get_text()
+                valor_elem = metrica.find(class_='metrica-valor')
+                if not valor_elem:
+                    continue
+                
+                valor = extrair_valor_float(valor_elem.get_text())
+                texto_lower = texto.lower()
+                
+                if '10j' in texto_lower or '10 j' in texto_lower:
+                    if 'amarelo' in texto_lower or 'cartõ' in texto_lower or 'cartoe' in texto_lower:
+                        media_10j = valor
+                    elif 'falta' in texto_lower:
+                        media_faltas_10j = valor
+                elif '5j' in texto_lower or '5 j' in texto_lower:
+                    if 'amarelo' in texto_lower or 'cartõ' in texto_lower or 'cartoe' in texto_lower:
+                        media_5j = valor
+                    elif 'falta' in texto_lower:
+                        media_faltas_5j = valor
+                elif '1t' in texto_lower or '1º t' in texto_lower:
+                    if 'amarelo' in texto_lower:
+                        media_1t = valor
+                elif '2t' in texto_lower or '2º t' in texto_lower:
+                    if 'amarelo' in texto_lower:
+                        media_2t = valor
+                elif 'vermelho' in texto_lower:
+                    media_vermelhos = valor
+            
+            break
     
     # Tenta buscar na info-bar
     if not nome:
@@ -1765,6 +2114,117 @@ def gerar_css_adicional() -> str:
             font-weight: bold;
         }
         
+        /* Regras de Ouro */
+        .regras-ouro-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(185, 242, 255, 0.1) 100%);
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            animation: pulse-gold 2s infinite;
+        }
+        
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.6); }
+        }
+        
+        .regras-ouro-titulo {
+            color: #ffd700;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .regras-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .regra-card {
+            border: 1px solid;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .regra-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .regra-icone {
+            font-size: 1.5em;
+        }
+        
+        .regra-nivel {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .regra-mercado {
+            color: #e0e0e0;
+            margin-left: auto;
+            font-weight: 500;
+        }
+        
+        .regra-condicoes {
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+        
+        .regra-stats {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .regra-taxa {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        
+        .regra-amostras {
+            color: #808080;
+            font-size: 0.9em;
+        }
+        
+        .regra-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: bold;
+            margin-left: 10px;
+            animation: badge-pulse 1.5s infinite;
+        }
+        
+        .regra-badge.diamante {
+            background: linear-gradient(135deg, #b9f2ff 0%, #87ceeb 100%);
+            color: #1a1a2e;
+        }
+        
+        .regra-badge.platina {
+            background: linear-gradient(135deg, #e5e4e2 0%, #c0c0c0 100%);
+            color: #1a1a2e;
+        }
+        
+        .regra-badge.ouro {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #1a1a2e;
+        }
+        
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
         @media (max-width: 768px) {
             .shrinkage-grid {
                 grid-template-columns: 1fr;
@@ -2098,6 +2558,74 @@ def gerar_secao_interpretacao(resultado: ResultadoAnalise) -> str:
     '''
 
 
+def gerar_secao_regras_ouro(resultado: ResultadoAnalise) -> str:
+    """Gera a seção de regras de ouro ativadas."""
+    
+    if not resultado.regras_ativadas:
+        return ""
+    
+    # Agrupa regras por nível
+    regras_por_nivel = {'Diamante': [], 'Platina': [], 'Ouro': []}
+    for item in resultado.regras_ativadas:
+        regra = item['regra']
+        nivel = regra.nivel
+        if nivel in regras_por_nivel:
+            regras_por_nivel[nivel].append(item)
+    
+    # Gera HTML das regras
+    regras_html = ""
+    
+    for nivel in ['Diamante', 'Platina', 'Ouro']:
+        items = regras_por_nivel[nivel]
+        if not items:
+            continue
+        
+        # Define cores e ícones por nível
+        if nivel == 'Diamante':
+            cor = '#b9f2ff'
+            icone = '💎'
+            bg = 'rgba(185, 242, 255, 0.1)'
+        elif nivel == 'Platina':
+            cor = '#e5e4e2'
+            icone = '🥈'
+            bg = 'rgba(229, 228, 226, 0.1)'
+        else:
+            cor = '#ffd700'
+            icone = '🥇'
+            bg = 'rgba(255, 215, 0, 0.1)'
+        
+        for item in items:
+            regra = item['regra']
+            mercado = item['mercado']
+            
+            regras_html += f'''
+                <div class="regra-card" style="background: {bg}; border-color: {cor};">
+                    <div class="regra-header">
+                        <span class="regra-icone">{icone}</span>
+                        <span class="regra-nivel" style="color: {cor};">{nivel}</span>
+                        <span class="regra-mercado">{mercado}</span>
+                    </div>
+                    <div class="regra-condicoes">{regra.descricao}</div>
+                    <div class="regra-stats">
+                        <span class="regra-taxa" style="color: {cor};">{regra.taxa_acerto:.1f}%</span>
+                        <span class="regra-amostras">({regra.acertos}/{regra.total_amostras} acertos)</span>
+                    </div>
+                </div>
+            '''
+    
+    return f'''
+        <div class="regras-ouro-box">
+            <div class="regras-ouro-titulo">🏆 Regras de Ouro Ativadas!</div>
+            <p style="color: #a0a0a0; margin-bottom: 15px; font-size: 0.9em;">
+                Esta partida ativa padrões com alta taxa histórica de acerto
+            </p>
+            <div class="regras-grid">
+                {regras_html}
+            </div>
+        </div>
+    '''
+
+
 def gerar_card_completo(resultado: ResultadoAnalise) -> str:
     """Gera o card completo de uma partida."""
     
@@ -2108,10 +2636,22 @@ def gerar_card_completo(resultado: ResultadoAnalise) -> str:
     nome_mandante = re.sub(r'[🏠✈️⚽🏆📊🎯]', '', p.time_mandante.nome).strip()
     nome_visitante = re.sub(r'[🏠✈️⚽🏆📊🎯]', '', p.time_visitante.nome).strip()
     
+    # Indicador de regra de ouro no header
+    regra_header = ""
+    if resultado.regras_ativadas:
+        # Pega o nível mais alto
+        niveis = [item['regra'].nivel for item in resultado.regras_ativadas]
+        if 'Diamante' in niveis:
+            regra_header = '<span class="regra-badge diamante">💎 DIAMANTE</span>'
+        elif 'Platina' in niveis:
+            regra_header = '<span class="regra-badge platina">🥈 PLATINA</span>'
+        else:
+            regra_header = '<span class="regra-badge ouro">🥇 OURO</span>'
+    
     return f'''
         <div class="jogo-card" data-perfil="{p.perfil_card}">
             <div class="jogo-header">
-                <div class="jogo-titulo">{nome_mandante} ({p.time_mandante.posicao}) vs {nome_visitante} ({p.time_visitante.posicao})</div>
+                <div class="jogo-titulo">{nome_mandante} ({p.time_mandante.posicao}) vs {nome_visitante} ({p.time_visitante.posicao}) {regra_header}</div>
                 <div class="jogo-data">
                     <div class="horario">{p.horario}</div>
                     <div class="data">{p.data}</div>
@@ -2141,6 +2681,8 @@ def gerar_card_completo(resultado: ResultadoAnalise) -> str:
                 <div class="secao">
                     <div class="secao-titulo">📊 Análise Probabilística V2.0</div>
                     
+                    {gerar_secao_regras_ouro(resultado)}
+                    
                     {gerar_secao_calculo(resultado)}
                     
                     {gerar_secao_qualidade(c.qualidade_dados)}
@@ -2163,6 +2705,13 @@ def gerar_html_completo(resultados: List[ResultadoAnalise], data_arquivo: str) -
     
     timestamp = datetime.now().strftime('%d/%m/%Y %H:%M')
     css_adicional = gerar_css_adicional()
+    
+    # CSS do guia de metodologia
+    css_guia = ""
+    guia_html = ""
+    if APRENDIZADO_DISPONIVEL:
+        css_guia = gerar_css_guia()
+        guia_html = gerar_guia_metodologia_html()
     
     # Gera cards
     cards_html = ""
@@ -2376,6 +2925,8 @@ def gerar_html_completo(resultados: List[ResultadoAnalise], data_arquivo: str) -
         }}
         
         {css_adicional}
+        
+        {css_guia}
     </style>
 </head>
 <body>
@@ -2401,6 +2952,8 @@ def gerar_html_completo(resultados: List[ResultadoAnalise], data_arquivo: str) -
         </div>
         
         {cards_html}
+        
+        {guia_html}
         
         <div class="footer">
             <p><strong>📊 RefStats - Análise Probabilística V2.0</strong></p>
@@ -2461,7 +3014,31 @@ def main():
     os.makedirs(pasta_calibracao, exist_ok=True)
     
     # Inicializa gerenciador de calibração
+    print(f"\n🔧 Carregando calibradores...")
     gerenciador = obter_gerenciador_calibracao(pasta_calibracao)
+    
+    # Verifica se há calibradores ativos
+    calibradores_ativos = sum(1 for c in gerenciador.calibradores.values() 
+                              if c._mapa_calibracao is not None)
+    if calibradores_ativos > 0:
+        print(f"   ✅ {calibradores_ativos} calibrador(es) ativo(s)")
+    else:
+        print(f"   ℹ️ Nenhum calibrador treinado ainda")
+        print(f"      Execute validações para treinar os calibradores!")
+    
+    # Carrega regras de ouro
+    print(f"\n🏆 Carregando Regras de Ouro...")
+    regras_ouro = carregar_regras_ouro(pasta_calibracao)
+    if regras_ouro:
+        # Conta por nível
+        diamante = sum(1 for r in regras_ouro if r.nivel == 'Diamante')
+        platina = sum(1 for r in regras_ouro if r.nivel == 'Platina')
+        ouro = sum(1 for r in regras_ouro if r.nivel == 'Ouro')
+        print(f"   ✅ {len(regras_ouro)} regra(s) carregada(s)")
+        print(f"      💎 Diamante: {diamante} | 🥈 Platina: {platina} | 🥇 Ouro: {ouro}")
+    else:
+        print(f"   ℹ️ Nenhuma regra de ouro descoberta ainda")
+        print(f"      Execute validações para descobrir padrões!")
     
     # Busca arquivos
     padrao = os.path.join(pasta_historico, "JOGOS_DO_DIA_*.html")
@@ -2495,6 +3072,18 @@ def main():
         resultados = processar_arquivo(arquivo, gerenciador)
         
         if resultados:
+            # Verifica regras de ouro para cada resultado
+            total_regras_ativadas = 0
+            if regras_ouro:
+                for resultado in resultados:
+                    regras_ativadas = verificar_regras_partida(resultado, regras_ouro, pasta_calibracao)
+                    resultado.regras_ativadas = regras_ativadas
+                    if regras_ativadas:
+                        total_regras_ativadas += 1
+                
+                if total_regras_ativadas > 0:
+                    print(f"\n   🏆 {total_regras_ativadas} partida(s) ativaram Regras de Ouro!")
+            
             # Gera HTML
             html = gerar_html_completo(resultados, data_arquivo)
             

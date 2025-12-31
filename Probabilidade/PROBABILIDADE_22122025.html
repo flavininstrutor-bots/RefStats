@@ -533,6 +533,117 @@
             font-weight: bold;
         }
         
+        /* Regras de Ouro */
+        .regras-ouro-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(185, 242, 255, 0.1) 100%);
+            border: 2px solid #ffd700;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            animation: pulse-gold 2s infinite;
+        }
+        
+        @keyframes pulse-gold {
+            0%, 100% { box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(255, 215, 0, 0.6); }
+        }
+        
+        .regras-ouro-titulo {
+            color: #ffd700;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .regras-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .regra-card {
+            border: 1px solid;
+            border-radius: 10px;
+            padding: 15px;
+        }
+        
+        .regra-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .regra-icone {
+            font-size: 1.5em;
+        }
+        
+        .regra-nivel {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .regra-mercado {
+            color: #e0e0e0;
+            margin-left: auto;
+            font-weight: 500;
+        }
+        
+        .regra-condicoes {
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+        
+        .regra-stats {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .regra-taxa {
+            font-size: 1.4em;
+            font-weight: bold;
+        }
+        
+        .regra-amostras {
+            color: #808080;
+            font-size: 0.9em;
+        }
+        
+        .regra-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7em;
+            font-weight: bold;
+            margin-left: 10px;
+            animation: badge-pulse 1.5s infinite;
+        }
+        
+        .regra-badge.diamante {
+            background: linear-gradient(135deg, #b9f2ff 0%, #87ceeb 100%);
+            color: #1a1a2e;
+        }
+        
+        .regra-badge.platina {
+            background: linear-gradient(135deg, #e5e4e2 0%, #c0c0c0 100%);
+            color: #1a1a2e;
+        }
+        
+        .regra-badge.ouro {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #1a1a2e;
+        }
+        
+        @keyframes badge-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
         @media (max-width: 768px) {
             .shrinkage-grid {
                 grid-template-columns: 1fr;
@@ -540,6 +651,136 @@
             
             .intervalo-visual {
                 flex-wrap: wrap;
+            }
+        }
+    
+        
+        
+        /* Guia de Metodologia */
+        .guia-metodologia {
+            background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            border: 1px solid #0f3460;
+        }
+        
+        .guia-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e94560;
+        }
+        
+        .guia-header h2 {
+            color: #e94560;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        
+        .guia-header p {
+            color: #a0a0a0;
+        }
+        
+        .guia-section {
+            background: rgba(15, 52, 96, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .guia-section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .guia-section-title h3 {
+            color: #3498db;
+            font-size: 1.2em;
+            margin: 0;
+        }
+        
+        .guia-icon {
+            font-size: 1.5em;
+        }
+        
+        .guia-content {
+            color: #e0e0e0;
+            line-height: 1.7;
+        }
+        
+        .guia-content ul {
+            margin: 10px 0;
+            padding-left: 25px;
+        }
+        
+        .guia-content li {
+            margin: 8px 0;
+        }
+        
+        .guia-formula {
+            background: #1a1a2e;
+            border: 1px solid #3498db;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            color: #f1c40f;
+        }
+        
+        .guia-example {
+            background: rgba(46, 204, 113, 0.1);
+            border: 1px solid #2ecc71;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .guia-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .guia-table th {
+            background: #0f3460;
+            color: #e0e0e0;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .guia-table td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #0f3460;
+        }
+        
+        .guia-table tr:hover {
+            background: rgba(15, 52, 96, 0.3);
+        }
+        
+        .guia-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #0f3460;
+            color: #a0a0a0;
+        }
+        
+        @media (max-width: 768px) {
+            .guia-metodologia {
+                padding: 15px;
+            }
+            
+            .guia-section {
+                padding: 15px;
+            }
+            
+            .guia-table {
+                font-size: 0.85em;
             }
         }
     
@@ -570,7 +811,7 @@
         
         <div class="jogo-card" data-perfil="Permissivo">
             <div class="jogo-header">
-                <div class="jogo-titulo">Fulham (10º) vs Nottingham Forest (17º)</div>
+                <div class="jogo-titulo">Fulham (10º) vs Nottingham Forest (17º) <span class="regra-badge diamante">💎 DIAMANTE</span></div>
                 <div class="jogo-data">
                     <div class="horario">17:00</div>
                     <div class="data">22/12/2025</div>
@@ -584,11 +825,11 @@
                 </span>
                 <span>
                     <span class="info-label">⚖️</span>
-                    <span class="info-value">Anthony TaylorLiga</span>
+                    <span class="info-value">Anthony Taylor</span>
                 </span>
                 <span>
                     <span class="info-label">📊</span>
-                    <span class="info-value" style="color: #9b59b6;">λ = 4.27</span>
+                    <span class="info-value" style="color: #9b59b6;">λ = 3.60</span>
                 </span>
                 <span>
                     <span class="info-label">📈</span>
@@ -599,6 +840,44 @@
             <div class="jogo-content">
                 <div class="secao">
                     <div class="secao-titulo">📊 Análise Probabilística V2.0</div>
+                    
+                    
+        <div class="regras-ouro-box">
+            <div class="regras-ouro-titulo">🏆 Regras de Ouro Ativadas!</div>
+            <p style="color: #a0a0a0; margin-bottom: 15px; font-size: 0.9em;">
+                Esta partida ativa padrões com alta taxa histórica de acerto
+            </p>
+            <div class="regras-grid">
+                
+                <div class="regra-card" style="background: rgba(185, 242, 255, 0.1); border-color: #b9f2ff;">
+                    <div class="regra-header">
+                        <span class="regra-icone">💎</span>
+                        <span class="regra-nivel" style="color: #b9f2ff;">Diamante</span>
+                        <span class="regra-mercado">Over 2.5 Cartões</span>
+                    </div>
+                    <div class="regra-condicoes">Tendência=Subindo + faixa_delta_arbitro=Neutro + faixa_delta_times=Negativo</div>
+                    <div class="regra-stats">
+                        <span class="regra-taxa" style="color: #b9f2ff;">92.9%</span>
+                        <span class="regra-amostras">(26/28 acertos)</span>
+                    </div>
+                </div>
+            
+                <div class="regra-card" style="background: rgba(255, 215, 0, 0.1); border-color: #ffd700;">
+                    <div class="regra-header">
+                        <span class="regra-icone">🥇</span>
+                        <span class="regra-nivel" style="color: #ffd700;">Ouro</span>
+                        <span class="regra-mercado">Under 4.5 Cartões</span>
+                    </div>
+                    <div class="regra-condicoes">Tendência=Subindo + faixa_amplitude=Média + faixa_soma_times=Baixa</div>
+                    <div class="regra-stats">
+                        <span class="regra-taxa" style="color: #ffd700;">78.6%</span>
+                        <span class="regra-amostras">(22/28 acertos)</span>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    
                     
                     
         <div class="calculo-section">
@@ -615,10 +894,10 @@
             <div class="calculo-passo">
                 <div class="calculo-passo-titulo">2️⃣ Ajuste do Árbitro (Δ_arbitro)</div>
                 <div class="calculo-formula">
-                    média_ponderada = (0.6 × 5.00) + (0.4 × 5.00) = 5.00
+                    média_ponderada = (0.6 × 5.00) + (0.4 × 4.10) = 4.64
                 </div>
                 <div class="calculo-formula">
-                    Δ_arbitro = 0.8 × (5.00 - 5.00) = <span class="calculo-resultado">+0.00</span>
+                    Δ_arbitro = 0.8 × (4.64 - 5.00) = <span class="calculo-resultado">-0.29</span>
                 </div>
             </div>
             
@@ -635,17 +914,17 @@
             <div class="calculo-passo">
                 <div class="calculo-passo-titulo">4️⃣ Ajuste de Recência (CAPADO ±5%)</div>
                 <div class="calculo-formula">
-                    F_raw = 1.0000 → F_capado = 1.0000
+                    F_raw = 1.2195 → F_capado = 1.0500
                 </div>
                 <div class="calculo-formula">
-                    ajuste_recencia = 5.00 × (1.0000 - 1) = <span class="calculo-resultado">+0.00</span>
+                    ajuste_recencia = 5.00 × (1.0500 - 1) = <span class="calculo-resultado">+0.25</span>
                 </div>
             </div>
             
             <div class="calculo-passo" style="border-color: #f1c40f;">
                 <div class="calculo-passo-titulo" style="color: #f1c40f;">5️⃣ Lambda Raw (Soma Aditiva)</div>
                 <div class="calculo-formula">
-                    λ_raw = 5.00 +0.00 -1.44 +0.00 = <span class="calculo-resultado">3.56</span>
+                    λ_raw = 5.00 -0.29 -1.44 +0.25 = <span class="calculo-resultado">3.52</span>
                 </div>
             </div>
         </div>
@@ -658,75 +937,75 @@
             
             <div class="shrinkage-grid">
                 <div class="shrinkage-item">
-                    <div class="shrinkage-valor">0.51</div>
+                    <div class="shrinkage-valor">0.95</div>
                     <div class="shrinkage-label">Peso (w)</div>
                 </div>
                 <div class="shrinkage-item">
-                    <div class="shrinkage-valor">3.56</div>
+                    <div class="shrinkage-valor">3.52</div>
                     <div class="shrinkage-label">λ Raw</div>
                 </div>
                 <div class="shrinkage-item">
-                    <div class="shrinkage-valor" style="color: #2ecc71;">4.27</div>
+                    <div class="shrinkage-valor" style="color: #2ecc71;">3.60</div>
                     <div class="shrinkage-label">λ Shrunk (Final)</div>
                 </div>
             </div>
             
             <p style="color: #a0a0a0; margin-top: 15px; font-size: 0.85em; text-align: center;">
-                💡 Dados do árbitro incompletos
+                💡 Alta confiança nos dados
             </p>
         </div>
     
                     
                     
-        <div class="qualidade-box" style="border-color: #f1c40f;">
-            <div class="qualidade-titulo" style="color: #f1c40f;">📊 Qualidade dos Dados</div>
+        <div class="qualidade-box" style="border-color: #2ecc71;">
+            <div class="qualidade-titulo" style="color: #2ecc71;">📊 Qualidade dos Dados</div>
             
             <div class="qualidade-score">
-                <div class="qualidade-score-valor" style="color: #f1c40f;">68</div>
+                <div class="qualidade-score-valor" style="color: #2ecc71;">100</div>
                 <div style="color: #a0a0a0;">de 100 pontos</div>
             </div>
             
             <div class="qualidade-item">
                 <span>Completude Árbitro</span>
-                <span style="color: #f1c40f;">0%</span>
+                <span style="color: #2ecc71;">100%</span>
             </div>
             
             <div class="qualidade-barra">
-                <div class="qualidade-barra-fill" style="width: 0%; background: #f1c40f;"></div>
+                <div class="qualidade-barra-fill" style="width: 99.99%; background: #2ecc71;"></div>
             </div>
         
             
             <div class="qualidade-item">
                 <span>Completude Times</span>
-                <span style="color: #f1c40f;">100%</span>
+                <span style="color: #2ecc71;">100%</span>
             </div>
             
             <div class="qualidade-barra">
-                <div class="qualidade-barra-fill" style="width: 100%; background: #f1c40f;"></div>
+                <div class="qualidade-barra-fill" style="width: 100%; background: #2ecc71;"></div>
             </div>
         
             
             <div class="qualidade-item">
                 <span>Amostra Árbitro</span>
-                <span style="color: #f1c40f;">100%</span>
+                <span style="color: #2ecc71;">100%</span>
             </div>
             
             <div class="qualidade-barra">
-                <div class="qualidade-barra-fill" style="width: 100%; background: #f1c40f;"></div>
+                <div class="qualidade-barra-fill" style="width: 100%; background: #2ecc71;"></div>
             </div>
         
             
             <div class="qualidade-item">
                 <span>Recência</span>
-                <span style="color: #f1c40f;">30%</span>
+                <span style="color: #2ecc71;">100%</span>
             </div>
             
             <div class="qualidade-barra">
-                <div class="qualidade-barra-fill" style="width: 30%; background: #f1c40f;"></div>
+                <div class="qualidade-barra-fill" style="width: 100%; background: #2ecc71;"></div>
             </div>
         
             
-            <div style="margin-top: 10px; color: #f1c40f; font-size: 0.85em;"><div>⚠️ Dados de recência limitados</div></div>
+            
         </div>
     
                     
@@ -739,7 +1018,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 10px; color: #a0a0a0;">
-                r = 4.00 | λ = 4.27 | p = 0.4839
+                r = 4.00 | λ = 3.60 | p = 0.5266
             </div>
             
             <div class="modelo-explicacao">
@@ -765,25 +1044,21 @@
                 </div>
                 <span style="color: #a0a0a0;">—</span>
                 <div class="intervalo-numero intervalo-p50">
-                    <div>4</div>
+                    <div>3</div>
                     <div style="font-size: 0.6em; color: #a0a0a0;">Mediana</div>
                 </div>
                 <span style="color: #a0a0a0;">—</span>
                 <div class="intervalo-numero intervalo-p90">
-                    <div>8</div>
+                    <div>7</div>
                     <div style="font-size: 0.6em; color: #a0a0a0;">P90</div>
                 </div>
             </div>
             
             <p style="color: #a0a0a0; font-size: 0.85em;">
-                80% dos jogos com perfil semelhante têm entre <strong>1</strong> e <strong>8</strong> cartões
+                80% dos jogos com perfil semelhante têm entre <strong>1</strong> e <strong>7</strong> cartões
             </p>
             
             
-            <div class="intervalo-aviso">
-                ⚠️ Alta variância detectada. Mercados extremos (Over 5.5) não serão destacados.
-            </div>
-        
         </div>
     
                     
@@ -791,7 +1066,7 @@
         <div class="calculo-section">
             <div class="calculo-titulo">🎯 Probabilidades (Raw → Calibrado)</div>
             <p style="color: #a0a0a0; margin-bottom: 15px; font-size: 0.9em;">
-                λ_shrunk = 4.27 | Modelo: Negative Binomial
+                λ_shrunk = 3.60 | Modelo: Negative Binomial
             </p>
             
             <div class="prob-grid">
@@ -799,9 +1074,9 @@
             <div class="prob-card destaque">
                 <div class="prob-mercado">Over 2.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 68.6%</span>
+                    <span class="prob-raw">Raw: 60.5%</span>
                 </div>
-                <div class="prob-calibrado">68.6%</div>
+                <div class="prob-calibrado">80.6%</div>
                 <div class="prob-descricao">
                     ≥ 2 cartões
                 </div>
@@ -811,9 +1086,9 @@
             <div class="prob-card">
                 <div class="prob-mercado">Over 3.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 53.5%</span>
+                    <span class="prob-raw">Raw: 44.2%</span>
                 </div>
-                <div class="prob-calibrado">53.5%</div>
+                <div class="prob-calibrado">50.0%</div>
                 <div class="prob-descricao">
                     ≥ 3 cartões
                 </div>
@@ -823,61 +1098,61 @@
             <div class="prob-card">
                 <div class="prob-mercado">Over 4.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 39.9%</span>
+                    <span class="prob-raw">Raw: 30.7%</span>
                 </div>
-                <div class="prob-calibrado">39.9%</div>
+                <div class="prob-calibrado">41.9%</div>
                 <div class="prob-descricao">
                     ≥ 4 cartões
                 </div>
                 
             </div>
         
-            <div class="prob-card bloqueado">
+            <div class="prob-card">
                 <div class="prob-mercado">Over 5.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 28.7%</span>
+                    <span class="prob-raw">Raw: 20.4%</span>
                 </div>
-                <div class="prob-calibrado">28.7%</div>
+                <div class="prob-calibrado">22.1%</div>
                 <div class="prob-descricao">
                     ≥ 5 cartões
                 </div>
-                <div class="prob-bloqueio">🚫 Variância alta</div>
+                
             </div>
         
-            <div class="prob-card">
+            <div class="prob-card destaque">
                 <div class="prob-mercado">Under 3.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 46.5%</span>
+                    <span class="prob-raw">Raw: 55.8%</span>
                 </div>
-                <div class="prob-calibrado">46.5%</div>
+                <div class="prob-calibrado">58.6%</div>
                 <div class="prob-descricao">
                     ≤ 3 cartões
                 </div>
                 
             </div>
         
-            <div class="prob-card destaque">
+            <div class="prob-card">
                 <div class="prob-mercado">Under 4.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 60.1%</span>
+                    <span class="prob-raw">Raw: 69.3%</span>
                 </div>
-                <div class="prob-calibrado">60.1%</div>
+                <div class="prob-calibrado">54.5%</div>
                 <div class="prob-descricao">
                     ≤ 4 cartões
                 </div>
                 
             </div>
         
-            <div class="prob-card bloqueado">
+            <div class="prob-card destaque">
                 <div class="prob-mercado">Under 5.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 71.3%</span>
+                    <span class="prob-raw">Raw: 79.6%</span>
                 </div>
-                <div class="prob-calibrado">71.3%</div>
+                <div class="prob-calibrado">78.2%</div>
                 <div class="prob-descricao">
                     ≤ 5 cartões
                 </div>
-                <div class="prob-bloqueio">🚫 Variância alta</div>
+                
             </div>
         
             </div>
@@ -895,7 +1170,7 @@
             <div class="interpretacao-texto">
                 <p>
                     Com base no <strong>modelo aditivo + shrinkage bayesiano</strong>, 
-                    a expectativa final é de <span class="lambda-destaque">4.27 cartões</span>.
+                    a expectativa final é de <span class="lambda-destaque">3.60 cartões</span>.
                 </p>
                 
                 <p style="margin-top: 12px;">
@@ -904,12 +1179,12 @@
                 </p>
                 
                 <p style="margin-top: 12px;">
-                    <strong>Destaques:</strong> Over 2.5 Cartões, Under 4.5 Cartões
+                    <strong>Destaques:</strong> Over 2.5 Cartões, Under 3.5 Cartões, Under 5.5 Cartões
                 </p>
                 
                 <p style="margin-top: 12px;">
-                    <strong>Qualidade dos dados:</strong> 68/100
-                    (Shrinkage w=0.51)
+                    <strong>Qualidade dos dados:</strong> 100/100
+                    (Shrinkage w=0.95)
                 </p>
                 
                 <div style="margin-top: 20px; padding: 15px; background: rgba(52, 152, 219, 0.1); border-radius: 8px; border-left: 3px solid #3498db;">
@@ -927,7 +1202,7 @@
     
         <div class="jogo-card" data-perfil="Médio">
             <div class="jogo-header">
-                <div class="jogo-titulo">Athletic Club (8º) vs Espanyol (5º)</div>
+                <div class="jogo-titulo">Athletic Club (8º) vs Espanyol (5º) <span class="regra-badge diamante">💎 DIAMANTE</span></div>
                 <div class="jogo-data">
                     <div class="horario">17:00</div>
                     <div class="data">22/12/2025</div>
@@ -941,11 +1216,11 @@
                 </span>
                 <span>
                     <span class="info-label">⚖️</span>
-                    <span class="info-value">Mateo Busquets FerrerLiga</span>
+                    <span class="info-value">Mateo Busquets Ferrer</span>
                 </span>
                 <span>
                     <span class="info-label">📊</span>
-                    <span class="info-value" style="color: #9b59b6;">λ = 5.08</span>
+                    <span class="info-value" style="color: #9b59b6;">λ = 4.36</span>
                 </span>
                 <span>
                     <span class="info-label">📈</span>
@@ -956,6 +1231,57 @@
             <div class="jogo-content">
                 <div class="secao">
                     <div class="secao-titulo">📊 Análise Probabilística V2.0</div>
+                    
+                    
+        <div class="regras-ouro-box">
+            <div class="regras-ouro-titulo">🏆 Regras de Ouro Ativadas!</div>
+            <p style="color: #a0a0a0; margin-bottom: 15px; font-size: 0.9em;">
+                Esta partida ativa padrões com alta taxa histórica de acerto
+            </p>
+            <div class="regras-grid">
+                
+                <div class="regra-card" style="background: rgba(185, 242, 255, 0.1); border-color: #b9f2ff;">
+                    <div class="regra-header">
+                        <span class="regra-icone">💎</span>
+                        <span class="regra-nivel" style="color: #b9f2ff;">Diamante</span>
+                        <span class="regra-mercado">Over 2.5 Cartões</span>
+                    </div>
+                    <div class="regra-condicoes">Tendência=Descendo + faixa_delta_times=Neutro + faixa_amplitude=Larga</div>
+                    <div class="regra-stats">
+                        <span class="regra-taxa" style="color: #b9f2ff;">90.0%</span>
+                        <span class="regra-amostras">(18/20 acertos)</span>
+                    </div>
+                </div>
+            
+                <div class="regra-card" style="background: rgba(185, 242, 255, 0.1); border-color: #b9f2ff;">
+                    <div class="regra-header">
+                        <span class="regra-icone">💎</span>
+                        <span class="regra-nivel" style="color: #b9f2ff;">Diamante</span>
+                        <span class="regra-mercado">Over 3.5 Cartões</span>
+                    </div>
+                    <div class="regra-condicoes">Tendência=Descendo + faixa_delta_times=Neutro + faixa_amplitude=Larga</div>
+                    <div class="regra-stats">
+                        <span class="regra-taxa" style="color: #b9f2ff;">90.0%</span>
+                        <span class="regra-amostras">(18/20 acertos)</span>
+                    </div>
+                </div>
+            
+                <div class="regra-card" style="background: rgba(255, 215, 0, 0.1); border-color: #ffd700;">
+                    <div class="regra-header">
+                        <span class="regra-icone">🥇</span>
+                        <span class="regra-nivel" style="color: #ffd700;">Ouro</span>
+                        <span class="regra-mercado">Over 4.5 Cartões</span>
+                    </div>
+                    <div class="regra-condicoes">Tendência=Descendo + faixa_amplitude=Larga + faixa_soma_times=Média</div>
+                    <div class="regra-stats">
+                        <span class="regra-taxa" style="color: #ffd700;">83.3%</span>
+                        <span class="regra-amostras">(10/12 acertos)</span>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    
                     
                     
         <div class="calculo-section">
@@ -972,10 +1298,10 @@
             <div class="calculo-passo">
                 <div class="calculo-passo-titulo">2️⃣ Ajuste do Árbitro (Δ_arbitro)</div>
                 <div class="calculo-formula">
-                    média_ponderada = (0.6 × 5.20) + (0.4 × 5.20) = 5.20
+                    média_ponderada = (0.6 × 4.40) + (0.4 × 5.20) = 4.72
                 </div>
                 <div class="calculo-formula">
-                    Δ_arbitro = 0.8 × (5.20 - 5.20) = <span class="calculo-resultado">+0.00</span>
+                    Δ_arbitro = 0.8 × (4.72 - 5.20) = <span class="calculo-resultado">-0.38</span>
                 </div>
             </div>
             
@@ -992,17 +1318,17 @@
             <div class="calculo-passo">
                 <div class="calculo-passo-titulo">4️⃣ Ajuste de Recência (CAPADO ±5%)</div>
                 <div class="calculo-formula">
-                    F_raw = 1.0000 → F_capado = 1.0000
+                    F_raw = 0.8462 → F_capado = 0.9500
                 </div>
                 <div class="calculo-formula">
-                    ajuste_recencia = 5.20 × (1.0000 - 1) = <span class="calculo-resultado">+0.00</span>
+                    ajuste_recencia = 5.20 × (0.9500 - 1) = <span class="calculo-resultado">-0.26</span>
                 </div>
             </div>
             
             <div class="calculo-passo" style="border-color: #f1c40f;">
                 <div class="calculo-passo-titulo" style="color: #f1c40f;">5️⃣ Lambda Raw (Soma Aditiva)</div>
                 <div class="calculo-formula">
-                    λ_raw = 5.20 +0.00 -0.24 +0.00 = <span class="calculo-resultado">4.96</span>
+                    λ_raw = 5.20 -0.38 -0.24 -0.26 = <span class="calculo-resultado">4.32</span>
                 </div>
             </div>
         </div>
@@ -1015,75 +1341,75 @@
             
             <div class="shrinkage-grid">
                 <div class="shrinkage-item">
-                    <div class="shrinkage-valor">0.51</div>
+                    <div class="shrinkage-valor">0.95</div>
                     <div class="shrinkage-label">Peso (w)</div>
                 </div>
                 <div class="shrinkage-item">
-                    <div class="shrinkage-valor">4.96</div>
+                    <div class="shrinkage-valor">4.32</div>
                     <div class="shrinkage-label">λ Raw</div>
                 </div>
                 <div class="shrinkage-item">
-                    <div class="shrinkage-valor" style="color: #2ecc71;">5.08</div>
+                    <div class="shrinkage-valor" style="color: #2ecc71;">4.36</div>
                     <div class="shrinkage-label">λ Shrunk (Final)</div>
                 </div>
             </div>
             
             <p style="color: #a0a0a0; margin-top: 15px; font-size: 0.85em; text-align: center;">
-                💡 Dados do árbitro incompletos
+                💡 Alta confiança nos dados
             </p>
         </div>
     
                     
                     
-        <div class="qualidade-box" style="border-color: #f1c40f;">
-            <div class="qualidade-titulo" style="color: #f1c40f;">📊 Qualidade dos Dados</div>
+        <div class="qualidade-box" style="border-color: #2ecc71;">
+            <div class="qualidade-titulo" style="color: #2ecc71;">📊 Qualidade dos Dados</div>
             
             <div class="qualidade-score">
-                <div class="qualidade-score-valor" style="color: #f1c40f;">68</div>
+                <div class="qualidade-score-valor" style="color: #2ecc71;">100</div>
                 <div style="color: #a0a0a0;">de 100 pontos</div>
             </div>
             
             <div class="qualidade-item">
                 <span>Completude Árbitro</span>
-                <span style="color: #f1c40f;">0%</span>
+                <span style="color: #2ecc71;">100%</span>
             </div>
             
             <div class="qualidade-barra">
-                <div class="qualidade-barra-fill" style="width: 0%; background: #f1c40f;"></div>
+                <div class="qualidade-barra-fill" style="width: 99.99%; background: #2ecc71;"></div>
             </div>
         
             
             <div class="qualidade-item">
                 <span>Completude Times</span>
-                <span style="color: #f1c40f;">100%</span>
+                <span style="color: #2ecc71;">100%</span>
             </div>
             
             <div class="qualidade-barra">
-                <div class="qualidade-barra-fill" style="width: 100%; background: #f1c40f;"></div>
+                <div class="qualidade-barra-fill" style="width: 100%; background: #2ecc71;"></div>
             </div>
         
             
             <div class="qualidade-item">
                 <span>Amostra Árbitro</span>
-                <span style="color: #f1c40f;">100%</span>
+                <span style="color: #2ecc71;">100%</span>
             </div>
             
             <div class="qualidade-barra">
-                <div class="qualidade-barra-fill" style="width: 100%; background: #f1c40f;"></div>
+                <div class="qualidade-barra-fill" style="width: 100%; background: #2ecc71;"></div>
             </div>
         
             
             <div class="qualidade-item">
                 <span>Recência</span>
-                <span style="color: #f1c40f;">30%</span>
+                <span style="color: #2ecc71;">100%</span>
             </div>
             
             <div class="qualidade-barra">
-                <div class="qualidade-barra-fill" style="width: 30%; background: #f1c40f;"></div>
+                <div class="qualidade-barra-fill" style="width: 100%; background: #2ecc71;"></div>
             </div>
         
             
-            <div style="margin-top: 10px; color: #f1c40f; font-size: 0.85em;"><div>⚠️ Dados de recência limitados</div></div>
+            
         </div>
     
                     
@@ -1096,7 +1422,7 @@
             </div>
             
             <div style="text-align: center; margin-top: 10px; color: #a0a0a0;">
-                r = 3.50 | λ = 5.08 | p = 0.4080
+                r = 3.50 | λ = 4.36 | p = 0.4453
             </div>
             
             <div class="modelo-explicacao">
@@ -1127,13 +1453,13 @@
                 </div>
                 <span style="color: #a0a0a0;">—</span>
                 <div class="intervalo-numero intervalo-p90">
-                    <div>10</div>
+                    <div>9</div>
                     <div style="font-size: 0.6em; color: #a0a0a0;">P90</div>
                 </div>
             </div>
             
             <p style="color: #a0a0a0; font-size: 0.85em;">
-                80% dos jogos com perfil semelhante têm entre <strong>1</strong> e <strong>10</strong> cartões
+                80% dos jogos com perfil semelhante têm entre <strong>1</strong> e <strong>9</strong> cartões
             </p>
             
             
@@ -1148,7 +1474,7 @@
         <div class="calculo-section">
             <div class="calculo-titulo">🎯 Probabilidades (Raw → Calibrado)</div>
             <p style="color: #a0a0a0; margin-bottom: 15px; font-size: 0.9em;">
-                λ_shrunk = 5.08 | Modelo: Negative Binomial
+                λ_shrunk = 4.36 | Modelo: Negative Binomial
             </p>
             
             <div class="prob-grid">
@@ -1156,21 +1482,21 @@
             <div class="prob-card destaque">
                 <div class="prob-mercado">Over 2.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 74.7%</span>
+                    <span class="prob-raw">Raw: 68.4%</span>
                 </div>
-                <div class="prob-calibrado">74.7%</div>
+                <div class="prob-calibrado">82.4%</div>
                 <div class="prob-descricao">
                     ≥ 2 cartões
                 </div>
                 
             </div>
         
-            <div class="prob-card destaque">
+            <div class="prob-card">
                 <div class="prob-mercado">Over 3.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 61.7%</span>
+                    <span class="prob-raw">Raw: 53.9%</span>
                 </div>
-                <div class="prob-calibrado">61.7%</div>
+                <div class="prob-calibrado">53.1%</div>
                 <div class="prob-descricao">
                     ≥ 3 cartões
                 </div>
@@ -1180,9 +1506,9 @@
             <div class="prob-card">
                 <div class="prob-mercado">Over 4.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 49.2%</span>
+                    <span class="prob-raw">Raw: 40.8%</span>
                 </div>
-                <div class="prob-calibrado">49.2%</div>
+                <div class="prob-calibrado">41.5%</div>
                 <div class="prob-descricao">
                     ≥ 4 cartões
                 </div>
@@ -1192,9 +1518,9 @@
             <div class="prob-card bloqueado">
                 <div class="prob-mercado">Over 5.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 38.1%</span>
+                    <span class="prob-raw">Raw: 29.9%</span>
                 </div>
-                <div class="prob-calibrado">38.1%</div>
+                <div class="prob-calibrado">28.6%</div>
                 <div class="prob-descricao">
                     ≥ 5 cartões
                 </div>
@@ -1204,21 +1530,21 @@
             <div class="prob-card">
                 <div class="prob-mercado">Under 3.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 38.3%</span>
+                    <span class="prob-raw">Raw: 46.1%</span>
                 </div>
-                <div class="prob-calibrado">38.3%</div>
+                <div class="prob-calibrado">46.2%</div>
                 <div class="prob-descricao">
                     ≤ 3 cartões
                 </div>
                 
             </div>
         
-            <div class="prob-card">
+            <div class="prob-card destaque">
                 <div class="prob-mercado">Under 4.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 50.8%</span>
+                    <span class="prob-raw">Raw: 59.2%</span>
                 </div>
-                <div class="prob-calibrado">50.8%</div>
+                <div class="prob-calibrado">58.4%</div>
                 <div class="prob-descricao">
                     ≤ 4 cartões
                 </div>
@@ -1228,9 +1554,9 @@
             <div class="prob-card bloqueado">
                 <div class="prob-mercado">Under 5.5 Cartões</div>
                 <div class="prob-valores">
-                    <span class="prob-raw">Raw: 61.9%</span>
+                    <span class="prob-raw">Raw: 70.1%</span>
                 </div>
-                <div class="prob-calibrado">61.9%</div>
+                <div class="prob-calibrado">71.7%</div>
                 <div class="prob-descricao">
                     ≤ 5 cartões
                 </div>
@@ -1252,7 +1578,7 @@
             <div class="interpretacao-texto">
                 <p>
                     Com base no <strong>modelo aditivo + shrinkage bayesiano</strong>, 
-                    a expectativa final é de <span class="lambda-destaque">5.08 cartões</span>.
+                    a expectativa final é de <span class="lambda-destaque">4.36 cartões</span>.
                 </p>
                 
                 <p style="margin-top: 12px;">
@@ -1261,12 +1587,12 @@
                 </p>
                 
                 <p style="margin-top: 12px;">
-                    <strong>Destaques:</strong> Over 2.5 Cartões, Over 3.5 Cartões
+                    <strong>Destaques:</strong> Over 2.5 Cartões, Under 4.5 Cartões
                 </p>
                 
                 <p style="margin-top: 12px;">
-                    <strong>Qualidade dos dados:</strong> 68/100
-                    (Shrinkage w=0.51)
+                    <strong>Qualidade dos dados:</strong> 100/100
+                    (Shrinkage w=0.95)
                 </p>
                 
                 <div style="margin-top: 20px; padding: 15px; background: rgba(52, 152, 219, 0.1); border-radius: 8px; border-left: 3px solid #3498db;">
@@ -1283,6 +1609,242 @@
         </div>
     
         
+        
+        <div class="guia-metodologia">
+            <div class="guia-header">
+                <h2>📚 Guia de Metodologia - Como Funciona o Sistema</h2>
+                <p>Entenda como as probabilidades são calculadas e como o sistema aprende com os dados.</p>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">📊</span>
+                    <h3>1. Modelo Matemático: Negative Binomial</h3>
+                </div>
+                <div class="guia-content">
+                    <p>O sistema usa a distribuição <strong>Negative Binomial</strong> em vez da Poisson tradicional porque:</p>
+                    <ul>
+                        <li><strong>Poisson assume</strong> que variância = média (eventos independentes)</li>
+                        <li><strong>Na realidade</strong>, cartões têm variância > média (sobredispersão)</li>
+                        <li><strong>Motivo:</strong> cartões vêm em "clusters" (um cartão leva a mais tensão, que leva a mais cartões)</li>
+                    </ul>
+                    
+                    <div class="guia-formula">
+                        <strong>Fórmula:</strong> P(Y = k) = C(k + r - 1, k) × p<sup>r</sup> × (1-p)<sup>k</sup>
+                    </div>
+                    
+                    <p>Onde <strong>r</strong> é o parâmetro de dispersão (varia por liga) e <strong>p</strong> é calculado a partir do λ.</p>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">🧮</span>
+                    <h3>2. Cálculo do Lambda (λ) - Modelo Aditivo</h3>
+                </div>
+                <div class="guia-content">
+                    <p>O λ (expectativa de cartões) é calculado somando contribuições:</p>
+                    
+                    <div class="guia-formula">
+                        λ_raw = λ_base + Δ_árbitro + Δ_times + ajuste_recência
+                    </div>
+                    
+                    <table class="guia-table">
+                        <tr>
+                            <th>Componente</th>
+                            <th>O que representa</th>
+                            <th>Como é calculado</th>
+                        </tr>
+                        <tr>
+                            <td><strong>λ_base</strong></td>
+                            <td>Média da liga</td>
+                            <td>Média histórica de cartões da competição</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Δ_árbitro</strong></td>
+                            <td>Influência do árbitro</td>
+                            <td>0.8 × (média_ponderada_árbitro - λ_base)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Δ_times</strong></td>
+                            <td>Perfil dos times</td>
+                            <td>0.6 × (soma_cartões_times - λ_base)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Recência</strong></td>
+                            <td>Tendência recente</td>
+                            <td>Ajuste de ±5% baseado nas últimas 5 partidas</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">📐</span>
+                    <h3>3. Shrinkage Bayesiano - Regularização</h3>
+                </div>
+                <div class="guia-content">
+                    <p>Quando os dados são limitados, o sistema "puxa" a estimativa para a média da liga:</p>
+                    
+                    <div class="guia-formula">
+                        λ_shrunk = w × λ_raw + (1-w) × λ_base
+                    </div>
+                    
+                    <p>O peso <strong>w</strong> (0 a 1) depende de:</p>
+                    <ul>
+                        <li>Qualidade dos dados (completude)</li>
+                        <li>Número de jogos do árbitro</li>
+                        <li>Dados de recência disponíveis</li>
+                    </ul>
+                    
+                    <div class="guia-example">
+                        <strong>Exemplo:</strong> Se w = 0.6, λ_raw = 6.5 e λ_base = 5.0:<br>
+                        λ_shrunk = 0.6 × 6.5 + 0.4 × 5.0 = 3.9 + 2.0 = <strong>5.9</strong>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">🎯</span>
+                    <h3>4. Calibração - Aprendendo com os Erros</h3>
+                </div>
+                <div class="guia-content">
+                    <p>O sistema ajusta as probabilidades baseado no histórico de acertos:</p>
+                    
+                    <table class="guia-table">
+                        <tr>
+                            <th>O que o modelo diz</th>
+                            <th>O que acontece na prática</th>
+                            <th>Calibração</th>
+                        </tr>
+                        <tr>
+                            <td>60% de chance</td>
+                            <td>Acerta 55% das vezes</td>
+                            <td>Ajusta para 55%</td>
+                        </tr>
+                        <tr>
+                            <td>75% de chance</td>
+                            <td>Acerta 78% das vezes</td>
+                            <td>Ajusta para 78%</td>
+                        </tr>
+                    </table>
+                    
+                    <p><strong>Mínimo necessário:</strong> 10 amostras por mercado para ativar calibração.</p>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">📈</span>
+                    <h3>5. Intervalo de Confiança [P10 - P90]</h3>
+                </div>
+                <div class="guia-content">
+                    <p>Mostra a faixa onde 80% dos resultados devem cair:</p>
+                    
+                    <div class="guia-example">
+                        <strong>Exemplo:</strong> Intervalo [2 - 8]<br>
+                        Significa que em jogos com perfil semelhante, 80% têm entre 2 e 8 cartões.
+                    </div>
+                    
+                    <p><strong>Variância alta:</strong> Se (P90 - P10) > 6, o sistema bloqueia destaques em mercados extremos (Over 5.5) por falta de previsibilidade.</p>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">🏆</span>
+                    <h3>6. Sistema de Aprendizado - Regras de Ouro</h3>
+                </div>
+                <div class="guia-content">
+                    <p>O sistema analisa o histórico e descobre <strong>combinações de fatores</strong> com alta taxa de acerto:</p>
+                    
+                    <table class="guia-table">
+                        <tr>
+                            <th>Nível</th>
+                            <th>Taxa de Acerto</th>
+                            <th>Mínimo de Amostras</th>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #ffd700;">🥇 Ouro</span></td>
+                            <td>≥ 75%</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #e5e4e2;">🥈 Platina</span></td>
+                            <td>≥ 85%</td>
+                            <td>8</td>
+                        </tr>
+                        <tr>
+                            <td><span style="color: #b9f2ff;">💎 Diamante</span></td>
+                            <td>≥ 90%</td>
+                            <td>8</td>
+                        </tr>
+                    </table>
+                    
+                    <div class="guia-example">
+                        <strong>Exemplo de Regra Descoberta:</strong><br>
+                        "Over 3.5 Cartões + λ Alto + Árbitro Rigoroso + Brasil"<br>
+                        → Histórico: 14/16 acertos = <strong>87.5%</strong> 🥈 Platina
+                    </div>
+                    
+                    <p>Quanto mais você validar partidas, mais regras o sistema descobre!</p>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">📊</span>
+                    <h3>7. Métricas de Avaliação</h3>
+                </div>
+                <div class="guia-content">
+                    <table class="guia-table">
+                        <tr>
+                            <th>Métrica</th>
+                            <th>O que mede</th>
+                            <th>Bom valor</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Brier Score</strong></td>
+                            <td>Calibração geral (erro quadrático)</td>
+                            <td>< 0.20</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Log Loss</strong></td>
+                            <td>Discriminação (penaliza muito erros confiantes)</td>
+                            <td>< 0.50</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Curva de Confiabilidade</strong></td>
+                            <td>Se 60% previsto = 60% real</td>
+                            <td>Δ < 5%</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="guia-section">
+                <div class="guia-section-title">
+                    <span class="guia-icon">⚠️</span>
+                    <h3>8. Limitações e Avisos</h3>
+                </div>
+                <div class="guia-content">
+                    <ul>
+                        <li><strong>Probabilidade ≠ Certeza:</strong> 80% significa que 2 em cada 10 vão errar</li>
+                        <li><strong>Dados limitados:</strong> Árbitros novos ou competições desconhecidas têm mais incerteza</li>
+                        <li><strong>Variância natural:</strong> Mesmo com bons dados, futebol é imprevisível</li>
+                        <li><strong>Uso educacional:</strong> Este sistema é para análise estatística, não para apostas</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="guia-footer">
+                <p>💡 <strong>Dica:</strong> Quanto mais validações você fizer, mais preciso o sistema fica!</p>
+            </div>
+        </div>
+    
+        
         <div class="footer">
             <p><strong>📊 RefStats - Análise Probabilística V2.0</strong></p>
             <p style="margin-top: 10px;">
@@ -1294,7 +1856,7 @@
                 Modelo: Negative Binomial + Shrinkage Bayesiano + Calibração Isotônica
             </p>
             <p style="margin-top: 5px; font-size: 0.85em;">
-                Gerado em 29/12/2025 20:54
+                Gerado em 31/12/2025 17:50
             </p>
             <div style="margin-top: 15px; padding: 15px; background: rgba(52, 152, 219, 0.1); border-radius: 8px; display: inline-block;">
                 <p style="font-size: 0.85em; color: #3498db; margin: 0;">

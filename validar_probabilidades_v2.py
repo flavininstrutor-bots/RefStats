@@ -21,9 +21,15 @@ MÉTRICAS DE AVALIAÇÃO:
     - Curva de confiabilidade por bins
     - Análise de destaques vs bloqueados
 
+SISTEMA DE APRENDIZADO:
+    - Coleta dados estruturados de cada validação
+    - Descobre Regras de Ouro automaticamente
+    - Regras com ≥75% de acerto são destacadas
+
 ESTRUTURA DE PASTAS:
     /Probabilidade/                    → Arquivos de entrada (PROBABILIDADE_*.html)
     /Probabilidade/Relatorio/          → Relatórios de validação gerados
+    /Calibracao/                       → Dados de calibração e aprendizado
 =============================================================================
 """
 
@@ -39,6 +45,24 @@ from dataclasses import dataclass, field
 from typing import Optional, List, Dict, Tuple
 from bs4 import BeautifulSoup
 from collections import defaultdict
+
+# Importa módulo de aprendizado
+try:
+    from aprendizado_avancado import (
+        obter_banco_aprendizado,
+        obter_motor_aprendizado,
+        retreinar_regras,
+        criar_dados_partida_aprendizado,
+        criar_resultado_mercado_aprendizado,
+        RegistroAprendizado,
+        RegraDeOuro,
+        gerar_guia_metodologia_html,
+        gerar_css_guia
+    )
+    APRENDIZADO_DISPONIVEL = True
+except ImportError:
+    APRENDIZADO_DISPONIVEL = False
+    print("⚠️ Módulo de aprendizado não encontrado. Funcionalidade limitada.")
 
 
 # =============================================================================
@@ -108,6 +132,19 @@ class PartidaPrevisaoV2:
     qualidade_score: float          # 0-100
     modelo: str                     # "Negative Binomial" ou "Poisson"
     
+    # Dados extras para aprendizado
+    media_arbitro_5j: float = 0.0
+    media_arbitro_10j: float = 0.0
+    perfil_arbitro: str = "Médio"
+    
+    # NOVOS - Dados de cálculo para aprendizado expandido
+    delta_arbitro: float = 0.0
+    delta_times: float = 0.0
+    peso_shrinkage: float = 0.5
+    soma_cartoes_times: float = 0.0
+    completude_arbitro: float = 0.0
+    lambda_raw: float = 0.0
+    
     # Intervalo
     intervalo: IntervaloConfiancaV2 = None
     
@@ -118,6 +155,9 @@ class PartidaPrevisaoV2:
     cartoes_reais: Optional[int] = None
     placar: Optional[str] = None
     status: str = "pendente"
+    
+    # Regras de ouro ativadas
+    regras_ativadas: List[any] = field(default_factory=list)
     
     def get_destaques(self) -> List[PrevisaoMercadoV2]:
         """Retorna apenas as previsões com destaque."""
@@ -400,6 +440,77 @@ def extrair_partidas_v2(html_path: str) -> List[PartidaPrevisaoV2]:
                         if match:
                             lambda_shrunk = float(match.group(1))
                 
+                # DADOS EXTRAS PARA APRENDIZADO
+                media_arbitro_5j = 0.0
+                media_arbitro_10j = 0.0
+                perfil_arbitro = "Médio"
+                
+                # NOVOS - Dados de cálculo
+                delta_arbitro = 0.0
+                delta_times = 0.0
+                peso_shrinkage = 0.5
+                soma_cartoes_times = 0.0
+                completude_arbitro = 0.0
+                lambda_raw = 0.0
+                
+                # Tenta extrair do texto do cálculo
+                texto_calculo = card.get_text()
+                
+                # Busca média 5j (formato: 0.6 × 4.4)
+                match_5j = re.search(r'0\.6\s*×\s*([\d.]+)', texto_calculo)
+                if match_5j:
+                    media_arbitro_5j = float(match_5j.group(1))
+                
+                # Busca média 10j (formato: 0.4 × 4.7)
+                match_10j = re.search(r'0\.4\s*×\s*([\d.]+)', texto_calculo)
+                if match_10j:
+                    media_arbitro_10j = float(match_10j.group(1))
+                
+                # Busca perfil do árbitro
+                perfil_match = re.search(r'(Rigoroso|Permissivo|Médio)', texto_calculo)
+                if perfil_match:
+                    perfil_arbitro = perfil_match.group(1)
+                
+                # Busca Δ_arbitro (formato: Δ_arbitro = ... = +0.15 ou -0.15)
+                delta_arb_match = re.search(r'Δ_arbitro\s*=.*?=\s*([+-]?[\d.]+)', texto_calculo)
+                if delta_arb_match:
+                    delta_arbitro = float(delta_arb_match.group(1))
+                
+                # Busca Δ_times (formato: Δ_times = ... = +0.15 ou -0.15)
+                delta_times_match = re.search(r'Δ_times\s*=.*?=\s*([+-]?[\d.]+)', texto_calculo)
+                if delta_times_match:
+                    delta_times = float(delta_times_match.group(1))
+                
+                # Busca peso shrinkage (formato: Peso (w) 0.51)
+                shrinkage_box = card.find(class_='shrinkage-box')
+                if shrinkage_box:
+                    items = shrinkage_box.find_all(class_='shrinkage-item')
+                    for item in items:
+                        label = item.find(class_='shrinkage-label')
+                        valor = item.find(class_='shrinkage-valor')
+                        if label and valor:
+                            label_texto = label.get_text().lower()
+                            if 'peso' in label_texto or 'w' in label_texto:
+                                peso_shrinkage = extrair_valor_float(valor.get_text())
+                            elif 'raw' in label_texto:
+                                lambda_raw = extrair_valor_float(valor.get_text())
+                
+                # Busca soma cartões times (formato: soma_cartões = 2.00 + 1.20 = 3.20)
+                soma_match = re.search(r'soma_cart[oõ]es\s*=\s*[\d.]+\s*\+\s*[\d.]+\s*=\s*([\d.]+)', texto_calculo)
+                if soma_match:
+                    soma_cartoes_times = float(soma_match.group(1))
+                
+                # Busca completude árbitro
+                if qualidade_box:
+                    itens = qualidade_box.find_all(class_='qualidade-item')
+                    for item in itens:
+                        texto_item = item.get_text()
+                        if 'Completude Árbitro' in texto_item:
+                            # Pega o segundo span (o valor)
+                            spans = item.find_all('span')
+                            if len(spans) >= 2:
+                                completude_arbitro = extrair_valor_float(spans[1].get_text())
+                
                 # Intervalo de confiança
                 intervalo = extrair_intervalo(card)
                 
@@ -417,6 +528,16 @@ def extrair_partidas_v2(html_path: str) -> List[PartidaPrevisaoV2]:
                     tendencia=tendencia,
                     qualidade_score=qualidade_score,
                     modelo=modelo,
+                    media_arbitro_5j=media_arbitro_5j,
+                    media_arbitro_10j=media_arbitro_10j,
+                    perfil_arbitro=perfil_arbitro,
+                    # Novos campos
+                    delta_arbitro=delta_arbitro,
+                    delta_times=delta_times,
+                    peso_shrinkage=peso_shrinkage,
+                    soma_cartoes_times=soma_cartoes_times,
+                    completude_arbitro=completude_arbitro,
+                    lambda_raw=lambda_raw,
                     intervalo=intervalo,
                     previsoes=previsoes
                 )
@@ -789,6 +910,83 @@ def gerar_html_relatorio_v2(relatorio: RelatorioValidacaoV2) -> str:
     else:
         cor_taxa = "#e94560"
     
+    # CSS do guia
+    css_guia = ""
+    if APRENDIZADO_DISPONIVEL:
+        css_guia = gerar_css_guia()
+    
+    # Seção de Regras de Ouro
+    regras_html = ""
+    if APRENDIZADO_DISPONIVEL:
+        pasta_atual = os.path.dirname(os.path.abspath(__file__))
+        pasta_calibracao = os.path.join(pasta_atual, "Calibracao")
+        banco = obter_banco_aprendizado(pasta_calibracao)
+        
+        if banco.regras:
+            regras_rows = ""
+            for r in banco.regras[:10]:  # Top 10
+                cor_nivel = r.cor
+                regras_rows += f'''
+                    <tr>
+                        <td><span style="color: {cor_nivel}; font-weight: bold;">{r.nivel}</span></td>
+                        <td>{r.mercado}</td>
+                        <td>{r.descricao}</td>
+                        <td style="font-weight: bold; color: #2ecc71;">{r.taxa_acerto:.1f}%</td>
+                        <td>{r.acertos}/{r.total_amostras}</td>
+                    </tr>
+                '''
+            
+            regras_html = f'''
+                <div class="section">
+                    <div class="section-title">🏆 Regras de Ouro Descobertas</div>
+                    <p style="color: #a0a0a0; margin-bottom: 15px;">
+                        Combinações de fatores com alta taxa de acerto histórica.
+                    </p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nível</th>
+                                <th>Mercado</th>
+                                <th>Condições</th>
+                                <th>Taxa</th>
+                                <th>Amostras</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {regras_rows}
+                        </tbody>
+                    </table>
+                    
+                    <div style="margin-top: 15px; padding: 15px; background: rgba(255, 215, 0, 0.1); border-radius: 8px; border-left: 4px solid #ffd700;">
+                        <p style="margin: 0; color: #ffd700;">
+                            💡 <strong>Dica:</strong> Quando uma partida ativar uma Regra de Ouro, ela terá um indicador especial no relatório de probabilidades.
+                        </p>
+                    </div>
+                </div>
+            '''
+        else:
+            regras_html = f'''
+                <div class="section">
+                    <div class="section-title">🏆 Regras de Ouro</div>
+                    <div style="text-align: center; padding: 30px; color: #a0a0a0;">
+                        <p style="font-size: 3em;">🔬</p>
+                        <p>Nenhuma regra de ouro descoberta ainda.</p>
+                        <p style="font-size: 0.9em; margin-top: 10px;">
+                            Continue validando partidas para que o sistema descubra padrões de alta taxa de acerto!
+                        </p>
+                        <p style="font-size: 0.85em; margin-top: 5px; color: #3498db;">
+                            Mínimo necessário: 8 amostras com ≥75% de acerto
+                        </p>
+                    </div>
+                </div>
+            '''
+    
+    # Guia de metodologia
+    guia_html = ""
+    if APRENDIZADO_DISPONIVEL:
+        guia_html = gerar_guia_metodologia_html()
+    
     # Seção de métricas gerais
     metricas_html = ""
     if relatorio.metricas_gerais:
@@ -1081,6 +1279,8 @@ def gerar_html_relatorio_v2(relatorio: RelatorioValidacaoV2) -> str:
             border-radius: 0 10px 10px 0;
             margin-top: 20px;
         }}
+        
+        {css_guia}
     </style>
 </head>
 <body>
@@ -1090,7 +1290,7 @@ def gerar_html_relatorio_v2(relatorio: RelatorioValidacaoV2) -> str:
             <p>📅 Partidas de {relatorio.data_arquivo}</p>
             <p style="margin-top: 5px; color: #a0a0a0;">Gerado em {timestamp}</p>
             <div class="version-badge">
-                Neg. Binomial + Shrinkage + Calibração
+                Neg. Binomial + Shrinkage + Calibração + Aprendizado
             </div>
         </div>
         
@@ -1165,6 +1365,8 @@ def gerar_html_relatorio_v2(relatorio: RelatorioValidacaoV2) -> str:
         
         {metricas_html}
         
+        {regras_html}
+        
         <div class="section">
             <div class="section-title">📊 Estatísticas por Mercado</div>
             
@@ -1209,6 +1411,8 @@ def gerar_html_relatorio_v2(relatorio: RelatorioValidacaoV2) -> str:
                 </table>
             </div>
         </div>
+        
+        {guia_html}
         
         <div class="footer">
             <p><strong>📊 RefStats - Validação V2.0</strong></p>
@@ -1374,11 +1578,19 @@ def processar_modo_automatico_v2(arquivos: list, pasta_saida: str):
         if relatorio:
             relatorios.append(relatorio)
     
+    # Alimenta calibradores com os resultados
+    if relatorios:
+        pasta_atual = os.path.dirname(os.path.abspath(__file__))
+        pasta_calibracao = os.path.join(pasta_atual, "Calibracao")
+        alimentar_calibradores(relatorios, pasta_calibracao)
+    
     exibir_resumo_final_v2(relatorios)
 
 
 def processar_modo_manual_v2(arquivos: list, pasta_saida: str):
     """Processa no modo manual."""
+    
+    relatorios = []
     
     for arquivo in sorted(arquivos):
         nome_arquivo = os.path.basename(arquivo)
@@ -1420,6 +1632,15 @@ def processar_modo_manual_v2(arquivos: list, pasta_saida: str):
             f.write(html)
         
         print(f"\n   ✅ Relatório salvo: {caminho_saida}")
+        relatorios.append(relatorio)
+    
+    # Alimenta calibradores com os resultados
+    if relatorios:
+        pasta_atual = os.path.dirname(os.path.abspath(__file__))
+        pasta_calibracao = os.path.join(pasta_atual, "Calibracao")
+        alimentar_calibradores(relatorios, pasta_calibracao)
+    
+    exibir_resumo_final_v2(relatorios)
 
 
 def processar_modo_csv_v2(arquivos: list, pasta_saida: str):
@@ -1495,7 +1716,203 @@ def processar_modo_csv_v2(arquivos: list, pasta_saida: str):
         print(f"   ✅ {nome_saida}")
         relatorios.append(relatorio)
     
+    # Alimenta calibradores com os resultados
+    if relatorios:
+        pasta_calibracao = os.path.join(pasta_atual, "Calibracao")
+        alimentar_calibradores(relatorios, pasta_calibracao)
+    
     exibir_resumo_final_v2(relatorios)
+
+
+def alimentar_calibradores(relatorios: List[RelatorioValidacaoV2], pasta_calibracao: str):
+    """
+    Alimenta os calibradores com os resultados das validações.
+    
+    Este é o "aprendizado" do sistema:
+    - Cada resultado de validação é um ponto de dados
+    - O calibrador aprende a relação entre p_raw e taxa de acerto real
+    - Na próxima execução, p_calibrado será mais preciso
+    """
+    from collections import defaultdict
+    import pickle
+    
+    print("\n📚 Alimentando calibradores com resultados...")
+    
+    # Agrupa validações por mercado
+    validacoes_por_mercado = defaultdict(list)
+    
+    for relatorio in relatorios:
+        for validacao in relatorio.validacoes:
+            mercado = validacao.mercado.mercado
+            p_raw = validacao.mercado.p_raw
+            acertou = validacao.acertou
+            validacoes_por_mercado[mercado].append((p_raw, acertou))
+    
+    os.makedirs(pasta_calibracao, exist_ok=True)
+    
+    # Para cada mercado, atualiza o calibrador
+    for mercado, dados in validacoes_por_mercado.items():
+        nome_arquivo = mercado.replace(" ", "_").replace(".", "") + ".pkl"
+        caminho = os.path.join(pasta_calibracao, nome_arquivo)
+        
+        # Carrega dados existentes ou cria novo
+        dados_existentes = {'pontos_x': [], 'pontos_y': [], 'mapa': None}
+        
+        if os.path.exists(caminho):
+            try:
+                with open(caminho, 'rb') as f:
+                    dados_existentes = pickle.load(f)
+            except:
+                pass
+        
+        # Adiciona novos pontos
+        for p_raw, acertou in dados:
+            dados_existentes['pontos_x'].append(p_raw)
+            dados_existentes['pontos_y'].append(1.0 if acertou else 0.0)
+        
+        # Recalcula mapa de calibração se tiver dados suficientes
+        if len(dados_existentes['pontos_x']) >= 10:
+            # Agrupa em bins de 5%
+            bins = defaultdict(list)
+            for x, y in zip(dados_existentes['pontos_x'], dados_existentes['pontos_y']):
+                bin_idx = int(x / 5) * 5
+                bins[bin_idx].append(y)
+            
+            # Calcula média por bin
+            mapa = {}
+            for bin_idx, valores in bins.items():
+                if len(valores) >= 2:  # Mínimo 2 amostras por bin
+                    mapa[bin_idx] = sum(valores) / len(valores) * 100
+            
+            # Aplica monotonicidade (para Over, deve ser crescente)
+            if 'Over' in mercado and mapa:
+                chaves = sorted(mapa.keys())
+                for i in range(1, len(chaves)):
+                    if mapa[chaves[i]] < mapa[chaves[i-1]]:
+                        media = (mapa[chaves[i]] + mapa[chaves[i-1]]) / 2
+                        mapa[chaves[i]] = media
+                        mapa[chaves[i-1]] = media
+            
+            dados_existentes['mapa'] = mapa
+        
+        # Salva
+        dados_existentes['mercado'] = mercado
+        with open(caminho, 'wb') as f:
+            pickle.dump(dados_existentes, f)
+        
+        n_pontos = len(dados_existentes['pontos_x'])
+        n_novos = len(dados)
+        print(f"   ✅ {mercado}: +{n_novos} pontos (total: {n_pontos})")
+    
+    print(f"\n   📁 Calibradores salvos em: {pasta_calibracao}")
+    
+    # Mostra status dos calibradores
+    print("\n   📊 Status dos Calibradores:")
+    for mercado in sorted(validacoes_por_mercado.keys()):
+        nome_arquivo = mercado.replace(" ", "_").replace(".", "") + ".pkl"
+        caminho = os.path.join(pasta_calibracao, nome_arquivo)
+        
+        if os.path.exists(caminho):
+            with open(caminho, 'rb') as f:
+                dados = pickle.load(f)
+            
+            n_pontos = len(dados.get('pontos_x', []))
+            tem_mapa = dados.get('mapa') is not None
+            
+            if tem_mapa:
+                status = "🟢 Ativo"
+            elif n_pontos >= 5:
+                status = "🟡 Quase (precisa de mais dados)"
+            else:
+                status = "🔴 Inativo"
+            
+            print(f"      {mercado}: {n_pontos} amostras → {status}")
+    
+    # =========================================================================
+    # SISTEMA DE APRENDIZADO AVANÇADO
+    # =========================================================================
+    if APRENDIZADO_DISPONIVEL:
+        alimentar_banco_aprendizado(relatorios, pasta_calibracao)
+
+
+def alimentar_banco_aprendizado(relatorios: List[RelatorioValidacaoV2], pasta_calibracao: str):
+    """Alimenta o banco de aprendizado com os resultados das validações."""
+    
+    print("\n🧠 Alimentando Sistema de Aprendizado Avançado...")
+    
+    banco = obter_banco_aprendizado(pasta_calibracao)
+    registros_adicionados = 0
+    
+    for relatorio in relatorios:
+        for partida in relatorio.partidas:
+            if partida.status != "encontrado" or partida.cartoes_reais is None:
+                continue
+            
+            # Cria dados da partida para aprendizado
+            dados_partida = criar_dados_partida_aprendizado(
+                data=partida.data,
+                time_mandante=partida.time_mandante,
+                time_visitante=partida.time_visitante,
+                competicao=partida.competicao,
+                lambda_shrunk=partida.lambda_shrunk,
+                qualidade_score=partida.qualidade_score,
+                media_arbitro_5j=partida.media_arbitro_5j,
+                media_arbitro_10j=partida.media_arbitro_10j,
+                intervalo_p10=partida.intervalo.p10 if partida.intervalo else 0,
+                intervalo_p90=partida.intervalo.p90 if partida.intervalo else 10,
+                perfil_arbitro=partida.perfil_arbitro,
+                modelo=partida.modelo,
+                # Novos parâmetros
+                delta_arbitro=partida.delta_arbitro,
+                delta_times=partida.delta_times,
+                peso_shrinkage=partida.peso_shrinkage,
+                soma_cartoes_times=partida.soma_cartoes_times,
+                completude_arbitro=partida.completude_arbitro,
+                lambda_raw=partida.lambda_raw
+            )
+            
+            # Para cada previsão, cria um registro
+            for previsao in partida.previsoes:
+                acertou = previsao.verificar_acerto(partida.cartoes_reais)
+                
+                resultado_mercado = criar_resultado_mercado_aprendizado(
+                    mercado=previsao.mercado,
+                    tipo=previsao.tipo,
+                    linha=previsao.linha,
+                    p_raw=previsao.p_raw,
+                    p_calibrado=previsao.p_calibrado,
+                    eh_destaque=previsao.eh_destaque,
+                    acertou=acertou,
+                    cartoes_reais=partida.cartoes_reais
+                )
+                
+                registro = RegistroAprendizado(
+                    partida=dados_partida,
+                    resultado=resultado_mercado
+                )
+                
+                banco.adicionar_registro(registro)
+                registros_adicionados += 1
+    
+    banco.salvar()
+    print(f"   ✅ +{registros_adicionados} registros adicionados ao banco")
+    print(f"   📊 Total no banco: {banco.total_registros()} registros")
+    
+    # Retreina regras se tiver dados suficientes
+    if banco.total_registros() >= 20:
+        print("\n🔬 Retreinando Regras de Ouro...")
+        regras = retreinar_regras(pasta_calibracao)
+        
+        if regras:
+            print(f"   ✅ {len(regras)} regra(s) descoberta(s)!")
+            print("\n   🏆 Top 5 Regras:")
+            for i, r in enumerate(regras[:5], 1):
+                print(f"      {i}. [{r.nivel}] {r.mercado}")
+                print(f"         {r.descricao}")
+                print(f"         Taxa: {r.taxa_acerto:.1f}% ({r.acertos}/{r.total_amostras})")
+        else:
+            print("   ℹ️ Nenhuma regra de ouro encontrada ainda")
+            print("   💡 Continue validando para descobrir padrões!")
 
 
 def exibir_resumo_final_v2(relatorios: list):
