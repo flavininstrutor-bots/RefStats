@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RefStats - Today's Matches 02/01/2026</title>
+    <title>RefStats - Jogos do Dia 02/01/2026</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -22,7 +22,7 @@
         }
         
         /* ========================================
-           NAVBAR (same as Home)
+           NAVBAR (igual ao Home)
            ======================================== */
         .navbar {
             position: fixed;
@@ -1312,7 +1312,7 @@
 <body>
     <!-- Navbar (igual ao Home) -->
     <nav class="navbar">
-        <a href="index.html" class="navbar-brand">
+        <a href="../index.html" class="navbar-brand">
             <img src="../assets/img/LogoINICIO.png" alt="RefStats" class="logo-img">
         </a>
         
@@ -1321,10 +1321,10 @@
         </button>
         
         <div class="navbar-menu" id="navMenu">
-            <a href="index.html">HOME</a>
-            <a href="#" class="active">TODAY'S MATCHES</a>
-            <a href="refstats_historico.html">HISTORY</a>
-            <a href="refstats_contato.html">CONTACT</a>
+            <a href="../index.html">INÍCIO</a>
+            <a href="#" class="active">JOGOS DO DIA</a>
+            <a href="../refstats_historico.html">HISTÓRICO</a>
+            <a href="../refstats_contato.html">CONTATO</a>
         </div>
     </nav>
     
@@ -1332,36 +1332,36 @@
     <div class="search-bar" id="searchBar">
         <div class="search-container">
             <span class="search-icon">🔍</span>
-            <input type="text" class="search-input" id="searchInput" placeholder="Search on page..." autocomplete="off">
+            <input type="text" class="search-input" id="searchInput" placeholder="Pesquisar na página..." autocomplete="off">
             <span class="search-counter" id="searchCounter"></span>
         </div>
         <div class="search-nav">
-            <button id="searchPrev" title="Previous (↑)" disabled>▲</button>
-            <button id="searchNext" title="Next (↓)" disabled>▼</button>
+            <button id="searchPrev" title="Anterior (↑)" disabled>▲</button>
+            <button id="searchNext" title="Próximo (↓)" disabled>▼</button>
         </div>
         <div class="filter-container">
-            <span class="filter-label">Profile:</span>
-            <button class="filter-btn rigoroso" data-filter="Rigoroso" title="Show strict referees">🔴 Strict</button>
-            <button class="filter-btn medio" data-filter="Médio" title="Show average referees">🟡 Average</button>
-            <button class="filter-btn permissivo" data-filter="Permissivo" title="Show lenient referees">🟢 Lenient</button>
-            <button class="filter-clear hidden" id="filterClear" title="Clear filter">✕</button>
+            <span class="filter-label">Perfil:</span>
+            <button class="filter-btn rigoroso" data-filter="Rigoroso" title="Mostrar árbitros rigorosos">🔴 Rigoroso</button>
+            <button class="filter-btn medio" data-filter="Médio" title="Mostrar árbitros médios">🟡 Médio</button>
+            <button class="filter-btn permissivo" data-filter="Permissivo" title="Mostrar árbitros permissivos">🟢 Permissivo</button>
+            <button class="filter-clear hidden" id="filterClear" title="Limpar filtro">✕</button>
             <span class="filter-counter" id="filterCounter"></span>
         </div>
-        <button class="search-close" id="searchClose" title="Close (Esc)">✕</button>
+        <button class="search-close" id="searchClose" title="Fechar (Esc)">✕</button>
     </div>
     
     <!-- Botão flutuante para abrir pesquisa -->
-    <button class="search-toggle" id="searchToggle" title="Search (Ctrl+F)">🔍</button>
+    <button class="search-toggle" id="searchToggle" title="Pesquisar (Ctrl+F)">🔍</button>
     
     <!-- Dica de atalho -->
     <div class="search-hint" id="searchHint">
-        Press <kbd>Ctrl</kbd> + <kbd>F</kbd> to search
+        Pressione <kbd>Ctrl</kbd> + <kbd>F</kbd> para pesquisar
     </div>
     
     <div class="container">
         <div class="header">
-            <h1>⚽ Today's Matches</h1>
-            <p>📅 02/01/2026 • 3 match(es) analyzed</p>
+            <h1>⚽ Jogos do Dia</h1>
+            <p>📅 02/01/2026 • 3 partida(s) analisada(s)</p>
         </div>
 
         <div class="jogo-card" data-perfil="Permissivo">
@@ -1375,29 +1375,29 @@
             
             <div class="jogo-info-bar">
                 <span>
-                    <span class="info-label">🏆 Competition:</span>
+                    <span class="info-label">🏆 Competição:</span>
                     <span class="info-value">LaLiga</span>
                 </span>
                 <span>
-                    <span class="info-label">🏟️ Stadium:</span>
+                    <span class="info-label">🏟️ Estádio:</span>
                     <span class="info-value">Estadio de Vallecas</span>
                 </span>
                 <span>
-                    <span class="info-label">📍 Location:</span>
+                    <span class="info-label">📍 Local:</span>
                     <span class="info-value">Madrid, Spain</span>
                 </span>
-                <span><span class="info-label">📋 Stage:</span><span class="info-value">18ª Round</span></span>
+                <span><span class="info-label">📋 Fase:</span><span class="info-value">18ª Rodada</span></span>
             </div>
             
             <div class="jogo-content">
 
                 <div class="secao">
-                    <div class="secao-titulo">⚖️ Referee</div>
+                    <div class="secao-titulo">⚖️ Árbitro</div>
 
                     <div class="arbitro-card">
                         <div class="arbitro-nome">
                             Miguel Angel Ortiz Arias
-                            <span class="badge badge-liga">League</span>
+                            <span class="badge badge-liga">Liga</span>
                         </div>
                         <div class="arbitro-pais">🌍 Spain</div>
 
@@ -1406,90 +1406,90 @@
                             <div class="metrica-card">
                                 <div class="valor">3.1</div>
                                 <div class="label">
-                                    📊 Yellow Avg (10g)
+                                    📊 Média Amarelos (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards per game in the last 10 games refereed (sum of both teams).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos por jogo nos últimos 10 jogos apitados pelo árbitro (soma dos dois times).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">3.8</div>
                                 <div class="label">
-                                    📊 Yellow Avg (5g)
+                                    📊 Média Amarelos (5j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards per game in the last 5 games. Smaller but more recent sample.</span>
+                                        <span class="tooltip-text">Média de cartões amarelos por jogo nos últimos 5 jogos apitados. Amostra menor, mas mais recente.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">1.3</div>
                                 <div class="label">
-                                    📊 Yellow Avg 1H
+                                    📊 Média Amarelos 1T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards given only in 1st half (first 45 minutes).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos aplicados apenas no 1º tempo (primeiros 45 minutos).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">1.7</div>
                                 <div class="label">
-                                    📊 Yellow Avg 2H
+                                    📊 Média Amarelos 2T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards given only in 2nd half (after 45 minutes).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos aplicados apenas no 2º tempo (após os 45 minutos).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">20.2</div>
                                 <div class="label">
-                                    📊 Fouls Avg (10g)
+                                    📊 Média Faltas (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Total average fouls per game in the last 10 games (sum of both teams).</span>
+                                        <span class="tooltip-text">Média total de faltas por jogo nos últimos 10 jogos (soma dos dois times).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">21.0</div>
                                 <div class="label">
-                                    📊 Fouls Avg (5g)
+                                    📊 Média Faltas (5j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls in the last 5 games. More recent sample.</span>
+                                        <span class="tooltip-text">Média de faltas nos últimos 5 jogos. Amostra mais recente.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">10.71</div>
                                 <div class="label">
-                                    📊 Fouls Avg 1H
+                                    📊 Média Faltas 1T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls committed in 1st half.</span>
+                                        <span class="tooltip-text">Média de faltas cometidas no 1º tempo.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">13.0</div>
                                 <div class="label">
-                                    📊 Fouls Avg 2H
+                                    📊 Média Faltas 2T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls committed in 2nd half.</span>
+                                        <span class="tooltip-text">Média de faltas cometidas no 2º tempo.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">0.2</div>
                                 <div class="label">
-                                    📊 Red Avg
+                                    📊 Média Vermelhos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average red cards per game in the last 10 games.</span>
+                                        <span class="tooltip-text">Média de cartões vermelhos por jogo nos últimos 10 jogos.</span>
                                     </span>
                                 </div>
                             </div>
@@ -1497,15 +1497,15 @@
 
                         <div class="perfil-section">
                             <div class="perfil-header">
-                                <span class="perfil-titulo">📋 Referee Profile</span>
+                                <span class="perfil-titulo">📋 Perfil do Árbitro</span>
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">The profile is calculated by comparing the referee's yellow average with the competition average (baseline). Strict: +15% above average. Lenient: -15% below average.</span>
+                                    <span class="tooltip-text">O perfil é calculado comparando a média de amarelos do árbitro com a média da competição (baseline). Rigoroso: +15% acima da média. Permissivo: -15% abaixo da média.</span>
                                 </span>
                             </div>
                             <div class="perfil-badges">
                                 <span class="perfil-badge perfil-permissivo">
-                                    🟢 Lenient
+                                    🟢 Permissivo
                                 </span>
 
                             </div>
@@ -1514,19 +1514,19 @@
 
                         <div class="baseline-section">
                             <div class="baseline-titulo">
-                                📈 Competition Baseline (La Liga)
+                                📈 Baseline da Competição (La Liga)
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">Historical average values of the competition. Used as reference to classify referee profile.</span>
+                                    <span class="tooltip-text">Valores médios históricos da competição. Usados como referência para classificar o perfil do árbitro.</span>
                                 </span>
                             </div>
                             <div class="baseline-valores">
                                 <div class="baseline-item">
-                                    <span>Yellow Avg:</span>
+                                    <span>Média Amarelos:</span>
                                     <span class="valor">5.2</span>
                                 </div>
                                 <div class="baseline-item">
-                                    <span>Fouls Avg:</span>
+                                    <span>Média Faltas:</span>
                                     <span class="valor">25.6</span>
                                 </div>
                             </div>
@@ -1534,15 +1534,15 @@
 
                         <div class="baseline-section">
                             <div class="baseline-titulo">
-                                📉 Data Quality
+                                📉 Qualidade dos Dados
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">Percentage of games from the last 10 that have fouls data per half (1H/2H). The higher, the more reliable the half averages.</span>
+                                    <span class="tooltip-text">Percentual de jogos dos últimos 10 que possuem dados de faltas por tempo (1T/2T). Quanto maior, mais confiáveis as médias por tempo.</span>
                                 </span>
                             </div>
                             <div class="baseline-valores">
                                 <div class="baseline-item">
-                                    <span>Fouls Availability 1H/2H:</span>
+                                    <span>Disponibilidade Faltas 1T/2T:</span>
                                     <span class="valor">70.0%</span>
                                 </div>
                             </div>
@@ -1551,20 +1551,20 @@
                         <div class="tendencias">
                             <div class="tendencia-item">
                                 <span>
-                                    % games with ≥5 yellows (10g)
+                                    % jogos com ≥5 amarelos (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Percentage of games where total yellows were 5 or more. Useful for Over 4.5 cards market.</span>
+                                        <span class="tooltip-text">Percentual de jogos onde o total de amarelos foi 5 ou mais. Útil para mercado de Over 4.5 cartões.</span>
                                     </span>
                                 </span>
                                 <span style="color: #e94560; font-weight: bold;">30.0%</span>
                             </div>
                             <div class="tendencia-item">
                                 <span>
-                                    % games with ≥3 yellows in 1H (10g)
+                                    % jogos com ≥3 amarelos no 1T (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Percentage of games where 3+ yellows were given in 1st half. Useful for 1H cards market.</span>
+                                        <span class="tooltip-text">Percentual de jogos onde foram aplicados 3+ amarelos no 1º tempo. Útil para mercado de cartões no 1T.</span>
                                     </span>
                                 </span>
                                 <span style="color: #e94560; font-weight: bold;">20.0%</span>
@@ -1573,23 +1573,23 @@
 
                     </div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📰 Recent news involving Miguel Angel Ortiz Arias</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📰 Notícias recentes envolvendo Miguel Angel Ortiz Arias</div>
 
                     <div class="sem-noticias">ℹ️ Nenhuma notícia recente encontrada</div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📊 History — LaLiga</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📊 Histórico — LaLiga</div>
                     <div class="tabela-scroll">
                     <table class="tabela">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Match</th>
-                                <th>Score</th>
-                                <th>Fouls 1H</th>
-                                <th>Fouls 2H</th>
-                                <th>Total Fouls</th>
-                                <th>Yellows</th>
-                                <th>Reds</th>
+                                <th>Data</th>
+                                <th>Partida</th>
+                                <th>Placar</th>
+                                <th>Faltas 1T</th>
+                                <th>Faltas 2T</th>
+                                <th>Faltas Total</th>
+                                <th>Amarelos</th>
+                                <th>Vermelhos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1675,20 +1675,20 @@
                     </table>
                     </div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📊 History — Other Competitions</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📊 Histórico — Outras Competições</div>
                     <div class="tabela-scroll">
                     <table class="tabela">
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                <th>Data</th>
                                 <th>Competição</th>
-                                <th>Match</th>
-                                <th>Score</th>
-                                <th>Fouls 1H</th>
-                                <th>Fouls 2H</th>
-                                <th>Total Fouls</th>
-                                <th>Yellows</th>
-                                <th>Reds</th>
+                                <th>Partida</th>
+                                <th>Placar</th>
+                                <th>Faltas 1T</th>
+                                <th>Faltas 2T</th>
+                                <th>Faltas Total</th>
+                                <th>Amarelos</th>
+                                <th>Vermelhos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1736,7 +1736,7 @@
                 </div>
 
                 <div class="secao">
-                    <div class="secao-titulo">⚽ Teams</div>
+                    <div class="secao-titulo">⚽ Times</div>
                     <div class="times-grid">
 
                         <div class="time-card">
@@ -1747,7 +1747,7 @@
                             <div class="time-content">
 
                                 <div class="proximos-jogos">
-                                    <h5>📅 Next 3 Matches</h5>
+                                    <h5>📅 Próximos 3 Jogos</h5>
 
                                     <div class="proximo-jogo">
                                         <span class="local">✈️</span>
@@ -1788,59 +1788,59 @@
                                     <div class="media-item">
                                         <div class="valor">14.8</div>
                                         <div class="label">
-                                            Fouls For
+                                            Faltas Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls COMMITTED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de faltas COMETIDAS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">14.0</div>
                                         <div class="label">
-                                            Fouls Against
+                                            Faltas Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls SUFFERED by the team in the last 5 games (committed by opponent).</span>
+                                                <span class="tooltip-text">Média de faltas SOFRIDAS pelo time nos últimos 5 jogos (cometidas pelo adversário).</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">3.8</div>
                                         <div class="label">
-                                            Yellows For
+                                            Amarelos Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards RECEIVED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos RECEBIDOS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">2.0</div>
                                         <div class="label">
-                                            Yellows Against
+                                            Amarelos Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards of the OPPONENT in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos do ADVERSÁRIO nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="tabela-titulo">
-                                    📊 Fouls - Last 5 Games
+                                    📊 Faltas - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Fouls committed by the team.<br><strong>Against:</strong> Fouls suffered (committed by opponent).</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Faltas cometidas pelo time.<br><strong>Contra:</strong> Faltas sofridas (cometidas pelo adversário).</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1884,19 +1884,19 @@
                                 </table>
 
                                 <div class="tabela-titulo">
-                                    📊 Yellows - Last 5 Games
+                                    📊 Amarelos - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Cards received by the team.<br><strong>Against:</strong> Cards received by opponent.</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Cartões recebidos pelo time.<br><strong>Contra:</strong> Cartões recebidos pelo adversário.</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1950,7 +1950,7 @@
                             <div class="time-content">
 
                                 <div class="proximos-jogos">
-                                    <h5>📅 Next 3 Matches</h5>
+                                    <h5>📅 Próximos 3 Jogos</h5>
 
                                     <div class="proximo-jogo">
                                         <span class="local">🏠</span>
@@ -1991,59 +1991,59 @@
                                     <div class="media-item">
                                         <div class="valor">12.8</div>
                                         <div class="label">
-                                            Fouls For
+                                            Faltas Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls COMMITTED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de faltas COMETIDAS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">13.4</div>
                                         <div class="label">
-                                            Fouls Against
+                                            Faltas Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls SUFFERED by the team in the last 5 games (committed by opponent).</span>
+                                                <span class="tooltip-text">Média de faltas SOFRIDAS pelo time nos últimos 5 jogos (cometidas pelo adversário).</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">2.6</div>
                                         <div class="label">
-                                            Yellows For
+                                            Amarelos Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards RECEIVED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos RECEBIDOS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">1.6</div>
                                         <div class="label">
-                                            Yellows Against
+                                            Amarelos Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards of the OPPONENT in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos do ADVERSÁRIO nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="tabela-titulo">
-                                    📊 Fouls - Last 5 Games
+                                    📊 Faltas - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Fouls committed by the team.<br><strong>Against:</strong> Fouls suffered (committed by opponent).</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Faltas cometidas pelo time.<br><strong>Contra:</strong> Faltas sofridas (cometidas pelo adversário).</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -2087,19 +2087,19 @@
                                 </table>
 
                                 <div class="tabela-titulo">
-                                    📊 Yellows - Last 5 Games
+                                    📊 Amarelos - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Cards received by the team.<br><strong>Against:</strong> Cards received by opponent.</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Cartões recebidos pelo time.<br><strong>Contra:</strong> Cartões recebidos pelo adversário.</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -2150,7 +2150,7 @@
 
                 <!-- Seção Comparativo de Amarelos -->
                 <div class="secao">
-                    <div class="secao-titulo">📊 Yellow Cards Comparison - Last 5 Games</div>
+                    <div class="secao-titulo">📊 Comparativo de Amarelos - Últimos 5 Jogos</div>
                     <div class="grafico-comparativo">
                         <div class="grafico-container">
                             <canvas id="grafico_14083205"></canvas>
@@ -2158,7 +2158,7 @@
                         <div class="grafico-legenda">
                             <div class="legenda-item">
                                 <div class="legenda-cor" style="background: #e94560;"></div>
-                                <span>🗣️ Referee <small style="color: #a0a0a0;">(in league)</small></span>
+                                <span>🗣️ Árbitro <small style="color: #a0a0a0;">(na liga)</small></span>
                             </div>
                             <div class="legenda-item">
                                 <div class="legenda-cor" style="background: #3498db;"></div>
@@ -2176,10 +2176,10 @@
                         new Chart(ctx, {
                             type: 'line',
                             data: {
-                                labels: ['Game 1', 'Game 2', 'Game 3', 'Game 4', 'Game 5'],
+                                labels: ['Jogo 1', 'Jogo 2', 'Jogo 3', 'Jogo 4', 'Jogo 5'],
                                 datasets: [
                                     {
-                                        label: 'Referee',
+                                        label: 'Árbitro',
                                         data: [4, 5, 8, 5, 3],
                                         borderColor: '#e94560',
                                         backgroundColor: 'rgba(233, 69, 96, 0.1)',
@@ -2190,7 +2190,7 @@
                                         fill: false
                                     },
                                     {
-                                        label: 'Home Team',
+                                        label: 'Time Casa',
                                         data: [8, 4, 4, 1, 2],
                                         borderColor: '#3498db',
                                         backgroundColor: 'rgba(52, 152, 219, 0.1)',
@@ -2201,7 +2201,7 @@
                                         fill: false
                                     },
                                     {
-                                        label: 'Away Team',
+                                        label: 'Time Fora',
                                         data: [1, 4, 5, 2, 1],
                                         borderColor: '#2ecc71',
                                         backgroundColor: 'rgba(46, 204, 113, 0.1)',
@@ -2271,29 +2271,29 @@
             
             <div class="jogo-info-bar">
                 <span>
-                    <span class="info-label">🏆 Competition:</span>
+                    <span class="info-label">🏆 Competição:</span>
                     <span class="info-value">Serie A</span>
                 </span>
                 <span>
-                    <span class="info-label">🏟️ Stadium:</span>
+                    <span class="info-label">🏟️ Estádio:</span>
                     <span class="info-value">Unipol Domus</span>
                 </span>
                 <span>
-                    <span class="info-label">📍 Location:</span>
+                    <span class="info-label">📍 Local:</span>
                     <span class="info-value">Cagliari, Italy</span>
                 </span>
-                <span><span class="info-label">📋 Stage:</span><span class="info-value">18ª Round</span></span>
+                <span><span class="info-label">📋 Fase:</span><span class="info-value">18ª Rodada</span></span>
             </div>
             
             <div class="jogo-content">
 
                 <div class="secao">
-                    <div class="secao-titulo">⚖️ Referee</div>
+                    <div class="secao-titulo">⚖️ Árbitro</div>
 
                     <div class="arbitro-card">
                         <div class="arbitro-nome">
                             Rosario Abisso
-                            <span class="badge badge-liga">League</span>
+                            <span class="badge badge-liga">Liga</span>
                         </div>
                         <div class="arbitro-pais">🌍 Italy</div>
 
@@ -2302,90 +2302,90 @@
                             <div class="metrica-card">
                                 <div class="valor">4.2</div>
                                 <div class="label">
-                                    📊 Yellow Avg (10g)
+                                    📊 Média Amarelos (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards per game in the last 10 games refereed (sum of both teams).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos por jogo nos últimos 10 jogos apitados pelo árbitro (soma dos dois times).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">4.0</div>
                                 <div class="label">
-                                    📊 Yellow Avg (5g)
+                                    📊 Média Amarelos (5j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards per game in the last 5 games. Smaller but more recent sample.</span>
+                                        <span class="tooltip-text">Média de cartões amarelos por jogo nos últimos 5 jogos apitados. Amostra menor, mas mais recente.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">1.9</div>
                                 <div class="label">
-                                    📊 Yellow Avg 1H
+                                    📊 Média Amarelos 1T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards given only in 1st half (first 45 minutes).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos aplicados apenas no 1º tempo (primeiros 45 minutos).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">2.3</div>
                                 <div class="label">
-                                    📊 Yellow Avg 2H
+                                    📊 Média Amarelos 2T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards given only in 2nd half (after 45 minutes).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos aplicados apenas no 2º tempo (após os 45 minutos).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">29.9</div>
                                 <div class="label">
-                                    📊 Fouls Avg (10g)
+                                    📊 Média Faltas (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Total average fouls per game in the last 10 games (sum of both teams).</span>
+                                        <span class="tooltip-text">Média total de faltas por jogo nos últimos 10 jogos (soma dos dois times).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">29.0</div>
                                 <div class="label">
-                                    📊 Fouls Avg (5g)
+                                    📊 Média Faltas (5j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls in the last 5 games. More recent sample.</span>
+                                        <span class="tooltip-text">Média de faltas nos últimos 5 jogos. Amostra mais recente.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">13.0</div>
                                 <div class="label">
-                                    📊 Fouls Avg 1H
+                                    📊 Média Faltas 1T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls committed in 1st half.</span>
+                                        <span class="tooltip-text">Média de faltas cometidas no 1º tempo.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">16.25</div>
                                 <div class="label">
-                                    📊 Fouls Avg 2H
+                                    📊 Média Faltas 2T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls committed in 2nd half.</span>
+                                        <span class="tooltip-text">Média de faltas cometidas no 2º tempo.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">0.5</div>
                                 <div class="label">
-                                    📊 Red Avg
+                                    📊 Média Vermelhos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average red cards per game in the last 10 games.</span>
+                                        <span class="tooltip-text">Média de cartões vermelhos por jogo nos últimos 10 jogos.</span>
                                     </span>
                                 </div>
                             </div>
@@ -2393,36 +2393,36 @@
 
                         <div class="perfil-section">
                             <div class="perfil-header">
-                                <span class="perfil-titulo">📋 Referee Profile</span>
+                                <span class="perfil-titulo">📋 Perfil do Árbitro</span>
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">The profile is calculated by comparing the referee's yellow average with the competition average (baseline). Strict: +15% above average. Lenient: -15% below average.</span>
+                                    <span class="tooltip-text">O perfil é calculado comparando a média de amarelos do árbitro com a média da competição (baseline). Rigoroso: +15% acima da média. Permissivo: -15% abaixo da média.</span>
                                 </span>
                             </div>
                             <div class="perfil-badges">
                                 <span class="perfil-badge perfil-medio">
-                                    🟡 Average
+                                    🟡 Médio
                                 </span>
 
                             </div>
-                            <div class="perfil-descricao">This referee is at the competition average in terms of yellow cards. Balanced behavior.</div>
+                            <div class="perfil-descricao">Este árbitro está na média da competição em termos de cartões amarelos. Comportamento equilibrado.</div>
                         </div>
 
                         <div class="baseline-section">
                             <div class="baseline-titulo">
-                                📈 Competition Baseline (Bundesliga)
+                                📈 Baseline da Competição (Bundesliga)
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">Historical average values of the competition. Used as reference to classify referee profile.</span>
+                                    <span class="tooltip-text">Valores médios históricos da competição. Usados como referência para classificar o perfil do árbitro.</span>
                                 </span>
                             </div>
                             <div class="baseline-valores">
                                 <div class="baseline-item">
-                                    <span>Yellow Avg:</span>
+                                    <span>Média Amarelos:</span>
                                     <span class="valor">4.2</span>
                                 </div>
                                 <div class="baseline-item">
-                                    <span>Fouls Avg:</span>
+                                    <span>Média Faltas:</span>
                                     <span class="valor">20.4</span>
                                 </div>
                             </div>
@@ -2430,15 +2430,15 @@
 
                         <div class="baseline-section">
                             <div class="baseline-titulo">
-                                📉 Data Quality
+                                📉 Qualidade dos Dados
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">Percentage of games from the last 10 that have fouls data per half (1H/2H). The higher, the more reliable the half averages.</span>
+                                    <span class="tooltip-text">Percentual de jogos dos últimos 10 que possuem dados de faltas por tempo (1T/2T). Quanto maior, mais confiáveis as médias por tempo.</span>
                                 </span>
                             </div>
                             <div class="baseline-valores">
                                 <div class="baseline-item">
-                                    <span>Fouls Availability 1H/2H:</span>
+                                    <span>Disponibilidade Faltas 1T/2T:</span>
                                     <span class="valor">40.0%</span>
                                 </div>
                             </div>
@@ -2447,20 +2447,20 @@
                         <div class="tendencias">
                             <div class="tendencia-item">
                                 <span>
-                                    % games with ≥5 yellows (10g)
+                                    % jogos com ≥5 amarelos (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Percentage of games where total yellows were 5 or more. Useful for Over 4.5 cards market.</span>
+                                        <span class="tooltip-text">Percentual de jogos onde o total de amarelos foi 5 ou mais. Útil para mercado de Over 4.5 cartões.</span>
                                     </span>
                                 </span>
                                 <span style="color: #e94560; font-weight: bold;">30.0%</span>
                             </div>
                             <div class="tendencia-item">
                                 <span>
-                                    % games with ≥3 yellows in 1H (10g)
+                                    % jogos com ≥3 amarelos no 1T (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Percentage of games where 3+ yellows were given in 1st half. Useful for 1H cards market.</span>
+                                        <span class="tooltip-text">Percentual de jogos onde foram aplicados 3+ amarelos no 1º tempo. Útil para mercado de cartões no 1T.</span>
                                     </span>
                                 </span>
                                 <span style="color: #e94560; font-weight: bold;">40.0%</span>
@@ -2469,23 +2469,23 @@
 
                     </div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📰 Recent news involving Rosario Abisso</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📰 Notícias recentes envolvendo Rosario Abisso</div>
 
                     <div class="sem-noticias">ℹ️ Nenhuma notícia recente encontrada</div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📊 History — Serie A</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📊 Histórico — Serie A</div>
                     <div class="tabela-scroll">
                     <table class="tabela">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Match</th>
-                                <th>Score</th>
-                                <th>Fouls 1H</th>
-                                <th>Fouls 2H</th>
-                                <th>Total Fouls</th>
-                                <th>Yellows</th>
-                                <th>Reds</th>
+                                <th>Data</th>
+                                <th>Partida</th>
+                                <th>Placar</th>
+                                <th>Faltas 1T</th>
+                                <th>Faltas 2T</th>
+                                <th>Faltas Total</th>
+                                <th>Amarelos</th>
+                                <th>Vermelhos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -2571,20 +2571,20 @@
                     </table>
                     </div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📊 History — Other Competitions</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📊 Histórico — Outras Competições</div>
                     <div class="tabela-scroll">
                     <table class="tabela">
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                <th>Data</th>
                                 <th>Competição</th>
-                                <th>Match</th>
-                                <th>Score</th>
-                                <th>Fouls 1H</th>
-                                <th>Fouls 2H</th>
-                                <th>Total Fouls</th>
-                                <th>Yellows</th>
-                                <th>Reds</th>
+                                <th>Partida</th>
+                                <th>Placar</th>
+                                <th>Faltas 1T</th>
+                                <th>Faltas 2T</th>
+                                <th>Faltas Total</th>
+                                <th>Amarelos</th>
+                                <th>Vermelhos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -2632,7 +2632,7 @@
                 </div>
 
                 <div class="secao">
-                    <div class="secao-titulo">⚽ Teams</div>
+                    <div class="secao-titulo">⚽ Times</div>
                     <div class="times-grid">
 
                         <div class="time-card">
@@ -2643,7 +2643,7 @@
                             <div class="time-content">
 
                                 <div class="proximos-jogos">
-                                    <h5>📅 Next 3 Matches</h5>
+                                    <h5>📅 Próximos 3 Jogos</h5>
 
                                     <div class="proximo-jogo">
                                         <span class="local">✈️</span>
@@ -2684,59 +2684,59 @@
                                     <div class="media-item">
                                         <div class="valor">14.8</div>
                                         <div class="label">
-                                            Fouls For
+                                            Faltas Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls COMMITTED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de faltas COMETIDAS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">14.4</div>
                                         <div class="label">
-                                            Fouls Against
+                                            Faltas Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls SUFFERED by the team in the last 5 games (committed by opponent).</span>
+                                                <span class="tooltip-text">Média de faltas SOFRIDAS pelo time nos últimos 5 jogos (cometidas pelo adversário).</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">1.8</div>
                                         <div class="label">
-                                            Yellows For
+                                            Amarelos Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards RECEIVED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos RECEBIDOS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">1.4</div>
                                         <div class="label">
-                                            Yellows Against
+                                            Amarelos Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards of the OPPONENT in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos do ADVERSÁRIO nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="tabela-titulo">
-                                    📊 Fouls - Last 5 Games
+                                    📊 Faltas - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Fouls committed by the team.<br><strong>Against:</strong> Fouls suffered (committed by opponent).</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Faltas cometidas pelo time.<br><strong>Contra:</strong> Faltas sofridas (cometidas pelo adversário).</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -2780,19 +2780,19 @@
                                 </table>
 
                                 <div class="tabela-titulo">
-                                    📊 Yellows - Last 5 Games
+                                    📊 Amarelos - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Cards received by the team.<br><strong>Against:</strong> Cards received by opponent.</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Cartões recebidos pelo time.<br><strong>Contra:</strong> Cartões recebidos pelo adversário.</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -2846,7 +2846,7 @@
                             <div class="time-content">
 
                                 <div class="proximos-jogos">
-                                    <h5>📅 Next 3 Matches</h5>
+                                    <h5>📅 Próximos 3 Jogos</h5>
 
                                     <div class="proximo-jogo">
                                         <span class="local">🏠</span>
@@ -2887,59 +2887,59 @@
                                     <div class="media-item">
                                         <div class="valor">6.6</div>
                                         <div class="label">
-                                            Fouls For
+                                            Faltas Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls COMMITTED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de faltas COMETIDAS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">11.6</div>
                                         <div class="label">
-                                            Fouls Against
+                                            Faltas Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls SUFFERED by the team in the last 5 games (committed by opponent).</span>
+                                                <span class="tooltip-text">Média de faltas SOFRIDAS pelo time nos últimos 5 jogos (cometidas pelo adversário).</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">1.0</div>
                                         <div class="label">
-                                            Yellows For
+                                            Amarelos Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards RECEIVED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos RECEBIDOS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">1.6</div>
                                         <div class="label">
-                                            Yellows Against
+                                            Amarelos Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards of the OPPONENT in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos do ADVERSÁRIO nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="tabela-titulo">
-                                    📊 Fouls - Last 5 Games
+                                    📊 Faltas - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Fouls committed by the team.<br><strong>Against:</strong> Fouls suffered (committed by opponent).</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Faltas cometidas pelo time.<br><strong>Contra:</strong> Faltas sofridas (cometidas pelo adversário).</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -2983,19 +2983,19 @@
                                 </table>
 
                                 <div class="tabela-titulo">
-                                    📊 Yellows - Last 5 Games
+                                    📊 Amarelos - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Cards received by the team.<br><strong>Against:</strong> Cards received by opponent.</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Cartões recebidos pelo time.<br><strong>Contra:</strong> Cartões recebidos pelo adversário.</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -3046,7 +3046,7 @@
 
                 <!-- Seção Comparativo de Amarelos -->
                 <div class="secao">
-                    <div class="secao-titulo">📊 Yellow Cards Comparison - Last 5 Games</div>
+                    <div class="secao-titulo">📊 Comparativo de Amarelos - Últimos 5 Jogos</div>
                     <div class="grafico-comparativo">
                         <div class="grafico-container">
                             <canvas id="grafico_13981602"></canvas>
@@ -3054,7 +3054,7 @@
                         <div class="grafico-legenda">
                             <div class="legenda-item">
                                 <div class="legenda-cor" style="background: #e94560;"></div>
-                                <span>🗣️ Referee <small style="color: #a0a0a0;">(in league)</small></span>
+                                <span>🗣️ Árbitro <small style="color: #a0a0a0;">(na liga)</small></span>
                             </div>
                             <div class="legenda-item">
                                 <div class="legenda-cor" style="background: #3498db;"></div>
@@ -3072,10 +3072,10 @@
                         new Chart(ctx, {
                             type: 'line',
                             data: {
-                                labels: ['Game 1', 'Game 2', 'Game 3', 'Game 4', 'Game 5'],
+                                labels: ['Jogo 1', 'Jogo 2', 'Jogo 3', 'Jogo 4', 'Jogo 5'],
                                 datasets: [
                                     {
-                                        label: 'Referee',
+                                        label: 'Árbitro',
                                         data: [4, 1, 4, 5, 3],
                                         borderColor: '#e94560',
                                         backgroundColor: 'rgba(233, 69, 96, 0.1)',
@@ -3086,7 +3086,7 @@
                                         fill: false
                                     },
                                     {
-                                        label: 'Home Team',
+                                        label: 'Time Casa',
                                         data: [2, 2, 2, 3, 0],
                                         borderColor: '#3498db',
                                         backgroundColor: 'rgba(52, 152, 219, 0.1)',
@@ -3097,7 +3097,7 @@
                                         fill: false
                                     },
                                     {
-                                        label: 'Away Team',
+                                        label: 'Time Fora',
                                         data: [1, 1, 3, 0, 0],
                                         borderColor: '#2ecc71',
                                         backgroundColor: 'rgba(46, 204, 113, 0.1)',
@@ -3167,29 +3167,29 @@
             
             <div class="jogo-info-bar">
                 <span>
-                    <span class="info-label">🏆 Competition:</span>
+                    <span class="info-label">🏆 Competição:</span>
                     <span class="info-value">Ligue 1</span>
                 </span>
                 <span>
-                    <span class="info-label">🏟️ Stadium:</span>
+                    <span class="info-label">🏟️ Estádio:</span>
                     <span class="info-value">Stadium de Toulouse</span>
                 </span>
                 <span>
-                    <span class="info-label">📍 Location:</span>
+                    <span class="info-label">📍 Local:</span>
                     <span class="info-value">Toulouse, France</span>
                 </span>
-                <span><span class="info-label">📋 Stage:</span><span class="info-value">17ª Round</span></span>
+                <span><span class="info-label">📋 Fase:</span><span class="info-value">17ª Rodada</span></span>
             </div>
             
             <div class="jogo-content">
 
                 <div class="secao">
-                    <div class="secao-titulo">⚖️ Referee</div>
+                    <div class="secao-titulo">⚖️ Árbitro</div>
 
                     <div class="arbitro-card">
                         <div class="arbitro-nome">
                             Mathieu Vernice
-                            <span class="badge badge-liga">League</span>
+                            <span class="badge badge-liga">Liga</span>
                         </div>
                         <div class="arbitro-pais">🌍 France</div>
 
@@ -3198,90 +3198,90 @@
                             <div class="metrica-card">
                                 <div class="valor">4.4</div>
                                 <div class="label">
-                                    📊 Yellow Avg (10g)
+                                    📊 Média Amarelos (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards per game in the last 10 games refereed (sum of both teams).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos por jogo nos últimos 10 jogos apitados pelo árbitro (soma dos dois times).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">4.8</div>
                                 <div class="label">
-                                    📊 Yellow Avg (5g)
+                                    📊 Média Amarelos (5j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards per game in the last 5 games. Smaller but more recent sample.</span>
+                                        <span class="tooltip-text">Média de cartões amarelos por jogo nos últimos 5 jogos apitados. Amostra menor, mas mais recente.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">1.9</div>
                                 <div class="label">
-                                    📊 Yellow Avg 1H
+                                    📊 Média Amarelos 1T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards given only in 1st half (first 45 minutes).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos aplicados apenas no 1º tempo (primeiros 45 minutos).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">2.5</div>
                                 <div class="label">
-                                    📊 Yellow Avg 2H
+                                    📊 Média Amarelos 2T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average yellow cards given only in 2nd half (after 45 minutes).</span>
+                                        <span class="tooltip-text">Média de cartões amarelos aplicados apenas no 2º tempo (após os 45 minutos).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">27.0</div>
                                 <div class="label">
-                                    📊 Fouls Avg (10g)
+                                    📊 Média Faltas (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Total average fouls per game in the last 10 games (sum of both teams).</span>
+                                        <span class="tooltip-text">Média total de faltas por jogo nos últimos 10 jogos (soma dos dois times).</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">28.8</div>
                                 <div class="label">
-                                    📊 Fouls Avg (5g)
+                                    📊 Média Faltas (5j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls in the last 5 games. More recent sample.</span>
+                                        <span class="tooltip-text">Média de faltas nos últimos 5 jogos. Amostra mais recente.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">11.29</div>
                                 <div class="label">
-                                    📊 Fouls Avg 1H
+                                    📊 Média Faltas 1T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls committed in 1st half.</span>
+                                        <span class="tooltip-text">Média de faltas cometidas no 1º tempo.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">12.71</div>
                                 <div class="label">
-                                    📊 Fouls Avg 2H
+                                    📊 Média Faltas 2T
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average fouls committed in 2nd half.</span>
+                                        <span class="tooltip-text">Média de faltas cometidas no 2º tempo.</span>
                                     </span>
                                 </div>
                             </div>
                             <div class="metrica-card">
                                 <div class="valor">0.2</div>
                                 <div class="label">
-                                    📊 Red Avg
+                                    📊 Média Vermelhos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Average red cards per game in the last 10 games.</span>
+                                        <span class="tooltip-text">Média de cartões vermelhos por jogo nos últimos 10 jogos.</span>
                                     </span>
                                 </div>
                             </div>
@@ -3289,36 +3289,36 @@
 
                         <div class="perfil-section">
                             <div class="perfil-header">
-                                <span class="perfil-titulo">📋 Referee Profile</span>
+                                <span class="perfil-titulo">📋 Perfil do Árbitro</span>
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">The profile is calculated by comparing the referee's yellow average with the competition average (baseline). Strict: +15% above average. Lenient: -15% below average.</span>
+                                    <span class="tooltip-text">O perfil é calculado comparando a média de amarelos do árbitro com a média da competição (baseline). Rigoroso: +15% acima da média. Permissivo: -15% abaixo da média.</span>
                                 </span>
                             </div>
                             <div class="perfil-badges">
                                 <span class="perfil-badge perfil-medio">
-                                    🟡 Average
+                                    🟡 Médio
                                 </span>
 
                             </div>
-                            <div class="perfil-descricao">This referee is at the competition average in terms of yellow cards. Balanced behavior.</div>
+                            <div class="perfil-descricao">Este árbitro está na média da competição em termos de cartões amarelos. Comportamento equilibrado.</div>
                         </div>
 
                         <div class="baseline-section">
                             <div class="baseline-titulo">
-                                📈 Competition Baseline (Serie A)
+                                📈 Baseline da Competição (Serie A)
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">Historical average values of the competition. Used as reference to classify referee profile.</span>
+                                    <span class="tooltip-text">Valores médios históricos da competição. Usados como referência para classificar o perfil do árbitro.</span>
                                 </span>
                             </div>
                             <div class="baseline-valores">
                                 <div class="baseline-item">
-                                    <span>Yellow Avg:</span>
+                                    <span>Média Amarelos:</span>
                                     <span class="valor">4.6</span>
                                 </div>
                                 <div class="baseline-item">
-                                    <span>Fouls Avg:</span>
+                                    <span>Média Faltas:</span>
                                     <span class="valor">24.0</span>
                                 </div>
                             </div>
@@ -3326,15 +3326,15 @@
 
                         <div class="baseline-section">
                             <div class="baseline-titulo">
-                                📉 Data Quality
+                                📉 Qualidade dos Dados
                                 <span class="tooltip">
                                     <span class="tooltip-icon">i</span>
-                                    <span class="tooltip-text">Percentage of games from the last 10 that have fouls data per half (1H/2H). The higher, the more reliable the half averages.</span>
+                                    <span class="tooltip-text">Percentual de jogos dos últimos 10 que possuem dados de faltas por tempo (1T/2T). Quanto maior, mais confiáveis as médias por tempo.</span>
                                 </span>
                             </div>
                             <div class="baseline-valores">
                                 <div class="baseline-item">
-                                    <span>Fouls Availability 1H/2H:</span>
+                                    <span>Disponibilidade Faltas 1T/2T:</span>
                                     <span class="valor">70.0%</span>
                                 </div>
                             </div>
@@ -3343,20 +3343,20 @@
                         <div class="tendencias">
                             <div class="tendencia-item">
                                 <span>
-                                    % games with ≥5 yellows (10g)
+                                    % jogos com ≥5 amarelos (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Percentage of games where total yellows were 5 or more. Useful for Over 4.5 cards market.</span>
+                                        <span class="tooltip-text">Percentual de jogos onde o total de amarelos foi 5 ou mais. Útil para mercado de Over 4.5 cartões.</span>
                                     </span>
                                 </span>
                                 <span style="color: #e94560; font-weight: bold;">30.0%</span>
                             </div>
                             <div class="tendencia-item">
                                 <span>
-                                    % games with ≥3 yellows in 1H (10g)
+                                    % jogos com ≥3 amarelos no 1T (10j)
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text">Percentage of games where 3+ yellows were given in 1st half. Useful for 1H cards market.</span>
+                                        <span class="tooltip-text">Percentual de jogos onde foram aplicados 3+ amarelos no 1º tempo. Útil para mercado de cartões no 1T.</span>
                                     </span>
                                 </span>
                                 <span style="color: #e94560; font-weight: bold;">30.0%</span>
@@ -3365,23 +3365,23 @@
 
                     </div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📰 Recent news involving Mathieu Vernice</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📰 Notícias recentes envolvendo Mathieu Vernice</div>
 
                     <div class="sem-noticias">ℹ️ Nenhuma notícia recente encontrada</div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📊 History — Ligue 1</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📊 Histórico — Ligue 1</div>
                     <div class="tabela-scroll">
                     <table class="tabela">
                         <thead>
                             <tr>
-                                <th>Date</th>
-                                <th>Match</th>
-                                <th>Score</th>
-                                <th>Fouls 1H</th>
-                                <th>Fouls 2H</th>
-                                <th>Total Fouls</th>
-                                <th>Yellows</th>
-                                <th>Reds</th>
+                                <th>Data</th>
+                                <th>Partida</th>
+                                <th>Placar</th>
+                                <th>Faltas 1T</th>
+                                <th>Faltas 2T</th>
+                                <th>Faltas Total</th>
+                                <th>Amarelos</th>
+                                <th>Vermelhos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -3445,20 +3445,20 @@
                     </table>
                     </div>
 
-                    <div class="secao-titulo" style="margin-top: 25px;">📊 History — Other Competitions</div>
+                    <div class="secao-titulo" style="margin-top: 25px;">📊 Histórico — Outras Competições</div>
                     <div class="tabela-scroll">
                     <table class="tabela">
                         <thead>
                             <tr>
-                                <th>Date</th>
+                                <th>Data</th>
                                 <th>Competição</th>
-                                <th>Match</th>
-                                <th>Score</th>
-                                <th>Fouls 1H</th>
-                                <th>Fouls 2H</th>
-                                <th>Total Fouls</th>
-                                <th>Yellows</th>
-                                <th>Reds</th>
+                                <th>Partida</th>
+                                <th>Placar</th>
+                                <th>Faltas 1T</th>
+                                <th>Faltas 2T</th>
+                                <th>Faltas Total</th>
+                                <th>Amarelos</th>
+                                <th>Vermelhos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -3530,7 +3530,7 @@
                 </div>
 
                 <div class="secao">
-                    <div class="secao-titulo">⚽ Teams</div>
+                    <div class="secao-titulo">⚽ Times</div>
                     <div class="times-grid">
 
                         <div class="time-card">
@@ -3541,7 +3541,7 @@
                             <div class="time-content">
 
                                 <div class="proximos-jogos">
-                                    <h5>📅 Next 3 Matches</h5>
+                                    <h5>📅 Próximos 3 Jogos</h5>
 
                                     <div class="proximo-jogo">
                                         <span class="local">✈️</span>
@@ -3582,59 +3582,59 @@
                                     <div class="media-item">
                                         <div class="valor">15.2</div>
                                         <div class="label">
-                                            Fouls For
+                                            Faltas Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls COMMITTED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de faltas COMETIDAS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">11.8</div>
                                         <div class="label">
-                                            Fouls Against
+                                            Faltas Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls SUFFERED by the team in the last 5 games (committed by opponent).</span>
+                                                <span class="tooltip-text">Média de faltas SOFRIDAS pelo time nos últimos 5 jogos (cometidas pelo adversário).</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">2.0</div>
                                         <div class="label">
-                                            Yellows For
+                                            Amarelos Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards RECEIVED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos RECEBIDOS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">2.6</div>
                                         <div class="label">
-                                            Yellows Against
+                                            Amarelos Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards of the OPPONENT in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos do ADVERSÁRIO nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="tabela-titulo">
-                                    📊 Fouls - Last 5 Games
+                                    📊 Faltas - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Fouls committed by the team.<br><strong>Against:</strong> Fouls suffered (committed by opponent).</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Faltas cometidas pelo time.<br><strong>Contra:</strong> Faltas sofridas (cometidas pelo adversário).</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -3678,19 +3678,19 @@
                                 </table>
 
                                 <div class="tabela-titulo">
-                                    📊 Yellows - Last 5 Games
+                                    📊 Amarelos - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Cards received by the team.<br><strong>Against:</strong> Cards received by opponent.</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Cartões recebidos pelo time.<br><strong>Contra:</strong> Cartões recebidos pelo adversário.</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -3744,7 +3744,7 @@
                             <div class="time-content">
 
                                 <div class="proximos-jogos">
-                                    <h5>📅 Next 3 Matches</h5>
+                                    <h5>📅 Próximos 3 Jogos</h5>
 
                                     <div class="proximo-jogo">
                                         <span class="local">✈️</span>
@@ -3785,59 +3785,59 @@
                                     <div class="media-item">
                                         <div class="valor">13.4</div>
                                         <div class="label">
-                                            Fouls For
+                                            Faltas Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls COMMITTED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de faltas COMETIDAS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">10.6</div>
                                         <div class="label">
-                                            Fouls Against
+                                            Faltas Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average fouls SUFFERED by the team in the last 5 games (committed by opponent).</span>
+                                                <span class="tooltip-text">Média de faltas SOFRIDAS pelo time nos últimos 5 jogos (cometidas pelo adversário).</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">0.8</div>
                                         <div class="label">
-                                            Yellows For
+                                            Amarelos Pró
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards RECEIVED by the team in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos RECEBIDOS pelo time nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="media-item">
                                         <div class="valor">2.0</div>
                                         <div class="label">
-                                            Yellows Against
+                                            Amarelos Contra
                                             <span class="tooltip">
                                                 <span class="tooltip-icon">i</span>
-                                                <span class="tooltip-text">Average yellow cards of the OPPONENT in the last 5 games.</span>
+                                                <span class="tooltip-text">Média de cartões amarelos do ADVERSÁRIO nos últimos 5 jogos.</span>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="tabela-titulo">
-                                    📊 Fouls - Last 5 Games
+                                    📊 Faltas - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Fouls committed by the team.<br><strong>Against:</strong> Fouls suffered (committed by opponent).</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Faltas cometidas pelo time.<br><strong>Contra:</strong> Faltas sofridas (cometidas pelo adversário).</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -3881,19 +3881,19 @@
                                 </table>
 
                                 <div class="tabela-titulo">
-                                    📊 Yellows - Last 5 Games
+                                    📊 Amarelos - Últimos 5 Jogos
                                     <span class="tooltip">
                                         <span class="tooltip-icon">i</span>
-                                        <span class="tooltip-text"><strong>For:</strong> Cards received by the team.<br><strong>Against:</strong> Cards received by opponent.</span>
+                                        <span class="tooltip-text"><strong>Pró:</strong> Cartões recebidos pelo time.<br><strong>Contra:</strong> Cartões recebidos pelo adversário.</span>
                                     </span>
                                 </div>
                                 <table class="tabela-time">
                                     <thead>
                                         <tr>
-                                            <th>Opponent</th>
-                                            <th>Venue</th>
-                                            <th>For</th>
-                                            <th>Against</th>
+                                            <th>Adversário</th>
+                                            <th>Local</th>
+                                            <th>Pró</th>
+                                            <th>Contra</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -3944,7 +3944,7 @@
 
                 <!-- Seção Comparativo de Amarelos -->
                 <div class="secao">
-                    <div class="secao-titulo">📊 Yellow Cards Comparison - Last 5 Games</div>
+                    <div class="secao-titulo">📊 Comparativo de Amarelos - Últimos 5 Jogos</div>
                     <div class="grafico-comparativo">
                         <div class="grafico-container">
                             <canvas id="grafico_14064454"></canvas>
@@ -3952,7 +3952,7 @@
                         <div class="grafico-legenda">
                             <div class="legenda-item">
                                 <div class="legenda-cor" style="background: #e94560;"></div>
-                                <span>🗣️ Referee <small style="color: #a0a0a0;">(in league)</small></span>
+                                <span>🗣️ Árbitro <small style="color: #a0a0a0;">(na liga)</small></span>
                             </div>
                             <div class="legenda-item">
                                 <div class="legenda-cor" style="background: #3498db;"></div>
@@ -3970,10 +3970,10 @@
                         new Chart(ctx, {
                             type: 'line',
                             data: {
-                                labels: ['Game 1', 'Game 2', 'Game 3', 'Game 4', 'Game 5'],
+                                labels: ['Jogo 1', 'Jogo 2', 'Jogo 3', 'Jogo 4', 'Jogo 5'],
                                 datasets: [
                                     {
-                                        label: 'Referee',
+                                        label: 'Árbitro',
                                         data: [4, 4, 8, 3, 6],
                                         borderColor: '#e94560',
                                         backgroundColor: 'rgba(233, 69, 96, 0.1)',
@@ -3984,7 +3984,7 @@
                                         fill: false
                                     },
                                     {
-                                        label: 'Home Team',
+                                        label: 'Time Casa',
                                         data: [1, 1, 3, 1, 4],
                                         borderColor: '#3498db',
                                         backgroundColor: 'rgba(52, 152, 219, 0.1)',
@@ -3995,7 +3995,7 @@
                                         fill: false
                                     },
                                     {
-                                        label: 'Away Team',
+                                        label: 'Time Fora',
                                         data: [2, 1, 0, 0, 1],
                                         borderColor: '#2ecc71',
                                         backgroundColor: 'rgba(46, 204, 113, 0.1)',
@@ -4056,13 +4056,13 @@
 
         <!-- Card de Doação -->
         <div class="donation-section">
-            <h2>💖 Support RefStats</h2>
-            <p>RefStats is free and maintained with dedication. If you like the project, consider making a donation!</p>
+            <h2>💖 Apoie o RefStats</h2>
+            <p>O RefStats é gratuito e mantido com dedicação. Se você gosta do projeto, considere fazer uma doação!</p>
             
             <div class="donation-grid">
                 <div class="donation-card">
-                    <h4>🔲 PIX (Brazil)</h4>
-                    <p>Fast, easy and fee-free</p>
+                    <h4>🔲 PIX (Brasil)</h4>
+                    <p>Rápido, fácil e sem taxas</p>
                     <div class="pix-key" onclick="copyPix()">
                         <span id="pixKey">seuemail@exemplo.com</span>
                         <span>📋</span>
@@ -4071,7 +4071,7 @@
                 
                 <div class="donation-card">
                     <h4>🅿️ PayPal</h4>
-                    <p>For international donations</p>
+                    <p>Para doações internacionais</p>
                     <a href="https://paypal.me/seuusuario" target="_blank" class="paypal-btn">
                         Doar via PayPal
                     </a>
@@ -4079,22 +4079,22 @@
             </div>
             
             <div class="donation-info">
-                <h4>💡 Why donate?</h4>
-                <p>Your donations help keep the server online, improve features and add new ones. Any amount is welcome and motivates us to continue!</p>
+                <h4>💡 Por que doar?</h4>
+                <p>Suas doações ajudam a manter o servidor online, melhorar as funcionalidades e adicionar novas features. Qualquer valor é bem-vindo e nos motiva a continuar!</p>
             </div>
         </div>
 
         <div class="footer">
-            <p><strong>⚽ RefStats - Today's Matches</strong></p>
+            <p><strong>⚽ RefStats - Jogos do Dia</strong></p>
             <p>
-                <a href="refstats_termos.html" style="color: #3498db; text-decoration: none;">Terms of Use</a> | 
-                <a href="refstats_privacidade.html" style="color: #3498db; text-decoration: none;">Privacy Policy</a> | 
-                <a href="refstats_aviso_legal.html" style="color: #3498db; text-decoration: none;">Legal Disclaimer</a> |
-                <a href="refstats_faq.html" style="color: #3498db; text-decoration: none;">FAQ</a>
+                <a href="../refstats_termos.html" style="color: #3498db; text-decoration: none;">Termos de Uso</a> | 
+                <a href="../refstats_privacidade.html" style="color: #3498db; text-decoration: none;">Política de Privacidade</a> | 
+                <a href="../refstats_aviso_legal.html" style="color: #3498db; text-decoration: none;">Aviso Legal</a> |
+                <a href="../refstats_faq.html" style="color: #3498db; text-decoration: none;">FAQ</a>
             </p>
-            <p style="margin-top: 10px; font-size: 0.9em;">Data collected from reliable sources • 02/01/2026 11:31</p>
-            <p style="margin-top: 5px; font-size: 0.85em; color: #3498db;">💡 Use Ctrl+F or click 🔍 to search and filter by referee profile</p>
-            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ This site is for informational purposes only. Bet responsibly.</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Dados coletados de fontes confiáveis • 02/01/2026 11:31</p>
+            <p style="margin-top: 5px; font-size: 0.85em; color: #3498db;">💡 Use Ctrl+F ou clique em 🔍 para pesquisar e filtrar por perfil do árbitro</p>
+            <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ Este site é apenas para fins informativos. Aposte com responsabilidade.</p>
         </div>
     </div>
 
@@ -4402,7 +4402,7 @@
     function copyPix() {
         const pixKey = document.getElementById('pixKey').textContent;
         navigator.clipboard.writeText(pixKey).then(() => {
-            alert('✅ PIX key copied: ' + pixKey);
+            alert('✅ Chave PIX copiada: ' + pixKey);
         }).catch(() => {
             // Fallback para navegadores antigos
             const textarea = document.createElement('textarea');
@@ -4411,7 +4411,7 @@
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-            alert('✅ PIX key copied: ' + pixKey);
+            alert('✅ Chave PIX copiada: ' + pixKey);
         });
     }
     </script>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RefStats - Relatório de Validação V2.0 - 30/12/2025</title>
+    <title>RefStats - Relatório de Validação V2.0 - 02/01/2026</title>
     <style>
         * {
             margin: 0;
@@ -66,7 +66,7 @@
         }
         
         .stat-card.destaque {
-            border-color: #2ecc71;
+            border-color: #e94560;
             box-shadow: 0 0 20px rgba(46, 204, 113, 0.2);
         }
         
@@ -77,7 +77,7 @@
         }
         
         .stat-card.destaque .stat-valor {
-            color: #2ecc71;
+            color: #e94560;
         }
         
         .stat-label {
@@ -285,8 +285,8 @@
     <div class="container">
         <div class="header">
             <h1>📊 Relatório de Validação V2.0</h1>
-            <p>📅 Partidas de 30/12/2025</p>
-            <p style="margin-top: 5px; color: #a0a0a0;">Gerado em 02/01/2026 11:39</p>
+            <p>📅 Partidas de 02/01/2026</p>
+            <p style="margin-top: 5px; color: #a0a0a0;">Gerado em 02/01/2026 11:33</p>
             <div class="version-badge">
                 Neg. Binomial + Shrinkage + Calibração + Aprendizado
             </div>
@@ -294,19 +294,19 @@
         
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-valor">6</div>
+                <div class="stat-valor">3</div>
                 <div class="stat-label">Total de Partidas</div>
             </div>
             <div class="stat-card">
-                <div class="stat-valor">6</div>
+                <div class="stat-valor">0</div>
                 <div class="stat-label">Partidas Validadas</div>
             </div>
             <div class="stat-card">
-                <div class="stat-valor">18</div>
+                <div class="stat-valor">0</div>
                 <div class="stat-label">Previsões em Destaque</div>
             </div>
             <div class="stat-card destaque">
-                <div class="stat-valor">66.7%</div>
+                <div class="stat-valor">0.0%</div>
                 <div class="stat-label">Taxa de Acerto (Destaques)</div>
             </div>
         </div>
@@ -316,19 +316,19 @@
             
             <div class="stats-grid">
                 <div class="stat-card">
-                    <div class="stat-valor" style="color: #2ecc71;">12</div>
+                    <div class="stat-valor" style="color: #2ecc71;">0</div>
                     <div class="stat-label">✅ Destaques Acertos</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-valor" style="color: #e94560;">6</div>
+                    <div class="stat-valor" style="color: #e94560;">0</div>
                     <div class="stat-label">❌ Destaques Erros</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-valor" style="color: #f1c40f;">2</div>
+                    <div class="stat-valor" style="color: #f1c40f;">0</div>
                     <div class="stat-label">🚫 Bloqueados</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-valor" style="color: #9b59b6;">1</div>
+                    <div class="stat-valor" style="color: #9b59b6;">0</div>
                     <div class="stat-label">🛡️ Erros Evitados</div>
                 </div>
             </div>
@@ -336,23 +336,23 @@
             <div class="bloqueados-box">
                 <h4 style="color: #f1c40f; margin-bottom: 10px;">🛡️ Análise de Bloqueios</h4>
                 <p>
-                    Dos <strong>2</strong> mercados bloqueados (por variância ou qualidade):
+                    Dos <strong>0</strong> mercados bloqueados (por variância ou qualidade):
                 </p>
                 <ul style="margin: 10px 0 0 20px;">
-                    <li><strong style="color: #2ecc71;">1</strong> teriam ERRADO → bloqueio correto ✅</li>
-                    <li><strong style="color: #e94560;">1</strong> teriam ACERTADO → bloqueio desnecessário ⚠️</li>
+                    <li><strong style="color: #2ecc71;">0</strong> teriam ERRADO → bloqueio correto ✅</li>
+                    <li><strong style="color: #e94560;">0</strong> teriam ACERTADO → bloqueio desnecessário ⚠️</li>
                 </ul>
                 <p style="margin-top: 10px; font-size: 0.9em; color: #a0a0a0;">
-                    Taxa de eficácia do bloqueio: <strong>50.0%</strong>
+                    Taxa de eficácia do bloqueio: <strong>0.0%</strong>
                 </p>
             </div>
             
             <div class="interpretacao">
                 <h4 style="color: #e94560; margin-bottom: 10px;">🧠 Interpretação</h4>
                 <p>
-                    Das <strong>18</strong> previsões destacadas,
-                    <strong>12</strong> acertaram, 
-                    resultando em taxa de <strong style="color: #2ecc71;">66.7%</strong>.
+                    Das <strong>0</strong> previsões destacadas,
+                    <strong>0</strong> acertaram, 
+                    resultando em taxa de <strong style="color: #e94560;">0.0%</strong>.
                 </p>
                 <p style="margin-top: 10px; font-size: 0.9em; color: #a0a0a0;">
                     Para um modelo bem calibrado, espera-se que destaques com ~60% de probabilidade 
@@ -361,86 +361,6 @@
             </div>
         </div>
         
-        
-            <div class="section">
-                <div class="section-title">📊 Métricas de Calibração (Destaques)</div>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-valor" style="color: #f6e05e;">0.2327</div>
-                        <div class="stat-label">Brier Score</div>
-                        <div style="font-size: 0.8em; color: #f6e05e;">Bom</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-valor">0.6593</div>
-                        <div class="stat-label">Log Loss</div>
-                    </div>
-                </div>
-                
-                <div style="margin-top: 20px;">
-                    <h4 style="color: #e94560; margin-bottom: 10px;">📈 Curva de Confiabilidade</h4>
-                    <p style="color: #a0a0a0; font-size: 0.9em; margin-bottom: 15px;">
-                        Compara a probabilidade prevista com a taxa de acerto real por faixa.
-                    </p>
-                    <table style="width: 100%;">
-                        <thead>
-                            <tr>
-                                <th>Faixa</th>
-                                <th>N</th>
-                                <th>Esperado</th>
-                                <th>Real</th>
-                                <th>Δ</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            
-                    <tr>
-                        <td>55-60%</td>
-                        <td>2</td>
-                        <td>58%</td>
-                        <td style="color: #f6e05e; font-weight: bold;">50.0%</td>
-                        <td style="color: #f6e05e;">-7.5%</td>
-                    </tr>
-                
-                    <tr>
-                        <td>60-65%</td>
-                        <td>2</td>
-                        <td>62%</td>
-                        <td style="color: #e94560; font-weight: bold;">100.0%</td>
-                        <td style="color: #e94560;">+37.5%</td>
-                    </tr>
-                
-                    <tr>
-                        <td>70-75%</td>
-                        <td>5</td>
-                        <td>72%</td>
-                        <td style="color: #e94560; font-weight: bold;">60.0%</td>
-                        <td style="color: #e94560;">-12.5%</td>
-                    </tr>
-                
-                    <tr>
-                        <td>75-80%</td>
-                        <td>3</td>
-                        <td>78%</td>
-                        <td style="color: #e94560; font-weight: bold;">33.3%</td>
-                        <td style="color: #e94560;">-44.2%</td>
-                    </tr>
-                
-                    <tr>
-                        <td>80+%</td>
-                        <td>6</td>
-                        <td>90%</td>
-                        <td style="color: #f6e05e; font-weight: bold;">83.3%</td>
-                        <td style="color: #f6e05e;">-6.7%</td>
-                    </tr>
-                
-                        </tbody>
-                    </table>
-                    <p style="color: #a0a0a0; font-size: 0.8em; margin-top: 10px;">
-                        Um modelo bem calibrado tem taxa real ≈ taxa esperada em cada faixa.
-                    </p>
-                </div>
-            </div>
         
         
         
@@ -569,69 +489,6 @@
                 </thead>
                 <tbody>
                     
-            <tr>
-                <td>Over 2.5 Cartões</td>
-                <td>6</td>
-                <td>3</td>
-                <td>3</td>
-                <td style="color: #2ecc71; font-weight: bold;">50.0%</td>
-                <td>0.3109</td>
-            </tr>
-        
-            <tr>
-                <td>Over 3.5 Cartões</td>
-                <td>6</td>
-                <td>2</td>
-                <td>4</td>
-                <td style="color: #e94560; font-weight: bold;">33.3%</td>
-                <td>0.2929</td>
-            </tr>
-        
-            <tr>
-                <td>Over 4.5 Cartões</td>
-                <td>6</td>
-                <td>2</td>
-                <td>4</td>
-                <td style="color: #e94560; font-weight: bold;">33.3%</td>
-                <td>0.2529</td>
-            </tr>
-        
-            <tr>
-                <td>Over 5.5 Cartões</td>
-                <td>6</td>
-                <td>1</td>
-                <td>5</td>
-                <td style="color: #e94560; font-weight: bold;">16.7%</td>
-                <td>0.1319</td>
-            </tr>
-        
-            <tr>
-                <td>Under 3.5 Cartões</td>
-                <td>6</td>
-                <td>4</td>
-                <td>2</td>
-                <td style="color: #2ecc71; font-weight: bold;">66.7%</td>
-                <td>0.2499</td>
-            </tr>
-        
-            <tr>
-                <td>Under 4.5 Cartões</td>
-                <td>6</td>
-                <td>4</td>
-                <td>2</td>
-                <td style="color: #2ecc71; font-weight: bold;">66.7%</td>
-                <td>0.2256</td>
-            </tr>
-        
-            <tr>
-                <td>Under 5.5 Cartões</td>
-                <td>6</td>
-                <td>5</td>
-                <td>1</td>
-                <td style="color: #2ecc71; font-weight: bold;">83.3%</td>
-                <td>0.1314</td>
-            </tr>
-        
                 </tbody>
             </table>
         </div>
@@ -657,75 +514,39 @@
                     <tbody>
                         
             <tr>
-                <td>✅</td>
-                <td>Burnley vs Newcastle United💎 DIAMANTE</td>
-                <td>Premier League</td>
-                <td style="color: #9b59b6;">3.94</td>
-                <td>[1-8]</td>
-                <td style="font-weight: bold; color: #3498db;">3</td>
-                <td>1 x 3</td>
-                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cartões (81%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cartões (61%)</span></td>
-                <td><span style="color: #f1c40f; margin-right: 8px;" title="Bloqueado: variância">🛡️ Over 5.5 Cartões</span><span style="color: #f1c40f; margin-right: 8px;" title="Bloqueado: variância">⚠️ Under 5.5 Cartões</span></td>
+                <td>❌</td>
+                <td>Rayo Vallecano vs Getafe💎 DIAMANTE</td>
+                <td>LaLiga</td>
+                <td style="color: #9b59b6;">4.85</td>
+                <td>[1-9]</td>
+                <td style="font-weight: bold; color: #3498db;">N/D</td>
+                <td>N/D</td>
+                <td><span style="color: #a0a0a0; margin-right: 8px;">⏳ Over 2.5 Cartões (80%)</span><span style="color: #a0a0a0; margin-right: 8px;">⏳ Over 3.5 Cartões (68%)</span><span style="color: #a0a0a0; margin-right: 8px;">⏳ Under 4.5 Cartões (57%)</span></td>
+                <td><span style="color: #a0a0a0; margin-right: 8px;" title="Bloqueado: variância">🚫 Over 5.5 Cartões</span><span style="color: #a0a0a0; margin-right: 8px;" title="Bloqueado: variância">🚫 Under 5.5 Cartões</span></td>
             </tr>
         
             <tr>
-                <td>✅</td>
-                <td>Chelsea vs Bournemouth🥈 PLATINA</td>
-                <td>Premier League</td>
-                <td style="color: #9b59b6;">2.89</td>
+                <td>❌</td>
+                <td>Cagliari vs Milan💎 DIAMANTE</td>
+                <td>Serie A</td>
+                <td style="color: #9b59b6;">2.97</td>
                 <td>[0-6]</td>
-                <td style="font-weight: bold; color: #3498db;">2</td>
-                <td>2 x 2</td>
-                <td><span style="color: #e94560; margin-right: 8px;">❌ Over 2.5 Cartões (73%)</span><span style="color: #e94560; margin-right: 8px;">❌ Over 3.5 Cartões (57%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cartões (71%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cartões (77%)</span></td>
+                <td style="font-weight: bold; color: #3498db;">N/D</td>
+                <td>N/D</td>
+                <td><span style="color: #a0a0a0; margin-right: 8px;">⏳ Over 2.5 Cartões (73%)</span><span style="color: #a0a0a0; margin-right: 8px;">⏳ Over 3.5 Cartões (57%)</span><span style="color: #a0a0a0; margin-right: 8px;">⏳ Under 4.5 Cartões (71%)</span><span style="color: #a0a0a0; margin-right: 8px;">⏳ Under 5.5 Cartões (77%)</span></td>
                 <td></td>
             </tr>
         
             <tr>
-                <td>✅</td>
-                <td>Nottingham Forest vs Everton🥈 PLATINA</td>
-                <td>Premier League</td>
-                <td style="color: #9b59b6;">3.17</td>
-                <td>[1-6]</td>
-                <td style="font-weight: bold; color: #3498db;">1</td>
-                <td>0 x 2</td>
-                <td><span style="color: #e94560; margin-right: 8px;">❌ Over 2.5 Cartões (73%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cartões (71%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cartões (80%)</span></td>
-                <td></td>
-            </tr>
-        
-            <tr>
-                <td>✅</td>
-                <td>West Ham United vs Brighton & Hove Albion🥈 PLATINA</td>
-                <td>Premier League</td>
-                <td style="color: #9b59b6;">3.68</td>
-                <td>[1-7]</td>
-                <td style="font-weight: bold; color: #3498db;">8</td>
-                <td>2 x 2</td>
-                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cartões (81%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 5.5 Cartões (77%)</span></td>
-                <td></td>
-            </tr>
-        
-            <tr>
-                <td>✅</td>
-                <td>Arsenal vs Aston Villa🥈 PLATINA</td>
-                <td>Premier League</td>
-                <td style="color: #9b59b6;">2.36</td>
-                <td>[0-5]</td>
-                <td style="font-weight: bold; color: #3498db;">5</td>
-                <td>4 x 1</td>
-                <td><span style="color: #2ecc71; margin-right: 8px;">✅ Over 2.5 Cartões (74%)</span><span style="color: #e94560; margin-right: 8px;">❌ Under 4.5 Cartões (78%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cartões (91%)</span></td>
-                <td></td>
-            </tr>
-        
-            <tr>
-                <td>✅</td>
-                <td>Manchester United vs Wolverhampton🥇 OURO</td>
-                <td>Premier League</td>
-                <td style="color: #9b59b6;">3.42</td>
-                <td>[1-7]</td>
-                <td style="font-weight: bold; color: #3498db;">2</td>
-                <td>1 x 1</td>
-                <td><span style="color: #e94560; margin-right: 8px;">❌ Over 2.5 Cartões (81%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 3.5 Cartões (55%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 4.5 Cartões (63%)</span><span style="color: #2ecc71; margin-right: 8px;">✅ Under 5.5 Cartões (80%)</span></td>
-                <td></td>
+                <td>❌</td>
+                <td>Toulouse vs RC Lens💎 DIAMANTE</td>
+                <td>Ligue 1</td>
+                <td style="color: #9b59b6;">3.99</td>
+                <td>[1-8]</td>
+                <td style="font-weight: bold; color: #3498db;">N/D</td>
+                <td>N/D</td>
+                <td><span style="color: #a0a0a0; margin-right: 8px;">⏳ Over 2.5 Cartões (82%)</span><span style="color: #a0a0a0; margin-right: 8px;">⏳ Under 4.5 Cartões (61%)</span></td>
+                <td><span style="color: #a0a0a0; margin-right: 8px;" title="Bloqueado: variância">🚫 Over 5.5 Cartões</span><span style="color: #a0a0a0; margin-right: 8px;" title="Bloqueado: variância">🚫 Under 5.5 Cartões</span></td>
             </tr>
         
                     </tbody>
@@ -975,7 +796,7 @@
                 Métricas: Brier Score, Log Loss, Curva de Confiabilidade
             </p>
             <p style="margin-top: 5px; font-size: 0.85em;">
-                02/01/2026 11:39
+                02/01/2026 11:33
             </p>
         </div>
     </div>
