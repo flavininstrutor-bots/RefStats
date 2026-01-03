@@ -526,12 +526,30 @@
         .donation-card.paypal .donation-btn {
             background: #3498db;
             color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 24px 32px;
+            font-weight: 600;
+            margin: 12px auto 0 auto;
+            text-align: center;
         }
         
         .donation-btn:hover {
             transform: scale(1.05);
         }
-        
+
+        .copy-icon-img {
+            width: 80px;
+            height: 80px;
+            margin-left: 0px;
+            vertical-align: middle;
+            cursor: pointer;
+            filter: brightness(0.95);
+            transition: transform 0.2s ease, filter 0.2s ease;            
+        }        
+
         .pix-key {
             background: #0f3460;
             padding: 10px 20px;
@@ -972,22 +990,29 @@
             
             <div class="donation-methods">
                 <div class="donation-card pix">
-                    <i class="fas fa-qrcode"></i>
+                    <img src="../assets/img/Doacao MercadoPago.PNG"
+                        alt="Copiar"
+                        class="copy-icon-img">
+                    <h4></h4>
                     <h4>PIX (Brazil)</h4>
                     <p>Fast and fee-free</p>
+                    <p>BANCO: MERCADO PAGO -- FLÁVIO HENRIQUE</p>
                     <div class="pix-key" onclick="copyPix()">
-                        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="13607666767e727a7f53766b767e637f7c3d707c7e">[email&#160;protected]</a>
-                        <i class="fas fa-copy"></i>
+                        <span id="pixKey">64228751000142</span>
+                        <span>📋</span>
                     </div>
-                    <p style="font-size: 0.8em; margin-top: 10px; color: #2ecc71;">Click to copy</p>
+                    <p style="font-size: 0.8em; margin-top: 10px; color: #2ecc71;">Click and Hold to copy</p>
                 </div>
                 
                 <div class="donation-card paypal">
-                    <i class="fab fa-paypal"></i>
+                    <img src="../assets/img/paypal.png"
+                        alt="Copiar"
+                        class="copy-icon-img">
+                    <h4></h4>
                     <h4>PayPal (International)</h4>
                     <p>For international donations</p>
-                    <a href="#" class="donation-btn">
-                        <i class="fab fa-paypal"></i> Donate via PayPal
+                    <a href="https://www.paypal.com/ncp/payment/YMW3RD53GBWVS" class="donation-btn" target="_blank">
+                    Donate via PayPal
                     </a>
                 </div>
             </div>
