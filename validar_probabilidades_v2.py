@@ -1134,6 +1134,7 @@ def gerar_html_relatorio_v2(relatorio: RelatorioValidacaoV2) -> str:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RefStats - Relatório de Validação V2.0 - {relatorio.data_arquivo}</title>
+    <link rel="icon" href="./assets/img/favicon.ico">
     <style>
         * {{
             margin: 0;

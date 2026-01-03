@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RefStats - Análise de Árbitros e Times</title>
+    <link rel="icon" href="./assets/img/favicon.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -494,7 +495,10 @@
         }
         
         .donation-card.pix i { color: #2ecc71; }
-        .donation-card.paypal i { color: #3498db; }
+        .donation-card.paypal i { 
+            color: #3498db;
+            text-align: center;
+        }
         
         .donation-card h4 {
             color: white;
@@ -525,10 +529,19 @@
         .donation-card.paypal .donation-btn {
             background: #3498db;
             color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 24px 32px;
+            font-weight: 600;
+            margin: 12px auto 0 auto;
+            text-align: center;
         }
         
         .donation-btn:hover {
             transform: scale(1.05);
+            text-align: center;
         }
         
         .pix-key {
@@ -985,8 +998,9 @@
                     <i class="fab fa-paypal"></i>
                     <h4>PayPal (Internacional)</h4>
                     <p>Para doações do exterior</p>
-                    <a href="#" class="donation-btn">
-                        <i class="fab fa-paypal"></i> Doar via PayPal
+                    <a href="https://www.paypal.com/ncp/payment/YMW3RD53GBWVS" class="donation-btn" target="_blank"> 
+                    
+                    Doar via PayPal
                     </a>
                 </div>
             </div>
