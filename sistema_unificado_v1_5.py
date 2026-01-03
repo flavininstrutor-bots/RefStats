@@ -2143,6 +2143,33 @@ def gerar_html_unificado(analises, timestamp, data_jogos):
         .footer strong {{
             color: #e94560;
         }}
+
+        .social-links {{
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;   /* ⬅️ centraliza horizontalmente */
+        }}
+        
+        .social-links a {{
+            width: 40px;
+            height: 40px;
+            background: #1a1a2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #a0a0a0;
+            transition: all 0.3s;
+            text-decoration: none;   /* ⬅️ remove underline */
+        }}
+        .social-links a:hover {{
+            background: #e94560;
+            color: white;
+            transform: scale(1.1);
+            
+        }}
+
         
         /* ========================================
            BARRA DE PESQUISA ESTILO CTRL+F v1.4
@@ -3551,6 +3578,11 @@ def gerar_html_unificado(analises, timestamp, data_jogos):
                 <a href="refstats_aviso_legal.html" style="color: #3498db; text-decoration: none;">Aviso Legal</a> |
                 <a href="refstats_faq.html" style="color: #3498db; text-decoration: none;">FAQ</a>
             </p>
+            <div class="social-links">
+                <a href="https://www.instagram.com/refstatspro/" title="Instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@refstatspro" title="TikTok" target="_blank"><i class="fab fa-tiktok"></i></a>
+                <a href="https://t.me/refstats" title="Telegram" target="_blank" ><i class="fab fa-telegram"></i></a>
+
             <p style="margin-top: 10px; font-size: 0.9em;">Dados coletados de fontes confiáveis • {datetime.now().strftime('%d/%m/%Y %H:%M')}</p>
             <p style="margin-top: 5px; font-size: 0.85em; color: #3498db;">💡 Use Ctrl+F ou clique em 🔍 para pesquisar e filtrar por perfil do árbitro</p>
             <p style="margin-top: 10px; font-size: 0.8em; color: #e94560;">⚠️ Este site é apenas para fins informativos. Aposte com responsabilidade.</p>
