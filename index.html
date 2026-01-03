@@ -498,6 +498,7 @@
         .donation-card.paypal i { 
             color: #3498db;
             text-align: center;
+            
         }
         
         .donation-card h4 {
@@ -543,6 +544,17 @@
             transform: scale(1.05);
             text-align: center;
         }
+
+        .copy-icon-img {
+            width: 80px;
+            height: 80px;
+            margin-left: 0px;
+            vertical-align: middle;
+            cursor: pointer;
+            filter: brightness(0.95);
+            transition: transform 0.2s ease, filter 0.2s ease;            
+        }
+
         
         .pix-key {
             background: #0f3460;
@@ -984,18 +996,26 @@
             
             <div class="donation-methods">
                 <div class="donation-card pix">
-                    <i class="fas fa-qrcode"></i>
+                    <img src="./assets/img/Doacao MercadoPago.PNG"
+                        alt="Copiar"
+                        class="copy-icon-img">
+
+                    <h4></h4>    
                     <h4>PIX (Brasil)</h4>
                     <p>Rápido e sem taxas</p>
+                    <p>BANCO: MERCADO PAGO -- FLÁVIO HENRIQUE</p>
                     <div class="pix-key" onclick="copyPix()">
-                        <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="13607666767e727a7f53766b767e637f7c3d707c7e">[email&#160;protected]</a>
-                        <i class="fas fa-copy"></i>
+                        <span id="pixKey">64228751000142</span>
+                        <span>📋</span>
                     </div>
-                    <p style="font-size: 0.8em; margin-top: 10px; color: #2ecc71;">Clique para copiar</p>
+                    <p style="font-size: 0.8em; margin-top: 10px; color: #2ecc71;">Clique e Segure para copiar</p>
                 </div>
                 
                 <div class="donation-card paypal">
-                    <i class="fab fa-paypal"></i>
+                    <img src="./assets/img/paypal.png"
+                        alt="Copiar"
+                        class="copy-icon-img">
+                    <h4></h4>                            
                     <h4>PayPal (Internacional)</h4>
                     <p>Para doações do exterior</p>
                     <a href="https://www.paypal.com/ncp/payment/YMW3RD53GBWVS" class="donation-btn" target="_blank"> 
@@ -1128,9 +1148,9 @@
         
         // Copiar PIX
         function copyPix() {
-            const pixKey = 'seuemail@exemplo.com';
+            const pixKey = '64228751000142';
             navigator.clipboard.writeText(pixKey).then(() => {
-                alert('Chave PIX copiada: ' + pixKey);
+                alert('Chave PIX (CNPJ) copiada: ' + pixKey);
             }).catch(() => {
                 // Fallback para navegadores antigos
                 const textarea = document.createElement('textarea');
@@ -1139,7 +1159,7 @@
                 textarea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textarea);
-                alert('Chave PIX copiada: ' + pixKey);
+                alert('Chave PIX (CNPJ) copiada: ' + pixKey);
             });
         }
         

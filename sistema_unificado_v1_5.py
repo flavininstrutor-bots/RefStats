@@ -3518,8 +3518,9 @@ def gerar_html_unificado(analises, timestamp, data_jogos):
                 <div class="donation-card">
                     <h4>🔲 PIX (Brasil)</h4>
                     <p>Rápido, fácil e sem taxas</p>
+                    <p>BANCO: MERCADO PAGO - FLÁVIO HENRIQUE</p>
                     <div class="pix-key" onclick="copyPix()">
-                        <span id="pixKey">seuemail@exemplo.com</span>
+                        <span id="pixKey">64228751000142</span>
                         <span>📋</span>
                     </div>
                 </div>
@@ -3527,7 +3528,7 @@ def gerar_html_unificado(analises, timestamp, data_jogos):
                 <div class="donation-card">
                     <h4>🅿️ PayPal</h4>
                     <p>Para doações internacionais</p>
-                    <a href="https://paypal.me/seuusuario" target="_blank" class="paypal-btn">
+                    <a href="https://www.paypal.com/ncp/payment/YMW3RD53GBWVS" target="_blank" class="paypal-btn">
                         Doar via PayPal
                     </a>
                 </div>
